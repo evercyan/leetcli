@@ -29,7 +29,7 @@ So, All For DRY (Don't Repeat Yourself)...
 
 ```
 NAME:
-   leetcli - leetcode cli
+   leetcli - A CLI tool for leetcode
 
 USAGE:
    helper [global options] command [command options] [arguments...]
@@ -1262,116 +1262,126 @@ GLOBAL OPTIONS:
 
 |#|标题|
 |:-:|:-|
-|[0630](https://leetcode-cn.com/problems/course-schedule-iii/)|课程表 III|
-|[0210](https://leetcode-cn.com/problems/course-schedule-ii/)|课程表 II|
-|[0207](https://leetcode-cn.com/problems/course-schedule/)|课程表|
+|[0785](https://leetcode-cn.com/problems/is-graph-bipartite/)|基本计算器 III|
+|[0781](https://leetcode-cn.com/problems/rabbits-in-forest/)|基本计算器 IV|
+|[0227](https://leetcode-cn.com/problems/basic-calculator-ii/)|基本计算器 II|
+|[0224](https://leetcode-cn.com/problems/basic-calculator/)|基本计算器|
+||||
+||||
+|[0142](https://leetcode-cn.com/problems/linked-list-cycle-ii/)|环形链表 II|
+|[0141](https://leetcode-cn.com/problems/linked-list-cycle/)|环形链表|
 ||||
 ||||
 |[0127](https://leetcode-cn.com/problems/word-ladder/)|单词接龙|
 |[0126](https://leetcode-cn.com/problems/word-ladder-ii/)|单词接龙 II|
 ||||
 ||||
-|[0800](https://leetcode-cn.com/problems/similar-rgb-color/)|字母大小写全排列|
-|[0047](https://leetcode-cn.com/problems/permutations-ii/)|全排列 II|
-|[0046](https://leetcode-cn.com/problems/permutations/)|全排列|
+|[1040](https://leetcode-cn.com/problems/moving-stones-until-consecutive-ii/)|最大二叉树 II|
+|[0654](https://leetcode-cn.com/problems/maximum-binary-tree/)|最大二叉树|
 ||||
 ||||
-|[0364](https://leetcode-cn.com/problems/nested-list-weight-sum-ii/)|加权嵌套序列和 II|
+|[0267](https://leetcode-cn.com/problems/palindrome-permutation-ii/)|回文排列 II|
+|[0266](https://leetcode-cn.com/problems/palindrome-permutation/)|回文排列|
 ||||
 ||||
-|[0291](https://leetcode-cn.com/problems/word-pattern-ii/)|单词规律 II|
-|[0290](https://leetcode-cn.com/problems/word-pattern/)|单词规律|
-||||
-||||
-|[0350](https://leetcode-cn.com/problems/intersection-of-two-arrays-ii/)|两个数组的交集 II|
-|[0349](https://leetcode-cn.com/problems/intersection-of-two-arrays/)|两个数组的交集|
-||||
-||||
-|[0260](https://leetcode-cn.com/problems/single-number-iii/)|只出现一次的数字 III|
-|[0137](https://leetcode-cn.com/problems/single-number-ii/)|只出现一次的数字 II|
-|[0136](https://leetcode-cn.com/problems/single-number/)|只出现一次的数字|
-||||
-||||
-|[0509](https://leetcode-cn.com/problems/fibonacci-number/)|二叉搜索树中的中序后继 II|
-||||
-||||
-|[0522](https://leetcode-cn.com/problems/longest-uncommon-subsequence-ii/)|最长特殊序列 II|
-|[0521](https://leetcode-cn.com/problems/longest-uncommon-subsequence-i/)|最长特殊序列 Ⅰ|
-||||
-||||
-|[0407](https://leetcode-cn.com/problems/trapping-rain-water-ii/)|接雨水 II|
-|[0042](https://leetcode-cn.com/problems/trapping-rain-water/)|[接雨水](./src/0042-trapping-rain-water/)|
-||||
-||||
-|[0337](https://leetcode-cn.com/problems/house-robber-iii/)|打家劫舍 III|
-|[0213](https://leetcode-cn.com/problems/house-robber-ii/)|打家劫舍 II|
-|[0198](https://leetcode-cn.com/problems/house-robber/)|[打家劫舍](./src/0198-house-robber/)|
-||||
-||||
-|[0946](https://leetcode-cn.com/problems/validate-stack-sequences/)|最小差值 II|
-|[0944](https://leetcode-cn.com/problems/delete-columns-to-make-sorted/)|最小差值 I|
-||||
-||||
-|[0454](https://leetcode-cn.com/problems/4sum-ii/)|四数相加 II|
-||||
-||||
-|[0245](https://leetcode-cn.com/problems/shortest-word-distance-iii/)|最短单词距离 III|
-|[0244](https://leetcode-cn.com/problems/shortest-word-distance-ii/)|最短单词距离 II|
-|[0243](https://leetcode-cn.com/problems/shortest-word-distance/)|最短单词距离|
-||||
-||||
-|[1130](https://leetcode-cn.com/problems/minimum-cost-tree-from-leaf-values/)|最后一块石头的重量 II|
-||||
-||||
-|[1003](https://leetcode-cn.com/problems/check-if-word-is-valid-after-substitutions/)|最小面积矩形 II|
-|[0976](https://leetcode-cn.com/problems/largest-perimeter-triangle/)|[最小面积矩形](./src/0976-largest-perimeter-triangle/)|
-||||
-||||
-|[0557](https://leetcode-cn.com/problems/reverse-words-in-a-string-iii/)|反转字符串中的单词 III|
-|[0541](https://leetcode-cn.com/problems/reverse-string-ii/)|反转字符串 II|
-|[0345](https://leetcode-cn.com/problems/reverse-vowels-of-a-string/)|反转字符串中的元音字母|
-|[0344](https://leetcode-cn.com/problems/reverse-string/)|反转字符串|
-||||
-||||
-|[0533](https://leetcode-cn.com/problems/lonely-pixel-ii/)|孤独像素 II|
-|[0531](https://leetcode-cn.com/problems/lonely-pixel-i/)|孤独像素 I|
-||||
-||||
-|[0305](https://leetcode-cn.com/problems/number-of-islands-ii/)|岛屿数量 II|
-|[0200](https://leetcode-cn.com/problems/number-of-islands/)|岛屿数量|
-||||
-||||
-|[0240](https://leetcode-cn.com/problems/search-a-2d-matrix-ii/)|搜索二维矩阵 II|
-|[0074](https://leetcode-cn.com/problems/search-a-2d-matrix/)|搜索二维矩阵|
+|[0275](https://leetcode-cn.com/problems/h-index-ii/)|H指数 II|
+|[0274](https://leetcode-cn.com/problems/h-index/)|H指数|
 ||||
 ||||
 |[0229](https://leetcode-cn.com/problems/majority-element-ii/)|求众数 II|
 |[0169](https://leetcode-cn.com/problems/majority-element/)|求众数|
 ||||
 ||||
-|[0154](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii/)|寻找旋转排序数组中的最小值 II|
-|[0153](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/)|寻找旋转排序数组中的最小值|
+|[0140](https://leetcode-cn.com/problems/word-break-ii/)|单词拆分 II|
+|[0139](https://leetcode-cn.com/problems/word-break/)|单词拆分|
+||||
+||||
+|[0081](https://leetcode-cn.com/problems/search-in-rotated-sorted-array-ii/)|搜索旋转排序数组 II|
+|[0033](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/)|[搜索旋转排序数组](./src/0033-search-in-rotated-sorted-array/)|
+||||
+||||
+|[1022](https://leetcode-cn.com/problems/sum-of-root-to-leaf-binary-numbers/)|[不同路径 III](./src/1022-sum-of-root-to-leaf-binary-numbers/)|
+|[0063](https://leetcode-cn.com/problems/unique-paths-ii/)|不同路径 II|
+|[0062](https://leetcode-cn.com/problems/unique-paths/)|不同路径|
+||||
+||||
+|[1052](https://leetcode-cn.com/problems/grumpy-bookstore-owner/)|校园自行车分配|
+|[1067](https://leetcode-cn.com/problems/digit-count-in-range/)|校园自行车分配 II|
+||||
+||||
+|[0522](https://leetcode-cn.com/problems/longest-uncommon-subsequence-ii/)|最长特殊序列 II|
+|[0521](https://leetcode-cn.com/problems/longest-uncommon-subsequence-i/)|最长特殊序列 Ⅰ|
 ||||
 ||||
 |[0685](https://leetcode-cn.com/problems/redundant-connection-ii/)|冗余连接 II|
 |[0684](https://leetcode-cn.com/problems/redundant-connection/)|冗余连接|
 ||||
 ||||
+|[0364](https://leetcode-cn.com/problems/nested-list-weight-sum-ii/)|加权嵌套序列和 II|
+||||
+||||
+|[0630](https://leetcode-cn.com/problems/course-schedule-iii/)|课程表 III|
+|[0210](https://leetcode-cn.com/problems/course-schedule-ii/)|课程表 II|
+|[0207](https://leetcode-cn.com/problems/course-schedule/)|课程表|
+||||
+||||
+|[0080](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array-ii/)|删除排序数组中的重复项 II|
+|[0026](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/)|[删除排序数组中的重复项](./src/0026-remove-duplicates-from-sorted-array/)|
+||||
+||||
+|[1003](https://leetcode-cn.com/problems/check-if-word-is-valid-after-substitutions/)|最小面积矩形 II|
+|[0976](https://leetcode-cn.com/problems/largest-perimeter-triangle/)|[最小面积矩形](./src/0976-largest-perimeter-triangle/)|
+||||
+||||
+|[1000](https://leetcode-cn.com/problems/minimum-cost-to-merge-stones/)|删列造序 III|
+|[0992](https://leetcode-cn.com/problems/subarrays-with-k-different-integers/)|删列造序 II|
+|[0981](https://leetcode-cn.com/problems/time-based-key-value-store/)|[删列造序](./src/0981-time-based-key-value-store/)|
+||||
+||||
+|[0737](https://leetcode-cn.com/problems/sentence-similarity-ii/)|句子相似性 II|
+|[0734](https://leetcode-cn.com/problems/sentence-similarity/)|句子相似性|
+||||
+||||
 |[0598](https://leetcode-cn.com/problems/range-addition-ii/)|范围求和 II|
 ||||
 ||||
-|[0140](https://leetcode-cn.com/problems/word-break-ii/)|单词拆分 II|
-|[0139](https://leetcode-cn.com/problems/word-break/)|单词拆分|
+|[1130](https://leetcode-cn.com/problems/minimum-cost-tree-from-leaf-values/)|最后一块石头的重量 II|
 ||||
 ||||
-|[1040](https://leetcode-cn.com/problems/moving-stones-until-consecutive-ii/)|最大二叉树 II|
-|[0654](https://leetcode-cn.com/problems/maximum-binary-tree/)|最大二叉树|
+|[0509](https://leetcode-cn.com/problems/fibonacci-number/)|二叉搜索树中的中序后继 II|
 ||||
 ||||
-|[0785](https://leetcode-cn.com/problems/is-graph-bipartite/)|基本计算器 III|
-|[0781](https://leetcode-cn.com/problems/rabbits-in-forest/)|基本计算器 IV|
-|[0227](https://leetcode-cn.com/problems/basic-calculator-ii/)|基本计算器 II|
-|[0224](https://leetcode-cn.com/problems/basic-calculator/)|基本计算器|
+|[0407](https://leetcode-cn.com/problems/trapping-rain-water-ii/)|接雨水 II|
+|[0042](https://leetcode-cn.com/problems/trapping-rain-water/)|[接雨水](./src/0042-trapping-rain-water/)|
+||||
+||||
+|[0107](https://leetcode-cn.com/problems/binary-tree-level-order-traversal-ii/)|[二叉树的层次遍历 II](./src/0107-binary-tree-level-order-traversal-ii/)|
+|[0102](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/)|二叉树的层次遍历|
+||||
+||||
+|[0880](https://leetcode-cn.com/problems/decoded-string-at-index/)|矩形面积 II|
+|[0223](https://leetcode-cn.com/problems/rectangle-area/)|矩形面积|
+||||
+||||
+|[0518](https://leetcode-cn.com/problems/coin-change-2/)|零钱兑换 II|
+|[0322](https://leetcode-cn.com/problems/coin-change/)|零钱兑换|
+||||
+||||
+|[0212](https://leetcode-cn.com/problems/word-search-ii/)|单词搜索 II|
+|[0079](https://leetcode-cn.com/problems/word-search/)|单词搜索|
+||||
+||||
+|[0958](https://leetcode-cn.com/problems/check-completeness-of-a-binary-tree/)|按奇偶排序数组 II|
+|[0941](https://leetcode-cn.com/problems/valid-mountain-array/)|按奇偶排序数组|
+||||
+||||
+|[0291](https://leetcode-cn.com/problems/word-pattern-ii/)|单词规律 II|
+|[0290](https://leetcode-cn.com/problems/word-pattern/)|单词规律|
+||||
+||||
+|[0245](https://leetcode-cn.com/problems/shortest-word-distance-iii/)|最短单词距离 III|
+|[0244](https://leetcode-cn.com/problems/shortest-word-distance-ii/)|最短单词距离 II|
+|[0243](https://leetcode-cn.com/problems/shortest-word-distance/)|最短单词距离|
 ||||
 ||||
 |[0714](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/)|买卖股票的最佳时机含手续费|
@@ -1381,24 +1391,58 @@ GLOBAL OPTIONS:
 |[0121](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/)|[买卖股票的最佳时机](./src/0121-best-time-to-buy-and-sell-stock/)|
 ||||
 ||||
-|[0083](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/)|[删除排序链表中的重复元素](./src/0083-remove-duplicates-from-sorted-list/)|
-|[0082](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/)|删除排序链表中的重复元素 II|
+|[0294](https://leetcode-cn.com/problems/flip-game-ii/)|翻转游戏 II|
+|[0293](https://leetcode-cn.com/problems/flip-game/)|翻转游戏|
 ||||
 ||||
-|[0052](https://leetcode-cn.com/problems/n-queens-ii/)|N皇后 II|
-|[0051](https://leetcode-cn.com/problems/n-queens/)|N皇后|
+|[0667](https://leetcode-cn.com/problems/beautiful-arrangement-ii/)|优美的排列 II|
+|[0526](https://leetcode-cn.com/problems/beautiful-arrangement/)|优美的排列|
 ||||
 ||||
-|[1154](https://leetcode-cn.com/problems/ordinal-number-of-date/)|产品销售分析 II|
+|[1046](https://leetcode-cn.com/problems/last-stone-weight/)|最大连续1的个数 III|
+|[0487](https://leetcode-cn.com/problems/max-consecutive-ones-ii/)|最大连续1的个数 II|
+|[0485](https://leetcode-cn.com/problems/max-consecutive-ones/)|最大连续1的个数|
 ||||
 ||||
-|[0272](https://leetcode-cn.com/problems/closest-binary-search-tree-value-ii/)|最接近的二叉搜索树值 II|
-|[0270](https://leetcode-cn.com/problems/closest-binary-search-tree-value/)|最接近的二叉搜索树值|
+|[0253](https://leetcode-cn.com/problems/meeting-rooms-ii/)|会议室 II|
+|[0252](https://leetcode-cn.com/problems/meeting-rooms/)|会议室|
 ||||
 ||||
-|[0437](https://leetcode-cn.com/problems/path-sum-iii/)|路径总和 III|
-|[0113](https://leetcode-cn.com/problems/path-sum-ii/)|路径总和 II|
-|[0112](https://leetcode-cn.com/problems/path-sum/)|路径总和|
+|[0337](https://leetcode-cn.com/problems/house-robber-iii/)|打家劫舍 III|
+|[0213](https://leetcode-cn.com/problems/house-robber-ii/)|打家劫舍 II|
+|[0198](https://leetcode-cn.com/problems/house-robber/)|[打家劫舍](./src/0198-house-robber/)|
+||||
+||||
+|[0260](https://leetcode-cn.com/problems/single-number-iii/)|只出现一次的数字 III|
+|[0137](https://leetcode-cn.com/problems/single-number-ii/)|只出现一次的数字 II|
+|[0136](https://leetcode-cn.com/problems/single-number/)|只出现一次的数字|
+||||
+||||
+|[0800](https://leetcode-cn.com/problems/similar-rgb-color/)|字母大小写全排列|
+|[0047](https://leetcode-cn.com/problems/permutations-ii/)|全排列 II|
+|[0046](https://leetcode-cn.com/problems/permutations/)|全排列|
+||||
+||||
+|[0977](https://leetcode-cn.com/problems/squares-of-a-sorted-array/)|不同的子序列 II|
+|[0115](https://leetcode-cn.com/problems/distinct-subsequences/)|不同的子序列|
+||||
+||||
+|[0305](https://leetcode-cn.com/problems/number-of-islands-ii/)|岛屿数量 II|
+|[0200](https://leetcode-cn.com/problems/number-of-islands/)|岛屿数量|
+||||
+||||
+|[0557](https://leetcode-cn.com/problems/reverse-words-in-a-string-iii/)|反转字符串中的单词 III|
+|[0541](https://leetcode-cn.com/problems/reverse-string-ii/)|反转字符串 II|
+|[0345](https://leetcode-cn.com/problems/reverse-vowels-of-a-string/)|反转字符串中的元音字母|
+|[0344](https://leetcode-cn.com/problems/reverse-string/)|反转字符串|
+||||
+||||
+|[0350](https://leetcode-cn.com/problems/intersection-of-two-arrays-ii/)|两个数组的交集 II|
+|[0349](https://leetcode-cn.com/problems/intersection-of-two-arrays/)|两个数组的交集|
+||||
+||||
+|[0055](https://leetcode-cn.com/problems/jump-game/)|跳跃游戏|
+|[0045](https://leetcode-cn.com/problems/jump-game-ii/)|跳跃游戏 II|
 ||||
 ||||
 |[0377](https://leetcode-cn.com/problems/combination-sum-iv/)|组合总和 Ⅳ|
@@ -1407,24 +1451,24 @@ GLOBAL OPTIONS:
 |[0039](https://leetcode-cn.com/problems/combination-sum/)|[组合总和](./src/0039-combination-sum/)|
 ||||
 ||||
-|[0275](https://leetcode-cn.com/problems/h-index-ii/)|H指数 II|
-|[0274](https://leetcode-cn.com/problems/h-index/)|H指数|
+|[0946](https://leetcode-cn.com/problems/validate-stack-sequences/)|最小差值 II|
+|[0944](https://leetcode-cn.com/problems/delete-columns-to-make-sorted/)|最小差值 I|
 ||||
 ||||
-|[0253](https://leetcode-cn.com/problems/meeting-rooms-ii/)|会议室 II|
-|[0252](https://leetcode-cn.com/problems/meeting-rooms/)|会议室|
+|[0644](https://leetcode-cn.com/problems/maximum-average-subarray-ii/)|最大平均子段和 II|
 ||||
 ||||
-|[0462](https://leetcode-cn.com/problems/minimum-moves-to-equal-array-elements-ii/)|最少移动次数使数组元素相等 II|
+|[0732](https://leetcode-cn.com/problems/my-calendar-iii/)|我的日程安排表 III|
+|[0731](https://leetcode-cn.com/problems/my-calendar-ii/)|我的日程安排表 II|
+|[0729](https://leetcode-cn.com/problems/my-calendar-i/)|我的日程安排表 I|
 ||||
 ||||
-|[0445](https://leetcode-cn.com/problems/add-two-numbers-ii/)|两数相加 II|
-|[0002](https://leetcode-cn.com/problems/add-two-numbers/)|[两数相加](./src/0002-add-two-numbers/)|
+|[0533](https://leetcode-cn.com/problems/lonely-pixel-ii/)|孤独像素 II|
+|[0531](https://leetcode-cn.com/problems/lonely-pixel-i/)|孤独像素 I|
 ||||
 ||||
-|[0313](https://leetcode-cn.com/problems/super-ugly-number/)|超级丑数|
-|[0264](https://leetcode-cn.com/problems/ugly-number-ii/)|丑数 II|
-|[0263](https://leetcode-cn.com/problems/ugly-number/)|丑数|
+|[0272](https://leetcode-cn.com/problems/closest-binary-search-tree-value-ii/)|最接近的二叉搜索树值 II|
+|[0270](https://leetcode-cn.com/problems/closest-binary-search-tree-value/)|最接近的二叉搜索树值|
 ||||
 ||||
 |[0220](https://leetcode-cn.com/problems/contains-duplicate-iii/)|存在重复元素 III|
@@ -1432,66 +1476,36 @@ GLOBAL OPTIONS:
 |[0217](https://leetcode-cn.com/problems/contains-duplicate/)|存在重复元素|
 ||||
 ||||
-|[0142](https://leetcode-cn.com/problems/linked-list-cycle-ii/)|环形链表 II|
-|[0141](https://leetcode-cn.com/problems/linked-list-cycle/)|环形链表|
+|[0186](https://leetcode-cn.com/problems/reverse-words-in-a-string-ii/)|翻转字符串里的单词 II|
+|[0151](https://leetcode-cn.com/problems/reverse-words-in-a-string/)|翻转字符串里的单词|
 ||||
 ||||
-|[0080](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array-ii/)|删除排序数组中的重复项 II|
-|[0026](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/)|[删除排序数组中的重复项](./src/0026-remove-duplicates-from-sorted-array/)|
+|[0154](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii/)|寻找旋转排序数组中的最小值 II|
+|[0153](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/)|寻找旋转排序数组中的最小值|
 ||||
 ||||
-|[0667](https://leetcode-cn.com/problems/beautiful-arrangement-ii/)|优美的排列 II|
-|[0526](https://leetcode-cn.com/problems/beautiful-arrangement/)|优美的排列|
+|[1077](https://leetcode-cn.com/problems/project-employees-iii/)|易混淆数 II|
+|[1069](https://leetcode-cn.com/problems/product-sales-analysis-ii/)|易混淆数|
 ||||
 ||||
-|[0518](https://leetcode-cn.com/problems/coin-change-2/)|零钱兑换 II|
-|[0322](https://leetcode-cn.com/problems/coin-change/)|零钱兑换|
+|[0780](https://leetcode-cn.com/problems/reaching-points/)|最多能完成排序的块|
+|[0779](https://leetcode-cn.com/problems/k-th-symbol-in-grammar/)|最多能完成排序的块 II|
 ||||
 ||||
-|[0267](https://leetcode-cn.com/problems/palindrome-permutation-ii/)|回文排列 II|
-|[0266](https://leetcode-cn.com/problems/palindrome-permutation/)|回文排列|
+|[0052](https://leetcode-cn.com/problems/n-queens-ii/)|N皇后 II|
+|[0051](https://leetcode-cn.com/problems/n-queens/)|N皇后|
 ||||
 ||||
-|[0265](https://leetcode-cn.com/problems/paint-house-ii/)|粉刷房子 II|
-|[0256](https://leetcode-cn.com/problems/paint-house/)|粉刷房子|
+|[0132](https://leetcode-cn.com/problems/palindrome-partitioning-ii/)|分割回文串 II|
+|[0131](https://leetcode-cn.com/problems/palindrome-partitioning/)|分割回文串|
 ||||
 ||||
-|[0081](https://leetcode-cn.com/problems/search-in-rotated-sorted-array-ii/)|搜索旋转排序数组 II|
-|[0033](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/)|[搜索旋转排序数组](./src/0033-search-in-rotated-sorted-array/)|
+|[0083](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/)|[删除排序链表中的重复元素](./src/0083-remove-duplicates-from-sorted-list/)|
+|[0082](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/)|删除排序链表中的重复元素 II|
 ||||
 ||||
-|[0880](https://leetcode-cn.com/problems/decoded-string-at-index/)|矩形面积 II|
-|[0223](https://leetcode-cn.com/problems/rectangle-area/)|矩形面积|
-||||
-||||
-|[0375](https://leetcode-cn.com/problems/guess-number-higher-or-lower-ii/)|猜数字大小 II|
-|[0374](https://leetcode-cn.com/problems/guess-number-higher-or-lower/)|[猜数字大小](./src/0374-guess-number-higher-or-lower/)|
-||||
-||||
-|[0556](https://leetcode-cn.com/problems/next-greater-element-iii/)|下一个更大元素 III|
-|[0503](https://leetcode-cn.com/problems/next-greater-element-ii/)|[下一个更大元素 II](./src/0503-next-greater-element-ii/)|
-|[0496](https://leetcode-cn.com/problems/next-greater-element-i/)|下一个更大元素 I|
-||||
-||||
-|[0324](https://leetcode-cn.com/problems/wiggle-sort-ii/)|摆动排序 II|
-|[0280](https://leetcode-cn.com/problems/wiggle-sort/)|摆动排序|
-||||
-||||
-|[0294](https://leetcode-cn.com/problems/flip-game-ii/)|翻转游戏 II|
-|[0293](https://leetcode-cn.com/problems/flip-game/)|翻转游戏|
-||||
-||||
-|[0921](https://leetcode-cn.com/problems/minimum-add-to-make-parentheses-valid/)|螺旋矩阵 III|
-|[0059](https://leetcode-cn.com/problems/spiral-matrix-ii/)|螺旋矩阵 II|
-|[0054](https://leetcode-cn.com/problems/spiral-matrix/)|螺旋矩阵|
-||||
-||||
-|[0737](https://leetcode-cn.com/problems/sentence-similarity-ii/)|句子相似性 II|
-|[0734](https://leetcode-cn.com/problems/sentence-similarity/)|句子相似性|
-||||
-||||
-|[0711](https://leetcode-cn.com/problems/number-of-distinct-islands-ii/)|不同岛屿的数量 II|
-|[0694](https://leetcode-cn.com/problems/number-of-distinct-islands/)|不同岛屿的数量|
+|[0445](https://leetcode-cn.com/problems/add-two-numbers-ii/)|两数相加 II|
+|[0002](https://leetcode-cn.com/problems/add-two-numbers/)|[两数相加](./src/0002-add-two-numbers/)|
 ||||
 ||||
 |[0248](https://leetcode-cn.com/problems/strobogrammatic-number-iii/)|中心对称数 III|
@@ -1499,45 +1513,62 @@ GLOBAL OPTIONS:
 |[0246](https://leetcode-cn.com/problems/strobogrammatic-number/)|中心对称数|
 ||||
 ||||
-|[0117](https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node-ii/)|填充每个节点的下一个右侧节点指针 II|
-|[0116](https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/)|填充每个节点的下一个右侧节点指针|
+|[0119](https://leetcode-cn.com/problems/pascals-triangle-ii/)|杨辉三角 II|
+|[0118](https://leetcode-cn.com/problems/pascals-triangle/)|杨辉三角|
 ||||
 ||||
-|[0107](https://leetcode-cn.com/problems/binary-tree-level-order-traversal-ii/)|[二叉树的层次遍历 II](./src/0107-binary-tree-level-order-traversal-ii/)|
-|[0102](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/)|二叉树的层次遍历|
+|[0556](https://leetcode-cn.com/problems/next-greater-element-iii/)|下一个更大元素 III|
+|[0503](https://leetcode-cn.com/problems/next-greater-element-ii/)|[下一个更大元素 II](./src/0503-next-greater-element-ii/)|
+|[0496](https://leetcode-cn.com/problems/next-greater-element-i/)|下一个更大元素 I|
 ||||
 ||||
-|[0977](https://leetcode-cn.com/problems/squares-of-a-sorted-array/)|不同的子序列 II|
-|[0115](https://leetcode-cn.com/problems/distinct-subsequences/)|不同的子序列|
+|[0462](https://leetcode-cn.com/problems/minimum-moves-to-equal-array-elements-ii/)|最少移动次数使数组元素相等 II|
 ||||
 ||||
-|[0644](https://leetcode-cn.com/problems/maximum-average-subarray-ii/)|最大平均子段和 II|
+|[0711](https://leetcode-cn.com/problems/number-of-distinct-islands-ii/)|不同岛屿的数量 II|
+|[0694](https://leetcode-cn.com/problems/number-of-distinct-islands/)|不同岛屿的数量|
+||||
+||||
+|[0921](https://leetcode-cn.com/problems/minimum-add-to-make-parentheses-valid/)|螺旋矩阵 III|
+|[0059](https://leetcode-cn.com/problems/spiral-matrix-ii/)|螺旋矩阵 II|
+|[0054](https://leetcode-cn.com/problems/spiral-matrix/)|螺旋矩阵|
 ||||
 ||||
 |[0552](https://leetcode-cn.com/problems/student-attendance-record-ii/)|学生出勤记录 II|
 |[0551](https://leetcode-cn.com/problems/student-attendance-record-i/)|学生出勤记录 I|
 ||||
 ||||
-|[1046](https://leetcode-cn.com/problems/last-stone-weight/)|最大连续1的个数 III|
-|[0487](https://leetcode-cn.com/problems/max-consecutive-ones-ii/)|最大连续1的个数 II|
-|[0485](https://leetcode-cn.com/problems/max-consecutive-ones/)|最大连续1的个数|
+|[0952](https://leetcode-cn.com/problems/largest-component-size-by-common-factor/)|单词子集|
+|[0698](https://leetcode-cn.com/problems/partition-to-k-equal-sum-subsets/)|划分为k个相等的子集|
+|[0416](https://leetcode-cn.com/problems/partition-equal-subset-sum/)|分割等和子集|
+|[0368](https://leetcode-cn.com/problems/largest-divisible-subset/)|最大整除子集|
+|[0090](https://leetcode-cn.com/problems/subsets-ii/)|子集 II|
+|[0078](https://leetcode-cn.com/problems/subsets/)|子集|
 ||||
 ||||
-|[0132](https://leetcode-cn.com/problems/palindrome-partitioning-ii/)|分割回文串 II|
-|[0131](https://leetcode-cn.com/problems/palindrome-partitioning/)|分割回文串|
+|[0454](https://leetcode-cn.com/problems/4sum-ii/)|四数相加 II|
 ||||
 ||||
-|[0096](https://leetcode-cn.com/problems/unique-binary-search-trees/)|不同的二叉搜索树|
-|[0095](https://leetcode-cn.com/problems/unique-binary-search-trees-ii/)|不同的二叉搜索树 II|
+|[0324](https://leetcode-cn.com/problems/wiggle-sort-ii/)|摆动排序 II|
+|[0280](https://leetcode-cn.com/problems/wiggle-sort/)|摆动排序|
 ||||
 ||||
-|[1022](https://leetcode-cn.com/problems/sum-of-root-to-leaf-binary-numbers/)|[不同路径 III](./src/1022-sum-of-root-to-leaf-binary-numbers/)|
-|[0063](https://leetcode-cn.com/problems/unique-paths-ii/)|不同路径 II|
-|[0062](https://leetcode-cn.com/problems/unique-paths/)|不同路径|
+|[0313](https://leetcode-cn.com/problems/super-ugly-number/)|超级丑数|
+|[0264](https://leetcode-cn.com/problems/ugly-number-ii/)|丑数 II|
+|[0263](https://leetcode-cn.com/problems/ugly-number/)|丑数|
 ||||
 ||||
-|[1077](https://leetcode-cn.com/problems/project-employees-iii/)|易混淆数 II|
-|[1069](https://leetcode-cn.com/problems/product-sales-analysis-ii/)|易混淆数|
+|[0240](https://leetcode-cn.com/problems/search-a-2d-matrix-ii/)|搜索二维矩阵 II|
+|[0074](https://leetcode-cn.com/problems/search-a-2d-matrix/)|搜索二维矩阵|
+||||
+||||
+|[0117](https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node-ii/)|填充每个节点的下一个右侧节点指针 II|
+|[0116](https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/)|填充每个节点的下一个右侧节点指针|
+||||
+||||
+|[0437](https://leetcode-cn.com/problems/path-sum-iii/)|路径总和 III|
+|[0113](https://leetcode-cn.com/problems/path-sum-ii/)|路径总和 II|
+|[0112](https://leetcode-cn.com/problems/path-sum/)|路径总和|
 ||||
 ||||
 |[0964](https://leetcode-cn.com/problems/least-operators-to-express-number/)|尽量减少恶意软件的传播 II|
@@ -1550,54 +1581,23 @@ GLOBAL OPTIONS:
 |[0490](https://leetcode-cn.com/problems/the-maze/)|迷宫|
 ||||
 ||||
-|[0119](https://leetcode-cn.com/problems/pascals-triangle-ii/)|杨辉三角 II|
-|[0118](https://leetcode-cn.com/problems/pascals-triangle/)|杨辉三角|
-||||
-||||
-|[1052](https://leetcode-cn.com/problems/grumpy-bookstore-owner/)|校园自行车分配|
-|[1067](https://leetcode-cn.com/problems/digit-count-in-range/)|校园自行车分配 II|
-||||
-||||
-|[1000](https://leetcode-cn.com/problems/minimum-cost-to-merge-stones/)|删列造序 III|
-|[0992](https://leetcode-cn.com/problems/subarrays-with-k-different-integers/)|删列造序 II|
-|[0981](https://leetcode-cn.com/problems/time-based-key-value-store/)|[删列造序](./src/0981-time-based-key-value-store/)|
-||||
-||||
 |[0206](https://leetcode-cn.com/problems/reverse-linked-list/)|反转链表|
 |[0092](https://leetcode-cn.com/problems/reverse-linked-list-ii/)|反转链表 II|
 ||||
 ||||
-|[0952](https://leetcode-cn.com/problems/largest-component-size-by-common-factor/)|单词子集|
-|[0698](https://leetcode-cn.com/problems/partition-to-k-equal-sum-subsets/)|划分为k个相等的子集|
-|[0416](https://leetcode-cn.com/problems/partition-equal-subset-sum/)|分割等和子集|
-|[0368](https://leetcode-cn.com/problems/largest-divisible-subset/)|最大整除子集|
-|[0090](https://leetcode-cn.com/problems/subsets-ii/)|子集 II|
-|[0078](https://leetcode-cn.com/problems/subsets/)|子集|
+|[0265](https://leetcode-cn.com/problems/paint-house-ii/)|粉刷房子 II|
+|[0256](https://leetcode-cn.com/problems/paint-house/)|粉刷房子|
 ||||
 ||||
-|[0055](https://leetcode-cn.com/problems/jump-game/)|跳跃游戏|
-|[0045](https://leetcode-cn.com/problems/jump-game-ii/)|跳跃游戏 II|
+|[0096](https://leetcode-cn.com/problems/unique-binary-search-trees/)|不同的二叉搜索树|
+|[0095](https://leetcode-cn.com/problems/unique-binary-search-trees-ii/)|不同的二叉搜索树 II|
 ||||
 ||||
-|[0780](https://leetcode-cn.com/problems/reaching-points/)|最多能完成排序的块|
-|[0779](https://leetcode-cn.com/problems/k-th-symbol-in-grammar/)|最多能完成排序的块 II|
+|[1154](https://leetcode-cn.com/problems/ordinal-number-of-date/)|产品销售分析 II|
 ||||
 ||||
-|[0212](https://leetcode-cn.com/problems/word-search-ii/)|单词搜索 II|
-|[0079](https://leetcode-cn.com/problems/word-search/)|单词搜索|
-||||
-||||
-|[0186](https://leetcode-cn.com/problems/reverse-words-in-a-string-ii/)|翻转字符串里的单词 II|
-|[0151](https://leetcode-cn.com/problems/reverse-words-in-a-string/)|翻转字符串里的单词|
-||||
-||||
-|[0958](https://leetcode-cn.com/problems/check-completeness-of-a-binary-tree/)|按奇偶排序数组 II|
-|[0941](https://leetcode-cn.com/problems/valid-mountain-array/)|按奇偶排序数组|
-||||
-||||
-|[0732](https://leetcode-cn.com/problems/my-calendar-iii/)|我的日程安排表 III|
-|[0731](https://leetcode-cn.com/problems/my-calendar-ii/)|我的日程安排表 II|
-|[0729](https://leetcode-cn.com/problems/my-calendar-i/)|我的日程安排表 I|
+|[0375](https://leetcode-cn.com/problems/guess-number-higher-or-lower-ii/)|猜数字大小 II|
+|[0374](https://leetcode-cn.com/problems/guess-number-higher-or-lower/)|[猜数字大小](./src/0374-guess-number-higher-or-lower/)|
 ||||
 ||||
 

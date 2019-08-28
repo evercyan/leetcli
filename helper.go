@@ -651,7 +651,7 @@ func main() {
 	}
 	app := cli.NewApp()
 	app.Name = "leetcli"
-	app.Usage = "leetcode cli"
+	app.Usage = "A CLI tool for leetcode"
 	app.Version = "1.0.0"
 	app.Flags = []cli.Flag{}
 	app.Commands = []cli.Command{

@@ -29,7 +29,7 @@ So, All For DRY (Don't Repeat Yourself)...
 
 ```
 NAME:
-   leetcli - leetcode cli
+   leetcli - A CLI tool for leetcode
 
 USAGE:
    helper [global options] command [command options] [arguments...]
