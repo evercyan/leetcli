@@ -1,4 +1,4 @@
-# lccli
+# leetcli
 
 [![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
 [![Build Status](https://www.travis-ci.org/evercyan/leetcli.svg?branch=master)](https://www.travis-ci.org/evercyan/leetcli)
@@ -15,7 +15,7 @@
 
 准备刷某题 > 创建答题目录 > 创建答题文件 > 准备测试用例 > 刷刷刷...
 
-So, All For DRY (Don't Repeat Yourself)...
+So, all For DRY (Don't Repeat Yourself)...
 
 本程序使用 golang 编程, 基于终端命令式交互
 通过 leetcode api 获取问题相关数据
@@ -29,7 +29,7 @@ So, All For DRY (Don't Repeat Yourself)...
 
 ```
 NAME:
-   leetcli - A CLI tool for leetcode
+   leetcli - A cli tool for leetcode
 
 USAGE:
    helper [global options] command [command options] [arguments...]
