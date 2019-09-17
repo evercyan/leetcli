@@ -17,7 +17,6 @@ import (
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
-	"github.com/iikira/BaiduPCS-Go/pcsliner/args"
 	"github.com/mozillazg/request"
 	"github.com/peterh/liner"
 	"github.com/urfave/cli"
@@ -743,7 +742,7 @@ func main() {
 				return err
 			}
 			line.AppendHistory(commandLine)
-			cmdArgs := args.Parse(commandLine)
+			cmdArgs := strings.Split(commandLine, " ")
 			if len(cmdArgs) == 0 {
 				continue
 			}
