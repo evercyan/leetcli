@@ -194,7 +194,8 @@ type lcProblem struct {
 	Progress   int            `json:"progress"`
 }
 type lcProblemStat struct {
-	ProbID         int    `json:"frontend_question_id"`
+	ProbIDOrigin   string `json:"frontend_question_id"`
+	ProbID         int
 	ProbTitle      string `json:"question__title"`
 	ProbTitleSlug  string `json:"question__title_slug"`
 	IsNew          bool   `json:"is_new_question"`
@@ -284,6 +285,12 @@ func (lc *leetcode) getProblemList() error {
 	result := &lcResponse{}
 	if err := json.Unmarshal(body, result); err != nil {
 		return err
+	}
+
+	// probId 更新
+	// 原 leetcode 调整了 probId int -> string, 此处兼容
+	for k, v := range result.Problems {
+		result.Problems[k].Stat.ProbID = string2int(v.Stat.ProbIDOrigin)
 	}
 
 	// 获取问题中文标题
@@ -645,7 +652,7 @@ var lc = new(leetcode)
 func main() {
 	err := lc.getProblemList()
 	if err != nil {
-		warning("加载问题列表失败")
+		warning("加载问题列表失败: " + err.Error())
 		return
 	}
 	app := cli.NewApp()
