@@ -22,6 +22,137 @@ import (
 	"github.com/urfave/cli"
 )
 
+/**
+ * 模板配置 begin
+ */
+
+// 问题 go 测试模板
+var tplProblemGoTest = `package solution
+
+import (
+	"reflect"
+	"testing"
+)
+
+func TestSolution(t *testing.T) {
+	cases := []struct {
+		name    string
+		inputs  []interface{}
+		expects []interface{}
+	}{
+		{
+			"Test",
+			[]interface{}{
+				"input",
+			},
+			[]interface{}{
+				"output",
+			},
+		},
+	}
+	index := 1
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			ret := FuncToReplace(c.inputs[0].(string))
+			if !reflect.DeepEqual(ret, c.expects[0].(string)) {
+				t.Fatalf("FAIL ----> name: %v-%v, inputs: %v, expects: %v, ret: %v", c.name, index, c.inputs, c.expects[0], ret)
+			}
+		})
+		index++
+	}
+}`
+
+// 问题 readme 模板
+var tplProblemReadme = `## [{{.ID}}. {{.Title}}]({{.Link}})
+
+---
+
+{{.Difficulty}}
+
+{{.Tags}}
+
+---
+
+##### 题目描述
+
+{{.Content}}
+
+---
+`
+
+// readme 模板
+var tplReadme = `# leetcli
+
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
+[![Build Status](https://www.travis-ci.org/evercyan/leetcli.svg?branch=master)](https://www.travis-ci.org/evercyan/leetcli)
+[![codecov](https://codecov.io/gh/evercyan/leetcli/branch/master/graph/badge.svg?token=RbJTUtAlvl)](https://codecov.io/gh/evercyan/leetcli)
+
+---
+
+#### Emmmm..
+
+` + "```" + `
+刷题烧脑的过程是快乐的, 但准备工作是蛋疼的, 通常是像这样:
+
+准备刷某题 > 创建答题目录 > 创建答题文件 > 准备测试用例 > 刷刷刷...
+
+So, all For DRY (Don't Repeat Yourself)...
+
+本程序使用 golang 编程, 基于终端命令式交互
+通过 leetcode api 获取问题相关数据
+处理生成答题文件, 测试文件, 和 readme.md 等
+支持 golang 覆盖率测试等
+` + "```" + `
+
+---
+
+#### Help
+
+` + "```" + `
+NAME:
+   leetcli - A cli tool for leetcode
+
+USAGE:
+   helper [global options] command [command options] [arguments...]
+
+VERSION:
+   1.0.0
+
+COMMANDS:
+     readme   生成 README.md
+     problem  生成答题文件相关 [eg: problem 101]
+     quit     退出程序
+     help, h  Shows a list of commands or help for one command
+
+GLOBAL OPTIONS:
+   --help, -h     show help
+   --version, -v  print the version
+   ` + "```" + `
+
+---
+
+#### Problem Tag
+
+{{.DrawTagList}}
+---
+
+#### Problem List
+
+{{.DrawProblemList}}
+---
+
+#### Similar Problem
+
+{{.DrawSimilarProblem}}
+---
+
+[⬆️Top](#lccli)
+`
+
+/**
+ * 模板配置 end
+ */
+
 var (
 	lcDifficulty = []string{"", "简单", "中等", "困难"} // 难度类型
 )
@@ -34,19 +165,13 @@ var (
 	lcProbSetURL  = "https://leetcode-cn.com/problemset/all/"   // 题库首页
 )
 
-var (
-	tplReadme        = "./tpl/readme.tpl"          // readme 模板
-	tplProblemReadme = "./tpl/problem_readme.tpl"  // 问题 readme 模板
-	tplProblemGoTest = "./tpl/problem_go_test.tpl" // 问题 go 测试模板
-)
-
 // 只预设 golang 的答题模板
 var langConf = map[string]map[string]string{
 	"golang": {
 		"file":        "solution.go",
 		"fileTpl":     "package solution\n\n%s",
 		"testfile":    "solution_test.go",
-		"testfileTpl": read(tplProblemGoTest),
+		"testfileTpl": tplProblemGoTest,
 	},
 }
 
@@ -422,7 +547,7 @@ func (lc *leetcode) getProblemInfo(ProbID int) (*lcProbInfo, error) {
  */
 func (lc *leetcode) GenerateReadme() error {
 	var b bytes.Buffer
-	tmpl := template.Must(template.New("readme").Parse(read(tplReadme)))
+	tmpl := template.Must(template.New("readme").Parse(tplReadme))
 	err := tmpl.Execute(&b, lc)
 	if err != nil {
 		return err
@@ -601,7 +726,7 @@ func (lc *leetcode) GenerateProblem(ProbID int, lang string) (err error) {
 	// 生成文件 readme
 	probPageFile := fmt.Sprintf("%s/README.md", probDir)
 	var b bytes.Buffer
-	tmpl := template.Must(template.New("question").Parse(read(tplProblemReadme)))
+	tmpl := template.Must(template.New("question").Parse(tplProblemReadme))
 	err = tmpl.Execute(&b, probTplInfo)
 	if err != nil {
 		return err
