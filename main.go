@@ -232,12 +232,16 @@ func contains(val interface{}, target interface{}) bool {
 	return false
 }
 
-func getQustionPath(id int, slug string) string {
+func getQustionPath(fid string, id int, slug string) string {
+	qid := string2int(fid)
+	if qid == 0 {
+		qid = id
+	}
 	tpl := "./src/%d-%s/"
 	if id < 10000 {
 		tpl = "./src/%04d-%s/"
 	}
-	return fmt.Sprintf(tpl, id, slug)
+	return fmt.Sprintf(tpl, qid, slug)
 }
 
 func success(text string) {
@@ -508,7 +512,7 @@ type LeetCodeFile struct {
 func (this *LeetCodeFile) GenerateQuestion(slug string, lang string, questionDetail *LCQuestionDetail) (err error) {
 	questionInfo, _ := LC.QuestionMap[slug]
 
-	questionPath := getQustionPath(questionInfo.QID, questionInfo.Slug)
+	questionPath := getQustionPath(questionInfo.FQID, questionInfo.QID, questionInfo.Slug)
 	if !pathExist(questionPath) {
 		err = os.MkdirAll(questionPath, 0755)
 		if err != nil {
@@ -646,7 +650,7 @@ func (this *LeetCodeFile) DrawQuestionList() string {
 	for _, question := range questionList {
 		resp += fmt.Sprintf("|[%s](%s)|", question.FQID, question.Link)
 
-		questionPath := getQustionPath(question.QID, question.Slug)
+		questionPath := getQustionPath(question.FQID, question.QID, question.Slug)
 		if !pathExist(questionPath) {
 			resp += fmt.Sprintf("%s|", question.Title)
 		} else {
