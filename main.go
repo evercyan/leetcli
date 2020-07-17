@@ -23,11 +23,88 @@ import (
 )
 
 /**
- * 模板配置 begin
+ * ********************************
+ * 模板配置
+ * ********************************
  */
 
-// 问题 go 测试模板
-var tplProblemGoTest = `package solution
+// Repo README 模板
+var tplReadme = `# leetcli
+
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
+[![Build Status](https://www.travis-ci.org/evercyan/leetcli.svg?branch=master)](https://www.travis-ci.org/evercyan/leetcli)
+[![codecov](https://codecov.io/gh/evercyan/leetcli/branch/master/graph/badge.svg?token=RbJTUtAlvl)](https://codecov.io/gh/evercyan/leetcli)
+
+> leetcode 刷题小助手, 帮助生成题目 readme, 答题文件, 答题测试文件等.
+
+---
+
+#### 帮助
+
+` + "```" + `
+NAME:
+	leetcli - A cli tool for leetcode
+
+USAGE:
+	helper [global options] command [command options] [arguments...]
+
+VERSION:
+	1.0.0
+
+COMMANDS:
+	readme   生成 README.md
+	problem  生成答题文件相关 [eg: problem 101]
+	quit     退出程序
+	help, h  Shows a list of commands or help for one command
+
+GLOBAL OPTIONS:
+	--help, -h     show help
+	--version, -v  print the version
+` + "```" + `
+
+---
+
+#### 题目标签
+
+{{.DrawQuestionTagList}}
+
+---
+
+#### 题目列表
+
+{{.DrawQuestionList}}
+
+---
+
+#### 相似题型
+
+{{.DrawSimilarQuestionList}}
+
+---
+
+[⬆️Top](#leetcli)
+`
+
+// 题目描述 README 模板
+var tplQuestionReadme = `## [{{.FQID}}. {{.Title}}]({{.Link}})
+
+---
+
+{{.Difficulty}}
+
+{{.Tags}}
+
+---
+
+#### 题目描述
+
+{{.Content}}
+
+---
+`
+
+// 题目 go 测试模板
+var tplQuestionGoTestFile = `package solution
 
 import (
 	"reflect"
@@ -43,16 +120,17 @@ func TestSolution(t *testing.T) {
 		{
 			"Test",
 			[]interface{}{
-				"input",
+				"input", // 入参替换
 			},
 			[]interface{}{
-				"output",
+				"output", // 返回结果
 			},
 		},
 	}
 	index := 1
 	for _, c := range cases {
 		t.Run(c.name, func(t *testing.T) {
+			// 替换 FuncToReplace 为当前题目 solution.go 中方法名, 替换 (string) 为对应入参返回的类型断言
 			ret := FuncToReplace(c.inputs[0].(string))
 			if !reflect.DeepEqual(ret, c.expects[0].(string)) {
 				t.Fatalf("FAIL ----> name: %v-%v, inputs: %v, expects: %v, ret: %v", c.name, index, c.inputs, c.expects[0], ret)
@@ -62,140 +140,14 @@ func TestSolution(t *testing.T) {
 	}
 }`
 
-// 问题 readme 模板
-var tplProblemReadme = `## [{{.ID}}. {{.Title}}]({{.Link}})
-
----
-
-{{.Difficulty}}
-
-{{.Tags}}
-
----
-
-##### 题目描述
-
-{{.Content}}
-
----
-`
-
-// readme 模板
-var tplReadme = `# leetcli
-
-[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
-[![Build Status](https://www.travis-ci.org/evercyan/leetcli.svg?branch=master)](https://www.travis-ci.org/evercyan/leetcli)
-[![codecov](https://codecov.io/gh/evercyan/leetcli/branch/master/graph/badge.svg?token=RbJTUtAlvl)](https://codecov.io/gh/evercyan/leetcli)
-
----
-
-#### Emmmm..
-
-` + "```" + `
-刷题烧脑的过程是快乐的, 但准备工作是蛋疼的, 通常是像这样:
-
-准备刷某题 > 创建答题目录 > 创建答题文件 > 准备测试用例 > 刷刷刷...
-
-So, all For DRY (Don't Repeat Yourself)...
-
-本程序使用 golang 编程, 基于终端命令式交互
-通过 leetcode api 获取问题相关数据
-处理生成答题文件, 测试文件, 和 readme.md 等
-支持 golang 覆盖率测试等
-` + "```" + `
-
----
-
-#### Help
-
-` + "```" + `
-NAME:
-   leetcli - A cli tool for leetcode
-
-USAGE:
-   helper [global options] command [command options] [arguments...]
-
-VERSION:
-   1.0.0
-
-COMMANDS:
-     readme   生成 README.md
-     problem  生成答题文件相关 [eg: problem 101]
-     quit     退出程序
-     help, h  Shows a list of commands or help for one command
-
-GLOBAL OPTIONS:
-   --help, -h     show help
-   --version, -v  print the version
-   ` + "```" + `
-
----
-
-#### Problem Tag
-
-{{.DrawTagList}}
----
-
-#### Problem List
-
-{{.DrawProblemList}}
----
-
-#### Similar Problem
-
-{{.DrawSimilarProblem}}
----
-
-[⬆️Top](#lccli)
-`
-
 /**
- * 模板配置 end
+ * ********************************
+ * 公共函数
+ * ********************************
  */
 
-var (
-	lcDifficulty = []string{"", "简单", "中等", "困难"} // 难度类型
-)
-
-var (
-	lcProbAllURL  = "https://leetcode-cn.com/api/problems/all/" // 问题列表地址
-	lcGraphqlURL  = "https://leetcode-cn.com/graphql"           // 问题数据地址
-	lcProbLinkURL = "https://leetcode-cn.com/problems/%s/"      // 问题页面地址
-	lcTagLinkURL  = "https://leetcode-cn.com/tag/%s/"           // 标签页面地址
-	lcProbSetURL  = "https://leetcode-cn.com/problemset/all/"   // 题库首页
-)
-
-// 只预设 golang 的答题模板
-var langConf = map[string]map[string]string{
-	"golang": {
-		"file":        "solution.go",
-		"fileTpl":     "package solution\n\n%s",
-		"testfile":    "solution_test.go",
-		"testfileTpl": tplProblemGoTest,
-	},
-}
-
-// 默认答题配置
-var (
-	langFile    = "solution.%s"
-	langFileTpl = "%s"
-	langSuffix  = map[string]string{
-		"golang":     "go",
-		"php":        "php",
-		"c":          "c",
-		"cpp":        "c",
-		"java":       "java",
-		"python":     "py",
-		"python3":    "py",
-		"javascript": "js",
-		"mysql":      "sql",
-		"bash":       "sh",
-	}
-)
-
 func write(path, content string) error {
-	err := ioutil.WriteFile(path, []byte(content), 0755)
-	return err
+	return ioutil.WriteFile(path, []byte(content), 0755)
 }
 
 func read(path string) string {
@@ -212,10 +164,11 @@ func read(path string) string {
 }
 
 func string2int(v string) int {
-	if r, err := strconv.Atoi(v); err == nil {
-		return r
+	r, err := strconv.Atoi(v)
+	if err != nil {
+		return 0
 	}
-	return 0
+	return r
 }
 
 func jsonEncode(req interface{}) string {
@@ -228,7 +181,7 @@ func pathExist(path string) bool {
 	return err == nil || os.IsExist(err)
 }
 
-func format(s string) string {
+func formatHtml(s string) string {
 	// 先处理 img 标签, 生成 markdown 格式, ![](图片链接地址)
 	rImg, _ := regexp.Compile(`<img[^<>]*src="([^"]+)"[^<>]*>`)
 	s = rImg.ReplaceAllString(s, "```\n\n![]($1)\n\n```")
@@ -259,8 +212,7 @@ func format(s string) string {
 		s = strings.Replace(s, k, v, -1)
 	}
 	re, _ := regexp.Compile("\\<[^<>]+\\>")
-	s = re.ReplaceAllString(s, "")
-	return fmt.Sprintf("```\n%s\n```", s)
+	return fmt.Sprintf("```\n%s\n```", re.ReplaceAllString(s, ""))
 }
 
 func contains(val interface{}, target interface{}) bool {
@@ -280,6 +232,14 @@ func contains(val interface{}, target interface{}) bool {
 	return false
 }
 
+func getQustionPath(id int, slug string) string {
+	tpl := "./src/%d-%s/"
+	if id < 10000 {
+		tpl = "./src/%04d-%s/"
+	}
+	return fmt.Sprintf(tpl, id, slug)
+}
+
 func success(text string) {
 	fmt.Println(fmt.Sprintf("\033[1;32mSuccess: %s\033[0m", text))
 }
@@ -292,361 +252,371 @@ func warning(text string) {
 	fmt.Println(fmt.Sprintf("\033[1;31mError: %s\033[0m", text))
 }
 
-func color(text string, color int) string {
-	return fmt.Sprintf("\033[1;%dm%s\033[0m", color, text)
-}
-
 /**
- * ******************************** leetcode
+ * ********************************
+ * leetcode 数据
+ * ********************************
  */
 
-type leetcode struct {
-	ProblemInfo      map[int]lcProblem
-	ProblemList      []lcProblem
-	ProblemTitleInfo map[int]string
-	TagList          []lcTagInfo
+var (
+	LCProbAllURL      = "https://leetcode-cn.com/api/problems/all/" // 问题列表地址
+	LCGraphqlURL      = "https://leetcode-cn.com/graphql"           // 问题数据地址
+	LCQuestionLinkURL = "https://leetcode-cn.com/problems/%s/"      // 问题页面地址
+	LCTagLinkURL      = "https://leetcode-cn.com/tag/%s/"           // 标签页面地址
+	LCQuestionSetURL  = "https://leetcode-cn.com/problemset/all/"   // 题库首页
+	LCDifficulty      = []string{"", "简单", "中等", "困难"}              // 难度类型
+)
+
+type LeetCode struct {
+	QuestionList    []LCQuestionInfo
+	QuestionMap     map[string]LCQuestionInfo
+	QuestionTagList []LCQuestionTagInfo
 }
 
-type lcResponse struct {
-	Problems         []lcProblem    `json:"stat_status_pairs"`
-	ProblemTitleInfo map[int]string `json:"problem_titles"`
+// 问题
+type LCQuestionInfo struct {
+	FQID           string `json:"fqid"`            // 前端 id
+	QID            int    `json:"qid"`             // id
+	Title          string `json:"title"`           // 名称
+	Slug           string `json:"slug"`            // 标识
+	Link           string `json:"link"`            //链接
+	TotalAcs       int    `json:"total_acs"`       // 总通过次数
+	TotalSubmitted int    `json:"total_submitted"` // 总提交次数
+	Difficulty     string `json:"difficulty"`      // 困难度
 }
 
-type lcProblem struct {
-	Status     string         `json:"status"`
-	Stat       lcProblemStat  `json:"stat"`
-	Difficulty lcProblemLevel `json:"difficulty"`
-	Progress   int            `json:"progress"`
-}
-type lcProblemStat struct {
-	ProbIDOrigin   string `json:"frontend_question_id"`
-	ProbID         int
-	ProbTitle      string `json:"question__title"`
-	ProbTitleSlug  string `json:"question__title_slug"`
-	IsNew          bool   `json:"is_new_question"`
-	TotalAcs       int    `json:"total_acs"`
-	TotalSubmitted int    `json:"total_submitted"`
+// 问题标签
+type LCQuestionTagInfo struct {
+	Title string
+	Link  string
+	Count int
 }
 
-type lcProblemLevel struct {
-	Level int `json:"level"`
+// 原始问题
+type LCOriginQuestionInfo struct {
+	Paid_only bool        `json:"paid_only"`
+	Status    interface{} `json:"status"`
+	Is_favor  bool        `json:"is_favor"`
+	Progress  int64       `json:"progress"`
+	Frequency int64       `json:"frequency"`
+	Stat      struct {
+		Question_id           int    `json:"question_id"`
+		Question__hide        bool   `json:"question__hide"`
+		Question__title       string `json:"question__title"`
+		Question__title_slug  string `json:"question__title_slug"`
+		Frontend_question_id  string `json:"frontend_question_id"`
+		Total_acs             int    `json:"total_acs"`
+		Total_submitted       int    `json:"total_submitted"`
+		Total_column_articles int    `json:"total_column_articles"`
+		Is_new_question       bool   `json:"is_new_question"`
+	} `json:"stat"`
+	Difficulty struct {
+		Level int `json:"level"`
+	} `json:"difficulty"`
 }
 
-type lcProbInfo struct {
-	ID         int                          `json:"id"`
-	Title      string                       `json:"title"`
-	TitleEn    string                       `json:"title_en"`
-	Link       string                       `json:"link"`
-	Content    string                       `json:"content"`
-	ContentEn  string                       `json:"content_en"`
-	Difficulty string                       `json:"difficulty"`
-	Langs      []string                     `json:"langs"`
-	Tags       []map[string]string          `json:"tags"`
-	Codes      map[string]map[string]string `json:"codes"`
-}
-
-type lcTitleInfo struct {
-	Title    string              `json:"title"`
-	Question lcTitleQuestionInfo `json:"question"`
-}
-
-type lcTitleQuestionInfo struct {
-	QuestionID string `json:"questionId"`
-}
-
-type lcTagInfo struct {
-	Title   string
-	TitleEn string
-	Link    string
-	Count   int
-}
-
-// 问题链接
-func (lc *leetcode) getProblemURL(slugtitle string) string {
-	return fmt.Sprintf(lcProbLinkURL, slugtitle)
-}
-
-// 问题标题
-func (lc *leetcode) getProblemTitle(ProbID int, title string) string {
-	if _, ok := lc.ProblemTitleInfo[ProbID]; !ok {
-		return title
-	}
-	return lc.ProblemTitleInfo[ProbID]
-}
-
-// Github 链接
-func (lc *leetcode) getGithubURL(ProbID int, slugtitle string) string {
-	link := fmt.Sprintf("./src/%04d-%s/", ProbID, slugtitle)
-	if !pathExist(link) {
-		return ""
-	}
-	return link
-}
-
-// 标签链接
-func (lc *leetcode) getTagURL(slugtitle string) string {
-	return fmt.Sprintf(lcTagLinkURL, slugtitle)
+// 问题详情
+type LCQuestionDetail struct {
+	Slug     string                       `json:"slug"`
+	Title    string                       `json:"title"`
+	Content  string                       `json:"content"`
+	LangList []string                     `json:"lang_list"`
+	TagList  []map[string]string          `json:"tag_list"`
+	CodeMap  map[string]map[string]string `json:"code_list"`
 }
 
 // 获取问题列表
-func (lc *leetcode) getProblemList() error {
-	notice("拼命加载问题列表...")
-
+func (this *LeetCode) getQuestionList() error {
 	req := request.NewRequest(new(http.Client))
-	// 获取问题列表
 	req.Headers = map[string]string{
 		"Accept-Encoding": "",
 		"Referer":         "",
 	}
-	resp, err := req.Get(lcProbAllURL)
+	resp, err := req.Get(LCProbAllURL)
 	defer resp.Body.Close()
 	if err != nil {
 		return err
 	}
-	body, err := ioutil.ReadAll(resp.Body)
+
+	respJson, err := resp.Json()
 	if err != nil {
 		return err
 	}
-	result := &lcResponse{}
-	if err := json.Unmarshal(body, result); err != nil {
+
+	qList1, _ := respJson.Get("stat_status_pairs").Array()
+	qList2 := []LCOriginQuestionInfo{}
+	if err := json.Unmarshal([]byte(jsonEncode(qList1)), &qList2); err != nil {
 		return err
 	}
 
-	// probId 更新
-	// 原 leetcode 调整了 probId int -> string, 此处兼容
-	for k, v := range result.Problems {
-		result.Problems[k].Stat.ProbID = string2int(v.Stat.ProbIDOrigin)
+	questionMap := make(map[string]LCQuestionInfo)
+	for i := len(qList2) - 1; i >= 0; i-- {
+		questionInfo := LCQuestionInfo{
+			FQID:           qList2[i].Stat.Frontend_question_id,
+			QID:            qList2[i].Stat.Question_id,
+			Title:          qList2[i].Stat.Question__title,
+			Slug:           qList2[i].Stat.Question__title_slug,
+			Link:           fmt.Sprintf(LCQuestionLinkURL, qList2[i].Stat.Question__title_slug),
+			TotalAcs:       qList2[i].Stat.Total_acs,
+			TotalSubmitted: qList2[i].Stat.Total_submitted,
+			Difficulty:     LCDifficulty[qList2[i].Difficulty.Level],
+		}
+		this.QuestionList = append(this.QuestionList, questionInfo)
+		questionMap[questionInfo.Slug] = questionInfo
 	}
+	this.QuestionMap = questionMap
 
-	// 获取问题中文标题
-	req.Headers = map[string]string{
-		"Content-Type": "application/json",
-	}
-	req.Json = map[string]interface{}{
-		"operationName": "getQuestionTranslation",
-		"query":         "query getQuestionTranslation($lang: String) {translations: allAppliedQuestionTranslations(lang: $lang) {title question {questionId __typename}\n    __typename}}",
-		"variables":     map[string]string{},
-	}
-	pResp, err := req.Post(lcGraphqlURL)
-	defer pResp.Body.Close()
-	if err != nil {
-		return err
-	}
-	titleList := []lcTitleInfo{}
-	pJSON, _ := pResp.Json()
-	translations, _ := pJSON.Get("data").Get("translations").Array()
-	if err := json.Unmarshal([]byte(jsonEncode(translations)), &titleList); err != nil {
-		return err
-	}
-	result.ProblemTitleInfo = map[int]string{}
-	for _, item := range titleList {
-		result.ProblemTitleInfo[string2int(item.Question.QuestionID)] = item.Title
-	}
-
-	// 问题列表
-	lc.ProblemList = result.Problems
-	// 标题信息
-	lc.ProblemTitleInfo = result.ProblemTitleInfo
-	// 保存问题状态信息
-	lc.ProblemInfo = map[int]lcProblem{}
-	for _, p := range lc.ProblemList {
-		lc.ProblemInfo[p.Stat.ProbID] = p
-	}
-	// 保存标签列表
-	lc.TagList = lc.getTagList()
 	return nil
 }
 
-/**
- * 获取标签列表
- */
-func (lc *leetcode) getTagList() []lcTagInfo {
-	ret := []lcTagInfo{}
-	resp, err := http.Get(lcProbSetURL)
-	if err != nil {
-		return ret
-	}
+// 获取问题标签列表
+func (this *LeetCode) getQuestionTagList() error {
+	resp, err := http.Get(LCQuestionSetURL)
 	defer resp.Body.Close()
+	if err != nil {
+		return err
+	}
+
 	doc, err := goquery.NewDocumentFromReader(resp.Body)
 	if err != nil {
-		return ret
+		return err
 	}
+
 	doc.Find("#all-topic-tags a.tags-btn").Each(func(i int, s *goquery.Selection) {
-		item := lcTagInfo{}
+		item := LCQuestionTagInfo{}
 		item.Title = strings.TrimSpace(s.Find("span.text-gray").Text())
-		item.TitleEn, _ = s.Attr("title")
 		item.Link, _ = s.Attr("href")
 		item.Count = string2int(strings.TrimSpace(s.Find("span.badge").Text()))
-		ret = append(ret, item)
+		this.QuestionTagList = append(this.QuestionTagList, item)
 	})
-	return ret
+
+	return nil
 }
 
-/**
- * 获取单个问题详情(包括描述, 标签, 语言支持, 代码片段等)
- */
-func (lc *leetcode) getProblemInfo(ProbID int) (*lcProbInfo, error) {
-	probInfo := &lcProbInfo{}
-	p := lc.ProblemInfo[ProbID]
+// 获取问题详情
+func (this *LeetCode) getQuestionDetail(slug string) (*LCQuestionDetail, error) {
 	req := request.NewRequest(new(http.Client))
 	req.Headers = map[string]string{
 		"Content-Type": "application/json",
 	}
 	req.Json = map[string]interface{}{
 		"operationName": "questionData",
-		"query":         "query questionData($titleSlug: String!) {question(titleSlug: $titleSlug) { questionId questionFrontendId boundTopicId title titleSlug content translatedTitle translatedContent isPaidOnly difficulty likes dislikes isLiked similarQuestions contributors {username profileUrl avatarUrl  __typename} langToValidPlayground topicTags { name slug translatedName __typename} companyTagStats codeSnippets { lang langSlug code __typename} stats hints solution {id canSeeDetail __typename } status sampleTestCase metaData judgerAvailable judgeType mysqlSchemas enableRunCode enableTestMode envInfo __typename}}",
+		"query":         "query questionData($titleSlug: String!) {question(titleSlug: $titleSlug) {questionId questionFrontendId title titleSlug content translatedTitle translatedContent topicTags {name slug translatedName} codeSnippets {lang langSlug code}}}",
 		"variables": map[string]string{
-			"titleSlug": p.Stat.ProbTitleSlug,
+			"titleSlug": slug,
 		},
 	}
-	pResp, err := req.Post(lcGraphqlURL)
-	defer pResp.Body.Close()
+	resp, err := req.Post(LCGraphqlURL)
+	defer resp.Body.Close()
 	if err != nil {
 		return nil, err
 	}
-	// 解析返回 json
-	pJSON, _ := pResp.Json()
-	probInfo.ID = ProbID
-	probInfo.Link = lc.getProblemURL(p.Stat.ProbTitleSlug)
-	probInfo.Title, _ = pJSON.Get("data").Get("question").Get("translatedTitle").String()
-	probInfo.TitleEn, _ = pJSON.Get("data").Get("question").Get("title").String()
-	probInfo.Content, _ = pJSON.Get("data").Get("question").Get("translatedContent").String()
-	probInfo.ContentEn, _ = pJSON.Get("data").Get("question").Get("content").String()
-	probInfo.Difficulty, _ = pJSON.Get("data").Get("question").Get("difficulty").String()
-	// 分类
-	tags := []map[string]string{}
-	tagsArray, _ := pJSON.Get("data").Get("question").Get("topicTags").Array()
-	if err := json.Unmarshal([]byte(jsonEncode(tagsArray)), &tags); err == nil {
-		probInfo.Tags = tags
+	respJson, _ := resp.Json()
+
+	questionDetail := &LCQuestionDetail{}
+
+	// 基础信息
+	questionDetail.Slug = slug
+	questionDetail.Title, _ = respJson.Get("data").Get("question").Get("translatedTitle").String()
+	questionDetail.Content, _ = respJson.Get("data").Get("question").Get("translatedContent").String()
+	// 处理 html 标签
+	questionDetail.Content = formatHtml(questionDetail.Content)
+
+	// 标签
+	tagListTmp, _ := respJson.Get("data").Get("question").Get("topicTags").Array()
+	tagList := []map[string]string{}
+	if err := json.Unmarshal([]byte(jsonEncode(tagListTmp)), &tagList); err != nil {
+		return nil, err
 	}
+	questionDetail.TagList = tagList
+
 	// 代码片段
-	codesList := []map[string]string{}
-	codesArray, _ := pJSON.Get("data").Get("question").Get("codeSnippets").Array()
-	if err := json.Unmarshal([]byte(jsonEncode(codesArray)), &codesList); err != nil {
+	codeListTmp, _ := respJson.Get("data").Get("question").Get("codeSnippets").Array()
+	codeList := []map[string]string{}
+	if err := json.Unmarshal([]byte(jsonEncode(codeListTmp)), &codeList); err != nil {
 		return nil, err
 	}
 	// 语言代码
-	codes := map[string]map[string]string{}
+	codeMap := map[string]map[string]string{}
 	// 支持语言类型
-	langs := []string{}
-	for _, item := range codesList {
-		langs = append(langs, item["langSlug"])
-		codes[item["langSlug"]] = item
+	langList := []string{}
+	for _, item := range codeList {
+		langList = append(langList, item["langSlug"])
+		codeMap[item["langSlug"]] = item
 	}
-	probInfo.Langs = langs
-	probInfo.Codes = codes
-	return probInfo, nil
+	questionDetail.CodeMap = codeMap
+	questionDetail.LangList = langList
+
+	return questionDetail, nil
 }
 
-/**
- * ******************************** 文件相关
- */
-
-/**
- * 生成 readme.md
- */
-func (lc *leetcode) GenerateReadme() error {
-	var b bytes.Buffer
-	tmpl := template.Must(template.New("readme").Parse(tplReadme))
-	err := tmpl.Execute(&b, lc)
+// leetcode 数据初始化
+func (this *LeetCode) Init() error {
+	err := this.getQuestionList()
 	if err != nil {
 		return err
 	}
-	err = ioutil.WriteFile("./README.md", b.Bytes(), 0755)
-	return err
+
+	err = this.getQuestionTagList()
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
 
 /**
- * readme - 渲染题目表格
+ * ********************************
+ * 答题文件处理
+ * ********************************
  */
-func (lc *leetcode) DrawProblemList() string {
-	if len(lc.ProblemList) <= 0 {
-		return ""
-	}
-	res := fmt.Sprintln("|#|标题|难度|通过率|总提交次数|")
-	res += fmt.Sprintln("|:-:|:-|:-: | :-: | :-: |")
-	for _, p := range lc.ProblemList {
-		res += fmt.Sprintf("|[%04d](%s)|", p.Stat.ProbID, lc.getProblemURL(p.Stat.ProbTitleSlug))
 
-		probGithubURL := lc.getGithubURL(p.Stat.ProbID, p.Stat.ProbTitleSlug)
-		if probGithubURL == "" {
-			res += fmt.Sprintf("%s|", lc.getProblemTitle(p.Stat.ProbID, p.Stat.ProbTitle))
+// 默认答题配置
+var (
+	// 预设 golang 的答题模板
+	langConf = map[string]map[string]string{
+		"golang": {
+			"file":        "solution.go",
+			"fileTpl":     "package solution\n\n%s",
+			"testfile":    "solution_test.go",
+			"testfileTpl": tplQuestionGoTestFile,
+		},
+	}
+	// 答题文件名称
+	langFile = "solution.%s"
+	// 答题文件模板
+	langFileTpl = "%s"
+	// 答题文件类型后缀
+	langSuffix = map[string]string{
+		"golang":     "go",
+		"php":        "php",
+		"c":          "c",
+		"cpp":        "c",
+		"java":       "java",
+		"python":     "py",
+		"python3":    "py",
+		"javascript": "js",
+		"mysql":      "sql",
+		"bash":       "sh",
+	}
+)
+
+type LeetCodeFile struct {
+}
+
+// 生成答题相关文件
+func (this *LeetCodeFile) GenerateQuestion(slug string, lang string, questionDetail *LCQuestionDetail) (err error) {
+	questionInfo, _ := LC.QuestionMap[slug]
+
+	questionPath := getQustionPath(questionInfo.QID, questionInfo.Slug)
+	if !pathExist(questionPath) {
+		err = os.MkdirAll(questionPath, 0755)
+		if err != nil {
+			return errors.New("创建答题文件目录失败")
+		}
+	}
+
+	// 问题标签
+	tagStr := ""
+	for _, tag := range questionDetail.TagList {
+		if tag["slug"] != "" {
+			tagStr += fmt.Sprintf(" [%s](%s) ", tag["translatedName"], fmt.Sprintf(LCTagLinkURL, tag["slug"]))
+		}
+	}
+	if tagStr != "" {
+		tagStr = fmt.Sprintf("> 分类: %s", tagStr)
+	}
+
+	// 问题模板数据
+	questionReadmeInfo := struct {
+		FQID       string
+		Title      interface{}
+		Link       string
+		Content    interface{}
+		Difficulty string
+		Tags       interface{}
+	}{
+		FQID:       questionInfo.FQID,
+		Title:      template.HTML(questionInfo.Title),
+		Link:       questionInfo.Link,
+		Content:    template.HTML(questionDetail.Content),
+		Difficulty: fmt.Sprintf("> 难度: %s", questionInfo.Difficulty),
+		Tags:       template.HTML(tagStr),
+	}
+
+	// 生成答题文件 README.md
+	questionReadmeFile := fmt.Sprintf("%s/README.md", questionPath)
+	var b bytes.Buffer
+	tpl := template.Must(template.New("question").Parse(tplQuestionReadme))
+	err = tpl.Execute(&b, questionReadmeInfo)
+	if err != nil {
+		return errors.New("答题 README 文件模板解析失败")
+	}
+	if err = write(questionReadmeFile, string(b.Bytes())); err != nil {
+		return errors.New("创建答题 README 文件失败")
+	}
+
+	// 生成答题文件, 答题测试文件
+	file, fileTpl, testfile, testfileTpl := "", "", "", ""
+	if _, ok := langConf[lang]; ok {
+		file, fileTpl = langConf[lang]["file"], langConf[lang]["fileTpl"]
+		testfile, testfileTpl = langConf[lang]["testfile"], langConf[lang]["testfileTpl"]
+	} else if _, ok := langSuffix[lang]; ok {
+		file = fmt.Sprintf(langFile, langSuffix[lang])
+		fileTpl = langFileTpl
+	} else {
+		// 未配置编程语言的, 生成完 README.md 直接结束
+		return nil
+	}
+
+	// 创建答题文件
+	questionFile := fmt.Sprintf("%s/%s", questionPath, file)
+	if pathExist(questionFile) {
+		notice("答题文件已存在: " + questionFile)
+	} else {
+		write(questionFile, fmt.Sprintf(fileTpl, questionDetail.CodeMap[lang]["code"]))
+	}
+
+	// 创建答题测试文件
+	if testfile != "" {
+		questionTestFile := fmt.Sprintf("%s/%s", questionPath, testfile)
+		if pathExist(questionTestFile) {
+			notice("答题测试文件已存在: " + questionTestFile)
 		} else {
-			res += fmt.Sprintf("[%s](%s)|", lc.getProblemTitle(p.Stat.ProbID, p.Stat.ProbTitle), probGithubURL)
+			write(questionTestFile, testfileTpl)
 		}
-		res += fmt.Sprintf("%s|", lcDifficulty[p.Difficulty.Level])
-		totalPer := "0%"
-		if p.Stat.TotalSubmitted > 0 {
-			totalPer = fmt.Sprintf("%d%%", p.Stat.TotalAcs*100/p.Stat.TotalSubmitted)
-		}
-		res += fmt.Sprintf("%s|", totalPer)
-		res += fmt.Sprintf("%d|\n", p.Stat.TotalSubmitted)
 	}
-	return res
+
+	return nil
 }
 
-/**
- * readme - 渲染类似题型
- */
+// 生成 Resp README.md
+func (this *LeetCodeFile) GenerateReadme() error {
+	var b bytes.Buffer
+	tmpl := template.Must(template.New("readme").Parse(tplReadme))
+	err := tmpl.Execute(&b, this)
+	if err != nil {
+		return err
+	}
+	return write("./README.md", string(b.Bytes()))
+}
 
-func (lc *leetcode) DrawSimilarProblem() string {
-	if len(lc.ProblemList) <= 0 {
+// readme - 渲染标签列表
+// [![数组](https://img.shields.io/badge/数组-99-red.svg)](https://shields.io/)
+func (this *LeetCodeFile) DrawQuestionTagList() string {
+	tagList := LC.QuestionTagList
+	if len(tagList) <= 0 {
 		return ""
 	}
-	similarMap := make(map[string][]lcProblem)
-	reg := regexp.MustCompile(`^([\S]+) II$`)
-	for _, p := range lc.ProblemList {
-		regRet := reg.FindStringSubmatch(lc.getProblemTitle(p.Stat.ProbID, p.Stat.ProbTitle))
-		if len(regRet) > 1 {
-			similarMap[regRet[1]] = []lcProblem{}
-		}
-	}
-	for _, p := range lc.ProblemList {
-		for key := range similarMap {
-			if ok, _ := regexp.MatchString(key, lc.getProblemTitle(p.Stat.ProbID, p.Stat.ProbTitle)); ok {
-				similarMap[key] = append(similarMap[key], p)
-			}
-		}
-	}
-	res := fmt.Sprintln("|#|标题|")
-	res += fmt.Sprintln("|:-:|:-|")
-	for _, problems := range similarMap {
-		for _, p := range problems {
-			res += fmt.Sprintf("|[%04d](%s)|", p.Stat.ProbID, lc.getProblemURL(p.Stat.ProbTitleSlug))
-			probGithubURL := lc.getGithubURL(p.Stat.ProbID, p.Stat.ProbTitleSlug)
-			if probGithubURL == "" {
-				res += fmt.Sprintf("%s|\n", lc.getProblemTitle(p.Stat.ProbID, p.Stat.ProbTitle))
-			} else {
-				res += fmt.Sprintf("[%s](%s)|\n", lc.getProblemTitle(p.Stat.ProbID, p.Stat.ProbTitle), probGithubURL)
-			}
-		}
-		res += fmt.Sprintln("||||\n||||")
-	}
-	return res
-}
 
-/**
- * readme - 渲染标签列表
- *
- * 徽章图标: https://shields.io/
- */
-func (lc *leetcode) DrawTagList() string {
-	res := ""
-	if len(lc.TagList) <= 0 {
-		return res
-	}
-	// [![数组](https://img.shields.io/badge/数组-99-red.svg)](https://shields.io/)
-	for i := 0; i < len(lc.TagList); i++ {
-		tag := lc.TagList[i]
-		// 标签链接
+	resp := ""
+	for _, tag := range tagList {
 		tagLinks := strings.Split(tag.Link, "/")
 		if len(tagLinks) < 4 {
 			continue
 		}
-		link := fmt.Sprintf(lcTagLinkURL, tagLinks[2])
-		// 标题处理
+		link := fmt.Sprintf(LCTagLinkURL, tagLinks[2])
 		title := strings.Replace(tag.Title, " ", "", -1)
-		// 图标颜色
 		color := "lightgray"
 		if tag.Count > 100 {
 			color = "brightgreen"
@@ -659,131 +629,105 @@ func (lc *leetcode) DrawTagList() string {
 		} else if tag.Count > 10 {
 			color = "red"
 		}
-		res += fmt.Sprintf("[![%s](https://img.shields.io/badge/%s-%d-%s.svg?style=flat)](%s)\n", title, title, tag.Count, color, link)
+		resp += fmt.Sprintf("[![%s](https://img.shields.io/badge/%s-%d-%s.svg?style=flat)](%s)\n", title, title, tag.Count, color, link)
 	}
-	return res
+	return resp
 }
 
-/**
- * 终端 - 渲染单个问题
- */
-func (lc *leetcode) DrawProblemLine(ProbID int) string {
-	p := lc.ProblemInfo[ProbID]
-	res := fmt.Sprintf("题号 : %d\n", p.Stat.ProbID)
-	res += fmt.Sprintf("标题 : %s\n", lc.getProblemTitle(p.Stat.ProbID, p.Stat.ProbTitle))
-	res += fmt.Sprintf("链接 : %s\n", lc.getProblemURL(p.Stat.ProbTitleSlug))
-	res += fmt.Sprintf("难度 : %s\n", lcDifficulty[p.Difficulty.Level])
-	res += fmt.Sprintf("比率 : %s", fmt.Sprintf("%d%%", p.Stat.TotalAcs*100/p.Stat.TotalSubmitted))
-	res = color(res, 34)
-	return res
-}
-
-/**
- * 生成问题信息
- */
-func (lc *leetcode) GenerateProblem(ProbID int, lang string) (err error) {
-	probInfo, err := lc.getProblemInfo(ProbID)
-	if err != nil {
-		return err
-	}
-	// 列表中的问题详情(包含状态等)
-	p := lc.ProblemInfo[ProbID]
-	probDir := fmt.Sprintf("./src/%04d-%s/", p.Stat.ProbID, p.Stat.ProbTitleSlug)
-	if !pathExist(probDir) {
-		dirErr := os.MkdirAll(probDir, 0755)
-		if dirErr != nil {
-			return errors.New("创建答题文件目录失败")
-		}
-	}
-	// 生成问题标签
-	tags := ""
-	for _, tag := range probInfo.Tags {
-		if tag["slug"] != "" {
-			tags += fmt.Sprintf(" [%s](%s) ", tag["translatedName"], lc.getTagURL(tag["slug"]))
-		}
-	}
-	if tags != "" {
-		tags = fmt.Sprintf("> 分类: %s", tags)
-	}
-	difficulty := fmt.Sprintf("> 难度: %s", lcDifficulty[p.Difficulty.Level])
-	// 内容需要格式化处理
-	content := format(probInfo.Content)
-	probTplInfo := struct {
-		ID         int
-		Title      interface{}
-		Link       string
-		Content    interface{}
-		Difficulty interface{}
-		Tags       interface{}
-	}{
-		ID:         probInfo.ID,
-		Title:      template.HTML(probInfo.Title),
-		Link:       probInfo.Link,
-		Content:    template.HTML(content),
-		Difficulty: template.HTML(difficulty),
-		Tags:       template.HTML(tags),
-	}
-	// 生成文件 readme
-	probPageFile := fmt.Sprintf("%s/README.md", probDir)
-	var b bytes.Buffer
-	tmpl := template.Must(template.New("question").Parse(tplProblemReadme))
-	err = tmpl.Execute(&b, probTplInfo)
-	if err != nil {
-		return err
-	}
-	err = ioutil.WriteFile(probPageFile, b.Bytes(), 0755)
-	if err != nil {
-		return err
-	}
-	file, fileTpl, testfile, testfileTpl := "", "", "", ""
-	if _, ok := langConf[lang]; ok {
-		// 如果有编辑语言配置
-		file, fileTpl = langConf[lang]["file"], langConf[lang]["fileTpl"]
-		testfile, testfileTpl = langConf[lang]["testfile"], langConf[lang]["testfileTpl"]
-	} else if _, ok := langSuffix[lang]; ok {
-		// 如果有编辑语言后缀配置
-		file = fmt.Sprintf(langFile, langSuffix[lang])
-		fileTpl = langFileTpl
-	} else {
-		return nil
+// readme - 渲染题目表格
+func (this *LeetCodeFile) DrawQuestionList() string {
+	questionList := LC.QuestionList
+	if len(questionList) <= 0 {
+		return ""
 	}
 
-	// 创建答题文件
-	probCodeFile := fmt.Sprintf("%s/%s", probDir, file)
-	if pathExist(probCodeFile) {
-		notice("文件已存在 - " + probCodeFile)
-	} else {
-		write(probCodeFile, fmt.Sprintf(fileTpl, probInfo.Codes[lang]["code"]))
-	}
+	resp := fmt.Sprintln("|#|标题|难度|提交次数|通过率|")
+	resp += fmt.Sprintln("|:-:|:-|:-: | :-: | :-: |")
+	for _, question := range questionList {
+		resp += fmt.Sprintf("|[%s](%s)|", question.FQID, question.Link)
 
-	// 创建测试文件
-	if testfile != "" {
-		probCodeTestFile := fmt.Sprintf("%s/%s", probDir, testfile)
-		if pathExist(probCodeTestFile) {
-			notice("测试文件已存在 - " + probCodeTestFile)
+		questionPath := getQustionPath(question.QID, question.Slug)
+		if !pathExist(questionPath) {
+			resp += fmt.Sprintf("%s|", question.Title)
 		} else {
-			write(probCodeTestFile, testfileTpl)
+			resp += fmt.Sprintf("[%s](%s)|", question.Title, questionPath)
+		}
+
+		resp += fmt.Sprintf("%s|", question.Difficulty)
+		resp += fmt.Sprintf("%d|", question.TotalSubmitted)
+		acsPercent := "0%"
+		if question.TotalSubmitted > 0 {
+			acsPercent = fmt.Sprintf("%d%%", question.TotalAcs*100/question.TotalSubmitted)
+		}
+		resp += fmt.Sprintf("%s|\n", acsPercent)
+	}
+	return resp
+}
+
+// readme - 渲染类似题型
+func (this *LeetCodeFile) DrawSimilarQuestionList() string {
+	questionList := LC.QuestionList
+	if len(questionList) <= 0 {
+		return ""
+	}
+
+	similarMap := make(map[string][]LCQuestionInfo)
+	reg := regexp.MustCompile(`^(.*)-ii$`)
+	for _, question := range questionList {
+		regRet := reg.FindStringSubmatch(question.Slug)
+		if len(regRet) > 1 {
+			similarMap[regRet[1]] = []LCQuestionInfo{}
 		}
 	}
-	return nil
+
+	for _, question := range questionList {
+		for key := range similarMap {
+			if ok, _ := regexp.MatchString("^"+key+"[-iv]*$", question.Slug); ok {
+				similarMap[key] = append(similarMap[key], question)
+			}
+		}
+	}
+
+	resp := fmt.Sprintln("|#|标题|")
+	resp += fmt.Sprintln("|:-:|:-|")
+	for _, questionList := range similarMap {
+		for _, question := range questionList {
+			resp += fmt.Sprintf("|[%s](%s)|", question.FQID, question.Link)
+
+			solutionUrl := fmt.Sprintf("./src/%04d-%s/", question.QID, question.Slug)
+			if !pathExist(solutionUrl) {
+				resp += fmt.Sprintf("%s|", question.Title)
+			} else {
+				resp += fmt.Sprintf("[%s](%s)|", question.Title, solutionUrl)
+			}
+			resp += "\n"
+		}
+		resp += fmt.Sprintln("|||")
+	}
+
+	return resp
 }
 
 /**
- * ******************************** leetcode
+ * ********************************
+ * Main
+ * ********************************
  */
 
-var lc = new(leetcode)
+var LC = new(LeetCode)
+var LCFile = new(LeetCodeFile)
 
 func main() {
-	err := lc.getProblemList()
+	notice("拼命加载数据中...")
+	err := LC.Init()
 	if err != nil {
-		warning("加载问题列表失败: " + err.Error())
+		warning("加载失败: " + err.Error())
 		return
 	}
 	app := cli.NewApp()
 	app.Name = "leetcli"
 	app.Usage = "A CLI tool for leetcode"
-	app.Version = "1.0.0"
+	app.Version = "1.0.1"
 	app.Flags = []cli.Flag{}
 	app.Commands = []cli.Command{
 		{
@@ -791,7 +735,7 @@ func main() {
 			Aliases: []string{},
 			Usage:   "生成 README.md",
 			Action: func(c *cli.Context) {
-				err := lc.GenerateReadme()
+				err := LCFile.GenerateReadme()
 				if err != nil {
 					warning(err.Error())
 					return
@@ -801,43 +745,43 @@ func main() {
 			},
 		},
 		{
-			Name:    "problem",
+			Name:    "question",
 			Aliases: []string{},
-			Usage:   "生成答题文件相关 [eg: problem 101]",
+			Usage:   "生成答题文件相关 [eg: question two-sum]",
 			Action: func(c *cli.Context) {
 				if len(c.Args()) <= 0 {
-					warning("无效的问题 ID")
+					warning("请输入问题标识")
 					return
 				}
-				ProbID := string2int(c.Args()[0])
-				if _, ok := lc.ProblemInfo[ProbID]; !ok {
-					warning("无效的问题 ID")
+				slug := c.Args()[0]
+				if _, ok := LC.QuestionMap[slug]; !ok {
+					warning("无效的问题标识")
 					return
 				}
-				probInfo, err := lc.getProblemInfo(ProbID)
+				questionDetail, err := LC.getQuestionDetail(slug)
 				if err != nil {
-					warning("获取问题信息失败 - " + err.Error())
+					warning("获取问题信息失败: " + err.Error())
 					return
 				}
-				notice("问题详情如下")
-				fmt.Println(lc.DrawProblemLine(ProbID))
-				notice("支持的编程语言类型如下")
-				fmt.Println(strings.Replace(strings.Trim(fmt.Sprint(probInfo.Langs), "[]"), " ", ", ", -1))
+
+				notice("支持的编程语言类型如下:")
+				success(strings.Replace(strings.Trim(fmt.Sprint(questionDetail.LangList), "[]"), " ", ", ", -1))
 
 				line := liner.NewLiner()
 				defer line.Close()
-				lang, _ := line.Prompt("请输出答题编程语言 > ")
-				if lang == "" || !contains(lang, probInfo.Langs) {
+				lang, _ := line.Prompt("请输入答题编程语言 > ")
+				if lang == "" || !contains(lang, questionDetail.LangList) {
 					warning("无效的编程语言")
 					return
 				}
-				notice("已选择的编辑语言 - " + lang)
-				err = lc.GenerateProblem(ProbID, lang)
+				notice("已选择的答题编辑语言: " + lang)
+				err = LCFile.GenerateQuestion(slug, lang, questionDetail)
 				if err != nil {
-					warning("创建答题文件失败 - " + err.Error())
+					warning("创建答题文件失败: " + err.Error())
 					return
 				}
 				success("创建答题文件成功")
+
 				return
 			},
 		},
