@@ -537,14 +537,14 @@ func (this *LeetCodeFile) GenerateQuestion(slug string, lang string, questionDet
 		Title      interface{}
 		Link       string
 		Content    interface{}
-		Difficulty string
+		Difficulty interface{}
 		Tags       interface{}
 	}{
 		FQID:       questionInfo.FQID,
 		Title:      template.HTML(questionInfo.Title),
 		Link:       questionInfo.Link,
 		Content:    template.HTML(questionDetail.Content),
-		Difficulty: fmt.Sprintf("> 难度: %s", questionInfo.Difficulty),
+		Difficulty: template.HTML(fmt.Sprintf("> 难度: %s", questionInfo.Difficulty)),
 		Tags:       template.HTML(tagStr),
 	}
 
