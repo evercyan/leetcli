@@ -10,13 +10,13 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"reflect"
 	"regexp"
 	"sort"
-	"strconv"
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/evercyan/letitgo/crypto"
+	"github.com/evercyan/letitgo/util"
 	"github.com/mozillazg/request"
 	"github.com/peterh/liner"
 	"github.com/urfave/cli"
@@ -163,24 +163,6 @@ func read(path string) string {
 	return string(data)
 }
 
-func string2int(v string) int {
-	r, err := strconv.Atoi(v)
-	if err != nil {
-		return 0
-	}
-	return r
-}
-
-func jsonEncode(req interface{}) string {
-	bytes, _ := json.Marshal(req)
-	return string(bytes)
-}
-
-func pathExist(path string) bool {
-	_, err := os.Stat(path)
-	return err == nil || os.IsExist(err)
-}
-
 func formatHtml(s string) string {
 	// 先处理 img 标签, 生成 markdown 格式, ![](图片链接地址)
 	rImg, _ := regexp.Compile(`<img[^<>]*src="([^"]+)"[^<>]*>`)
@@ -215,25 +197,8 @@ func formatHtml(s string) string {
 	return fmt.Sprintf("```\n%s\n```", re.ReplaceAllString(s, ""))
 }
 
-func contains(val interface{}, target interface{}) bool {
-	targetV := reflect.ValueOf(target)
-	switch reflect.TypeOf(target).Kind() {
-	case reflect.Slice, reflect.Array:
-		for i := 0; i < targetV.Len(); i++ {
-			if targetV.Index(i).Interface() == val {
-				return true
-			}
-		}
-	case reflect.Map:
-		if targetV.MapIndex(reflect.ValueOf(val)).IsValid() {
-			return true
-		}
-	}
-	return false
-}
-
 func getQustionPath(fid string, id int, slug string) string {
-	qid := string2int(fid)
+	qid := int(util.ToInt64(fid))
 	if qid == 0 {
 		qid = id
 	}
@@ -349,7 +314,7 @@ func (this *LeetCode) getQuestionList() error {
 
 	qList1, _ := respJson.Get("stat_status_pairs").Array()
 	qList2 := []LCOriginQuestionInfo{}
-	if err := json.Unmarshal([]byte(jsonEncode(qList1)), &qList2); err != nil {
+	if err := json.Unmarshal([]byte(crypto.JsonEncode(qList1)), &qList2); err != nil {
 		return err
 	}
 
@@ -390,7 +355,7 @@ func (this *LeetCode) getQuestionTagList() error {
 		item := LCQuestionTagInfo{}
 		item.Title = strings.TrimSpace(s.Find("span.text-gray").Text())
 		item.Link, _ = s.Attr("href")
-		item.Count = string2int(strings.TrimSpace(s.Find("span.badge").Text()))
+		item.Count = int(util.ToInt64(strings.TrimSpace(s.Find("span.badge").Text())))
 		this.QuestionTagList = append(this.QuestionTagList, item)
 	})
 
@@ -429,7 +394,7 @@ func (this *LeetCode) getQuestionDetail(slug string) (*LCQuestionDetail, error) 
 	// 标签
 	tagListTmp, _ := respJson.Get("data").Get("question").Get("topicTags").Array()
 	tagList := []map[string]string{}
-	if err := json.Unmarshal([]byte(jsonEncode(tagListTmp)), &tagList); err != nil {
+	if err := json.Unmarshal([]byte(crypto.JsonEncode(tagListTmp)), &tagList); err != nil {
 		return nil, err
 	}
 	questionDetail.TagList = tagList
@@ -437,7 +402,7 @@ func (this *LeetCode) getQuestionDetail(slug string) (*LCQuestionDetail, error) 
 	// 代码片段
 	codeListTmp, _ := respJson.Get("data").Get("question").Get("codeSnippets").Array()
 	codeList := []map[string]string{}
-	if err := json.Unmarshal([]byte(jsonEncode(codeListTmp)), &codeList); err != nil {
+	if err := json.Unmarshal([]byte(crypto.JsonEncode(codeListTmp)), &codeList); err != nil {
 		return nil, err
 	}
 	// 语言代码
@@ -513,7 +478,7 @@ func (this *LeetCodeFile) GenerateQuestion(slug string, lang string, questionDet
 	questionInfo, _ := LC.QuestionMap[slug]
 
 	questionPath := getQustionPath(questionInfo.FQID, questionInfo.QID, questionInfo.Slug)
-	if !pathExist(questionPath) {
+	if !util.IsExist(questionPath) {
 		err = os.MkdirAll(questionPath, 0755)
 		if err != nil {
 			return errors.New("创建答题文件目录失败")
@@ -575,7 +540,7 @@ func (this *LeetCodeFile) GenerateQuestion(slug string, lang string, questionDet
 
 	// 创建答题文件
 	questionFile := fmt.Sprintf("%s/%s", questionPath, file)
-	if pathExist(questionFile) {
+	if util.IsExist(questionFile) {
 		notice("答题文件已存在: " + questionFile)
 	} else {
 		write(questionFile, fmt.Sprintf(fileTpl, questionDetail.CodeMap[lang]["code"]))
@@ -584,7 +549,7 @@ func (this *LeetCodeFile) GenerateQuestion(slug string, lang string, questionDet
 	// 创建答题测试文件
 	if testfile != "" {
 		questionTestFile := fmt.Sprintf("%s/%s", questionPath, testfile)
-		if pathExist(questionTestFile) {
+		if util.IsExist(questionTestFile) {
 			notice("答题测试文件已存在: " + questionTestFile)
 		} else {
 			write(questionTestFile, testfileTpl)
@@ -651,7 +616,7 @@ func (this *LeetCodeFile) DrawQuestionList() string {
 		resp += fmt.Sprintf("|[%s](%s)|", question.FQID, question.Link)
 
 		questionPath := getQustionPath(question.FQID, question.QID, question.Slug)
-		if !pathExist(questionPath) {
+		if !util.IsExist(questionPath) {
 			resp += fmt.Sprintf("%s|", question.Title)
 		} else {
 			resp += fmt.Sprintf("[%s](%s)|", question.Title, questionPath)
@@ -699,7 +664,7 @@ func (this *LeetCodeFile) DrawSimilarQuestionList() string {
 			resp += fmt.Sprintf("|[%s](%s)|", question.FQID, question.Link)
 
 			solutionUrl := fmt.Sprintf("./src/%04d-%s/", question.QID, question.Slug)
-			if !pathExist(solutionUrl) {
+			if !util.IsExist(solutionUrl) {
 				resp += fmt.Sprintf("%s|", question.Title)
 			} else {
 				resp += fmt.Sprintf("[%s](%s)|", question.Title, solutionUrl)
@@ -774,7 +739,7 @@ func main() {
 				line := liner.NewLiner()
 				defer line.Close()
 				lang, _ := line.Prompt("请输入答题编程语言 > ")
-				if lang == "" || !contains(lang, questionDetail.LangList) {
+				if lang == "" || !util.InArray(lang, questionDetail.LangList) {
 					warning("无效的编程语言")
 					return
 				}
@@ -826,7 +791,7 @@ func main() {
 			if len(cmdArgs) == 0 {
 				continue
 			}
-			if !contains(cmdArgs[0], commandList) {
+			if !util.InArray(cmdArgs[0], commandList) {
 				warning("无效的命令, 输入命令 `help` 试一试~")
 				continue
 			}
