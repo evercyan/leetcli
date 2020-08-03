@@ -6,7 +6,6 @@ import (
 	"errors"
 	"fmt"
 	"html/template"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -120,17 +119,16 @@ func TestSolution(t *testing.T) {
 		{
 			"Test",
 			[]interface{}{
-				"input", // 入参替换
+				"input",
 			},
 			[]interface{}{
-				"output", // 返回结果
+				"output",
 			},
 		},
 	}
 	index := 1
 	for _, c := range cases {
 		t.Run(c.name, func(t *testing.T) {
-			// 替换 FuncToReplace 为当前题目 solution.go 中方法名, 替换 (string) 为对应入参返回的类型断言
 			ret := FuncToReplace(c.inputs[0].(string))
 			if !reflect.DeepEqual(ret, c.expects[0].(string)) {
 				t.Fatalf("FAIL ----> name: %v-%v, inputs: %v, expects: %v, ret: %v", c.name, index, c.inputs, c.expects[0], ret)
@@ -145,23 +143,6 @@ func TestSolution(t *testing.T) {
  * 公共函数
  * ********************************
  */
-
-func write(path, content string) error {
-	return ioutil.WriteFile(path, []byte(content), 0755)
-}
-
-func read(path string) string {
-	file, err := os.Open(path)
-	if err != nil {
-		return ""
-	}
-	defer file.Close()
-	data, err := ioutil.ReadAll(file)
-	if err != nil {
-		return ""
-	}
-	return string(data)
-}
 
 func formatHtml(s string) string {
 	// 先处理 img 标签, 生成 markdown 格式, ![](图片链接地址)
@@ -521,7 +502,7 @@ func (this *LeetCodeFile) GenerateQuestion(slug string, lang string, questionDet
 	if err != nil {
 		return errors.New("答题 README 文件模板解析失败")
 	}
-	if err = write(questionReadmeFile, string(b.Bytes())); err != nil {
+	if err = util.WriteFile(questionReadmeFile, string(b.Bytes())); err != nil {
 		return errors.New("创建答题 README 文件失败")
 	}
 
@@ -543,7 +524,7 @@ func (this *LeetCodeFile) GenerateQuestion(slug string, lang string, questionDet
 	if util.IsExist(questionFile) {
 		notice("答题文件已存在: " + questionFile)
 	} else {
-		write(questionFile, fmt.Sprintf(fileTpl, questionDetail.CodeMap[lang]["code"]))
+		util.WriteFile(questionFile, fmt.Sprintf(fileTpl, questionDetail.CodeMap[lang]["code"]))
 	}
 
 	// 创建答题测试文件
@@ -552,7 +533,7 @@ func (this *LeetCodeFile) GenerateQuestion(slug string, lang string, questionDet
 		if util.IsExist(questionTestFile) {
 			notice("答题测试文件已存在: " + questionTestFile)
 		} else {
-			write(questionTestFile, testfileTpl)
+			util.WriteFile(questionTestFile, testfileTpl)
 		}
 	}
 
@@ -567,7 +548,7 @@ func (this *LeetCodeFile) GenerateReadme() error {
 	if err != nil {
 		return err
 	}
-	return write("./README.md", string(b.Bytes()))
+	return util.WriteFile("./README.md", string(b.Bytes()))
 }
 
 // readme - 渲染标签列表
@@ -610,8 +591,8 @@ func (this *LeetCodeFile) DrawQuestionList() string {
 		return ""
 	}
 
-	resp := fmt.Sprintln("|#|标题|难度|提交次数|通过率|")
-	resp += fmt.Sprintln("|:-:|:-|:-: | :-: | :-: |")
+	resp := fmt.Sprintln("|#|标题|难度|")
+	resp += fmt.Sprintln("|:-:|:-|:-:|")
 	for _, question := range questionList {
 		resp += fmt.Sprintf("|[%s](%s)|", question.FQID, question.Link)
 
@@ -622,13 +603,7 @@ func (this *LeetCodeFile) DrawQuestionList() string {
 			resp += fmt.Sprintf("[%s](%s)|", question.Title, questionPath)
 		}
 
-		resp += fmt.Sprintf("%s|", question.Difficulty)
-		resp += fmt.Sprintf("%d|", question.TotalSubmitted)
-		acsPercent := "0%"
-		if question.TotalSubmitted > 0 {
-			acsPercent = fmt.Sprintf("%d%%", question.TotalAcs*100/question.TotalSubmitted)
-		}
-		resp += fmt.Sprintf("%s|\n", acsPercent)
+		resp += fmt.Sprintf("%s|\n", question.Difficulty)
 	}
 	return resp
 }
@@ -657,8 +632,8 @@ func (this *LeetCodeFile) DrawSimilarQuestionList() string {
 		}
 	}
 
-	resp := fmt.Sprintln("|#|标题|")
-	resp += fmt.Sprintln("|:-:|:-|")
+	resp := fmt.Sprintln("|#|标题|难度|")
+	resp += fmt.Sprintln("|:-:|:-|:-|")
 	for _, questionList := range similarMap {
 		for _, question := range questionList {
 			resp += fmt.Sprintf("|[%s](%s)|", question.FQID, question.Link)
@@ -669,9 +644,9 @@ func (this *LeetCodeFile) DrawSimilarQuestionList() string {
 			} else {
 				resp += fmt.Sprintf("[%s](%s)|", question.Title, solutionUrl)
 			}
-			resp += "\n"
+
+			resp += fmt.Sprintf("%s|\n", question.Difficulty)
 		}
-		resp += fmt.Sprintln("|||")
 	}
 
 	return resp

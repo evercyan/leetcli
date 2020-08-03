@@ -15,6 +15,8 @@ github.com/dgrijalva/jwt-go v3.2.0+incompatible/go.mod h1:E3ru+11k8xSBh+hMPgOLZm
 github.com/evercyan/letitgo v0.0.0-20200729111610-6d9bb01a6619 h1:zjcdOrtnDefkHTBUOzjvzeEinCsVZaym6fDYrmw0xts=
 github.com/evercyan/letitgo v0.0.0-20200730024328-5a62e5165c31 h1:OUADx+nv98CaYTNUYKLC6YkY+L6+LuA5KV2D/tQHYIA=
 github.com/evercyan/letitgo v0.0.0-20200730024328-5a62e5165c31/go.mod h1:w2l132sbFv6kS5a1wF4udGTcVQ/G9NVPhWyGgrYx3GI=
+github.com/evercyan/letitgo v0.0.0-20200731064631-5f0e993e75b4 h1:Q5eIDpojY3l7Mp8BXy4B9lgxhF0e1YSqL+krC9hEL78=
+github.com/evercyan/letitgo v0.0.0-20200731064631-5f0e993e75b4/go.mod h1:w2l132sbFv6kS5a1wF4udGTcVQ/G9NVPhWyGgrYx3GI=
 github.com/gomodule/redigo/redis v0.0.0-20200429221454-e14091dffc1b/go.mod h1:0zioC1ElIFjAFjnYHA9Y8oeU9SHff86XhZgs2tpx9SU=
 github.com/kr/pretty v0.1.0 h1:L/CwN0zerZDmRFUapSPitk6f+Q3+0za1rQkzVuMiMFI=
 github.com/kr/pretty v0.1.0/go.mod h1:dAy3ld7l9f0ibDNOQOHHMYYIIbhfbHSm3C4ZsoJORNo=
