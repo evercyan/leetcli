@@ -144,7 +144,6 @@
 |[196](https://leetcode-cn.com/problems/delete-duplicate-emails/)|[Delete Duplicate Emails](./src/0196-delete-duplicate-emails/)|简单|
 |[197](https://leetcode-cn.com/problems/rising-temperature/)|[Rising Temperature](./src/0197-rising-temperature/)|简单|
 |[198](https://leetcode-cn.com/problems/house-robber/)|[House Robber](./src/0198-house-robber/)|简单|
-|[225](https://leetcode-cn.com/problems/implement-stack-using-queues/)|[Implement Stack using Queues](./src/0225-implement-stack-using-queues/)|简单|
 |[262](https://leetcode-cn.com/problems/trips-and-users/)|[Trips and Users](./src/0262-trips-and-users/)|困难|
 |[278](https://leetcode-cn.com/problems/first-bad-version/)|[First Bad Version](./src/0278-first-bad-version/)|简单|
 |[292](https://leetcode-cn.com/problems/nim-game/)|[Nim Game](./src/0292-nim-game/)|简单|
@@ -194,7 +193,7 @@
 |[面试题 17.16](https://leetcode-cn.com/problems/the-masseuse-lcci/)|[The Masseuse LCCI](./src/1000023-the-masseuse-lcci/)|简单|
 
 
-#### 快照镇楼
+#### 指北
 
 ![leetcli](https://raw.githubusercontent.com/evercyan/cantor/master/resource/80/803bac1363e065a5e0fa7f8ac9d6db6a.png)
 

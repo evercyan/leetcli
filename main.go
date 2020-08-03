@@ -48,7 +48,7 @@ var tplReadme = `# leetcli
 
 {{.DrawQuestionList}}
 
-#### 快照镇楼
+#### 指北
 
 ![leetcli](https://raw.githubusercontent.com/evercyan/cantor/master/resource/80/803bac1363e065a5e0fa7f8ac9d6db6a.png)
 
