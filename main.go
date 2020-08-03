@@ -584,7 +584,7 @@ func (this *LeetCodeFile) DrawQuestionTagList() string {
 	return resp
 }
 
-// readme - 渲染题目表格
+// readme - 渲染题目表格, 只显示已解决的
 func (this *LeetCodeFile) DrawQuestionList() string {
 	questionList := LC.QuestionList
 	if len(questionList) <= 0 {
@@ -594,15 +594,12 @@ func (this *LeetCodeFile) DrawQuestionList() string {
 	resp := fmt.Sprintln("|#|标题|难度|")
 	resp += fmt.Sprintln("|:-:|:-|:-:|")
 	for _, question := range questionList {
-		resp += fmt.Sprintf("|[%s](%s)|", question.FQID, question.Link)
-
 		questionPath := getQustionPath(question.FQID, question.QID, question.Slug)
 		if !util.IsExist(questionPath) {
-			resp += fmt.Sprintf("%s|", question.Title)
-		} else {
-			resp += fmt.Sprintf("[%s](%s)|", question.Title, questionPath)
+			continue
 		}
-
+		resp += fmt.Sprintf("|[%s](%s)|", question.FQID, question.Link)
+		resp += fmt.Sprintf("[%s](%s)|", question.Title, questionPath)
 		resp += fmt.Sprintf("%s|\n", question.Difficulty)
 	}
 	return resp
