@@ -34,54 +34,27 @@ var tplReadme = `# leetcli
 [![Build Status](https://www.travis-ci.org/evercyan/leetcli.svg?branch=master)](https://www.travis-ci.org/evercyan/leetcli)
 [![codecov](https://codecov.io/gh/evercyan/leetcli/branch/master/graph/badge.svg?token=RbJTUtAlvl)](https://codecov.io/gh/evercyan/leetcli)
 
-> leetcode 刷题小助手, 帮助生成题目 readme, 答题文件, 答题测试文件等.
+> leetcode 刷题小助手, 帮助生成 readme, 答题文件, 答题测试文件等
 
 ---
 
-#### 帮助
-
-` + "```" + `
-NAME:
-	leetcli - A cli tool for leetcode
-
-USAGE:
-	helper [global options] command [command options] [arguments...]
-
-VERSION:
-	1.0.0
-
-COMMANDS:
-	readme   生成 README.md
-	problem  生成答题文件相关 [eg: problem 101]
-	quit     退出程序
-	help, h  Shows a list of commands or help for one command
-
-GLOBAL OPTIONS:
-	--help, -h     show help
-	--version, -v  print the version
-` + "```" + `
-
----
-
-#### 题目标签
+#### 标签
 
 {{.DrawQuestionTagList}}
 
 ---
 
-#### 题目列表
+#### 列表
 
 {{.DrawQuestionList}}
 
----
+#### 快照镇楼
 
-#### 相似题型
-
-{{.DrawSimilarQuestionList}}
+![leetcli](https://raw.githubusercontent.com/evercyan/cantor/master/resource/80/803bac1363e065a5e0fa7f8ac9d6db6a.png)
 
 ---
 
-[⬆️Top](#leetcli)
+[⬆️](#leetcli)
 `
 
 // 题目描述 README 模板
@@ -606,6 +579,7 @@ func (this *LeetCodeFile) DrawQuestionList() string {
 }
 
 // readme - 渲染类似题型
+// 已从 readme 中去除
 func (this *LeetCodeFile) DrawSimilarQuestionList() string {
 	questionList := LC.QuestionList
 	if len(questionList) <= 0 {

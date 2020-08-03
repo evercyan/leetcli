@@ -4,36 +4,11 @@
 [![Build Status](https://www.travis-ci.org/evercyan/leetcli.svg?branch=master)](https://www.travis-ci.org/evercyan/leetcli)
 [![codecov](https://codecov.io/gh/evercyan/leetcli/branch/master/graph/badge.svg?token=RbJTUtAlvl)](https://codecov.io/gh/evercyan/leetcli)
 
-> leetcode 刷题小助手, 帮助生成题目 readme, 答题文件, 答题测试文件等.
+> leetcode 刷题小助手, 帮助生成 readme, 答题文件, 答题测试文件等
 
 ---
 
-#### 帮助
-
-```
-NAME:
-	leetcli - A cli tool for leetcode
-
-USAGE:
-	helper [global options] command [command options] [arguments...]
-
-VERSION:
-	1.0.0
-
-COMMANDS:
-	readme   生成 README.md
-	problem  生成答题文件相关 [eg: problem 101]
-	quit     退出程序
-	help, h  Shows a list of commands or help for one command
-
-GLOBAL OPTIONS:
-	--help, -h     show help
-	--version, -v  print the version
-```
-
----
-
-#### 题目标签
+#### 标签
 
 [![数组](https://img.shields.io/badge/数组-304-brightgreen.svg?style=flat)](https://leetcode-cn.com/tag/array/)
 [![动态规划](https://img.shields.io/badge/动态规划-230-brightgreen.svg?style=flat)](https://leetcode-cn.com/tag/dynamic-programming/)
@@ -77,7 +52,7 @@ GLOBAL OPTIONS:
 
 ---
 
-#### 题目列表
+#### 列表
 
 |#|标题|难度|
 |:-:|:-|:-:|
@@ -169,6 +144,7 @@ GLOBAL OPTIONS:
 |[196](https://leetcode-cn.com/problems/delete-duplicate-emails/)|[Delete Duplicate Emails](./src/0196-delete-duplicate-emails/)|简单|
 |[197](https://leetcode-cn.com/problems/rising-temperature/)|[Rising Temperature](./src/0197-rising-temperature/)|简单|
 |[198](https://leetcode-cn.com/problems/house-robber/)|[House Robber](./src/0198-house-robber/)|简单|
+|[225](https://leetcode-cn.com/problems/implement-stack-using-queues/)|[Implement Stack using Queues](./src/0225-implement-stack-using-queues/)|简单|
 |[262](https://leetcode-cn.com/problems/trips-and-users/)|[Trips and Users](./src/0262-trips-and-users/)|困难|
 |[278](https://leetcode-cn.com/problems/first-bad-version/)|[First Bad Version](./src/0278-first-bad-version/)|简单|
 |[292](https://leetcode-cn.com/problems/nim-game/)|[Nim Game](./src/0292-nim-game/)|简单|
@@ -218,254 +194,10 @@ GLOBAL OPTIONS:
 |[面试题 17.16](https://leetcode-cn.com/problems/the-masseuse-lcci/)|[The Masseuse LCCI](./src/1000023-the-masseuse-lcci/)|简单|
 
 
----
+#### 快照镇楼
 
-#### 相似题型
-
-|#|标题|难度|
-|:-:|:-|:-|
-|[45](https://leetcode-cn.com/problems/jump-game-ii/)|Jump Game II|困难|
-|[55](https://leetcode-cn.com/problems/jump-game/)|Jump Game|中等|
-|[1306](https://leetcode-cn.com/problems/jump-game-iii/)|Jump Game III|中等|
-|[1345](https://leetcode-cn.com/problems/jump-game-iv/)|Jump Game IV|困难|
-|[1340](https://leetcode-cn.com/problems/jump-game-v/)|Jump Game V|困难|
-|[82](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/)|[Remove Duplicates from Sorted List II](./src/0082-remove-duplicates-from-sorted-list-ii/)|中等|
-|[83](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/)|[Remove Duplicates from Sorted List](./src/0083-remove-duplicates-from-sorted-list/)|简单|
-|[92](https://leetcode-cn.com/problems/reverse-linked-list-ii/)|Reverse Linked List II|中等|
-|[206](https://leetcode-cn.com/problems/reverse-linked-list/)|Reverse Linked List|简单|
-|[121](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/)|[Best Time to Buy and Sell Stock](./src/0121-best-time-to-buy-and-sell-stock/)|简单|
-|[122](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/)|[Best Time to Buy and Sell Stock II](./src/0122-best-time-to-buy-and-sell-stock-ii/)|简单|
-|[123](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iii/)|Best Time to Buy and Sell Stock III|困难|
-|[188](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iv/)|Best Time to Buy and Sell Stock IV|困难|
-|[453](https://leetcode-cn.com/problems/minimum-moves-to-equal-array-elements/)|Minimum Moves to Equal Array Elements|简单|
-|[462](https://leetcode-cn.com/problems/minimum-moves-to-equal-array-elements-ii/)|Minimum Moves to Equal Array Elements II|中等|
-|[490](https://leetcode-cn.com/problems/the-maze/)|The Maze|中等|
-|[499](https://leetcode-cn.com/problems/the-maze-iii/)|The Maze III|困难|
-|[505](https://leetcode-cn.com/problems/the-maze-ii/)|The Maze II|中等|
-|[91](https://leetcode-cn.com/problems/decode-ways/)|Decode Ways|中等|
-|[639](https://leetcode-cn.com/problems/decode-ways-ii/)|Decode Ways II|困难|
-|[1033](https://leetcode-cn.com/problems/moving-stones-until-consecutive/)|Moving Stones Until Consecutive|简单|
-|[1040](https://leetcode-cn.com/problems/moving-stones-until-consecutive-ii/)|Moving Stones Until Consecutive II|中等|
-|[1136](https://leetcode-cn.com/problems/parallel-courses/)|Parallel Courses|困难|
-|[1494](https://leetcode-cn.com/problems/parallel-courses-ii/)|Parallel Courses II|困难|
-|[26](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/)|[Remove Duplicates from Sorted Array](./src/0026-remove-duplicates-from-sorted-array/)|简单|
-|[80](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array-ii/)|Remove Duplicates from Sorted Array II|中等|
-|[79](https://leetcode-cn.com/problems/word-search/)|Word Search|中等|
-|[212](https://leetcode-cn.com/problems/word-search-ii/)|Word Search II|困难|
-|[270](https://leetcode-cn.com/problems/closest-binary-search-tree-value/)|Closest Binary Search Tree Value|简单|
-|[272](https://leetcode-cn.com/problems/closest-binary-search-tree-value-ii/)|Closest Binary Search Tree Value II|困难|
-|[2](https://leetcode-cn.com/problems/add-two-numbers/)|[Add Two Numbers](./src/0002-add-two-numbers/)|中等|
-|[445](https://leetcode-cn.com/problems/add-two-numbers-ii/)|Add Two Numbers II|中等|
-|[1148](https://leetcode-cn.com/problems/article-views-i/)|Article Views I|简单|
-|[1149](https://leetcode-cn.com/problems/article-views-ii/)|Article Views II|中等|
-|[1047](https://leetcode-cn.com/problems/remove-all-adjacent-duplicates-in-string/)|Remove All Adjacent Duplicates In String|简单|
-|[1209](https://leetcode-cn.com/problems/remove-all-adjacent-duplicates-in-string-ii/)|Remove All Adjacent Duplicates in String II|中等|
-|[243](https://leetcode-cn.com/problems/shortest-word-distance/)|Shortest Word Distance|简单|
-|[244](https://leetcode-cn.com/problems/shortest-word-distance-ii/)|Shortest Word Distance II|中等|
-|[245](https://leetcode-cn.com/problems/shortest-word-distance-iii/)|Shortest Word Distance III|中等|
-|[290](https://leetcode-cn.com/problems/word-pattern/)|Word Pattern|简单|
-|[291](https://leetcode-cn.com/problems/word-pattern-ii/)|Word Pattern II|困难|
-|[1057](https://leetcode-cn.com/problems/campus-bikes/)|Campus Bikes|中等|
-|[1066](https://leetcode-cn.com/problems/campus-bikes-ii/)|Campus Bikes II|中等|
-|[1193](https://leetcode-cn.com/problems/monthly-transactions-i/)|Monthly Transactions I|中等|
-|[1205](https://leetcode-cn.com/problems/monthly-transactions-ii/)|Monthly Transactions II|中等|
-|[274](https://leetcode-cn.com/problems/h-index/)|H-Index|中等|
-|[275](https://leetcode-cn.com/problems/h-index-ii/)|H-Index II|中等|
-|[496](https://leetcode-cn.com/problems/next-greater-element-i/)|Next Greater Element I|简单|
-|[503](https://leetcode-cn.com/problems/next-greater-element-ii/)|[Next Greater Element II](./src/0503-next-greater-element-ii/)|中等|
-|[556](https://leetcode-cn.com/problems/next-greater-element-iii/)|Next Greater Element III|中等|
-|[125](https://leetcode-cn.com/problems/valid-palindrome/)|[Valid Palindrome](./src/0125-valid-palindrome/)|简单|
-|[680](https://leetcode-cn.com/problems/valid-palindrome-ii/)|Valid Palindrome II|简单|
-|[1216](https://leetcode-cn.com/problems/valid-palindrome-iii/)|Valid Palindrome III|困难|
-|[684](https://leetcode-cn.com/problems/redundant-connection/)|Redundant Connection|中等|
-|[685](https://leetcode-cn.com/problems/redundant-connection-ii/)|Redundant Connection II|困难|
-|[877](https://leetcode-cn.com/problems/stone-game/)|Stone Game|中等|
-|[1140](https://leetcode-cn.com/problems/stone-game-ii/)|Stone Game II|中等|
-|[1406](https://leetcode-cn.com/problems/stone-game-iii/)|Stone Game III|困难|
-|[1510](https://leetcode-cn.com/problems/stone-game-iv/)|Stone Game IV|困难|
-|[153](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/)|Find Minimum in Rotated Sorted Array|中等|
-|[154](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii/)|Find Minimum in Rotated Sorted Array II|困难|
-|[200](https://leetcode-cn.com/problems/number-of-islands/)|Number of Islands|中等|
-|[305](https://leetcode-cn.com/problems/number-of-islands-ii/)|Number of Islands II|困难|
-|[768](https://leetcode-cn.com/problems/max-chunks-to-make-sorted-ii/)|Max Chunks To Make Sorted II|困难|
-|[769](https://leetcode-cn.com/problems/max-chunks-to-make-sorted/)|Max Chunks To Make Sorted|中等|
-|[1173](https://leetcode-cn.com/problems/immediate-food-delivery-i/)|Immediate Food Delivery I|简单|
-|[1174](https://leetcode-cn.com/problems/immediate-food-delivery-ii/)|Immediate Food Delivery II|中等|
-|[443](https://leetcode-cn.com/problems/string-compression/)|String Compression|简单|
-|[1531](https://leetcode-cn.com/problems/string-compression-ii/)|String Compression II|困难|
-|[198](https://leetcode-cn.com/problems/house-robber/)|[House Robber](./src/0198-house-robber/)|简单|
-|[213](https://leetcode-cn.com/problems/house-robber-ii/)|House Robber II|中等|
-|[337](https://leetcode-cn.com/problems/house-robber-iii/)|House Robber III|中等|
-|[531](https://leetcode-cn.com/problems/lonely-pixel-i/)|Lonely Pixel I|中等|
-|[533](https://leetcode-cn.com/problems/lonely-pixel-ii/)|Lonely Pixel II|中等|
-|[319](https://leetcode-cn.com/problems/bulb-switcher/)|Bulb Switcher|中等|
-|[672](https://leetcode-cn.com/problems/bulb-switcher-ii/)|Bulb Switcher II|中等|
-|[1375](https://leetcode-cn.com/problems/bulb-switcher-iii/)|Bulb Switcher III|中等|
-|[1529](https://leetcode-cn.com/problems/bulb-switcher-iv/)|Bulb Switcher IV|中等|
-|[939](https://leetcode-cn.com/problems/minimum-area-rectangle/)|Minimum Area Rectangle|中等|
-|[963](https://leetcode-cn.com/problems/minimum-area-rectangle-ii/)|Minimum Area Rectangle II|中等|
-|[112](https://leetcode-cn.com/problems/path-sum/)|[Path Sum](./src/0112-path-sum/)|简单|
-|[113](https://leetcode-cn.com/problems/path-sum-ii/)|Path Sum II|中等|
-|[437](https://leetcode-cn.com/problems/path-sum-iii/)|Path Sum III|中等|
-|[666](https://leetcode-cn.com/problems/path-sum-iv/)|Path Sum IV|中等|
-|[169](https://leetcode-cn.com/problems/majority-element/)|Majority Element|简单|
-|[229](https://leetcode-cn.com/problems/majority-element-ii/)|Majority Element II|中等|
-|[344](https://leetcode-cn.com/problems/reverse-string/)|Reverse String|简单|
-|[541](https://leetcode-cn.com/problems/reverse-string-ii/)|Reverse String II|简单|
-|[905](https://leetcode-cn.com/problems/sort-array-by-parity/)|Sort Array By Parity|简单|
-|[922](https://leetcode-cn.com/problems/sort-array-by-parity-ii/)|Sort Array By Parity II|简单|
-|[1056](https://leetcode-cn.com/problems/confusing-number/)|Confusing Number|简单|
-|[1088](https://leetcode-cn.com/problems/confusing-number-ii/)|Confusing Number II|困难|
-|[1113](https://leetcode-cn.com/problems/reported-posts/)|Reported Posts|简单|
-|[1132](https://leetcode-cn.com/problems/reported-posts-ii/)|Reported Posts II|中等|
-|[39](https://leetcode-cn.com/problems/combination-sum/)|[Combination Sum](./src/0039-combination-sum/)|中等|
-|[40](https://leetcode-cn.com/problems/combination-sum-ii/)|[Combination Sum II](./src/0040-combination-sum-ii/)|中等|
-|[216](https://leetcode-cn.com/problems/combination-sum-iii/)|Combination Sum III|中等|
-|[377](https://leetcode-cn.com/problems/combination-sum-iv/)|Combination Sum IV|中等|
-|[46](https://leetcode-cn.com/problems/permutations/)|Permutations|中等|
-|[47](https://leetcode-cn.com/problems/permutations-ii/)|Permutations II|中等|
-|[139](https://leetcode-cn.com/problems/word-break/)|Word Break|中等|
-|[140](https://leetcode-cn.com/problems/word-break-ii/)|Word Break II|困难|
-|[141](https://leetcode-cn.com/problems/linked-list-cycle/)|[Linked List Cycle](./src/0141-linked-list-cycle/)|简单|
-|[142](https://leetcode-cn.com/problems/linked-list-cycle-ii/)|Linked List Cycle II|中等|
-|[266](https://leetcode-cn.com/problems/palindrome-permutation/)|Palindrome Permutation|简单|
-|[267](https://leetcode-cn.com/problems/palindrome-permutation-ii/)|Palindrome Permutation II|中等|
-|[280](https://leetcode-cn.com/problems/wiggle-sort/)|Wiggle Sort|中等|
-|[324](https://leetcode-cn.com/problems/wiggle-sort-ii/)|Wiggle Sort II|中等|
-|[374](https://leetcode-cn.com/problems/guess-number-higher-or-lower/)|[Guess Number Higher or Lower](./src/0374-guess-number-higher-or-lower/)|简单|
-|[375](https://leetcode-cn.com/problems/guess-number-higher-or-lower-ii/)|Guess Number Higher or Lower II|中等|
-|[734](https://leetcode-cn.com/problems/sentence-similarity/)|Sentence Similarity|简单|
-|[737](https://leetcode-cn.com/problems/sentence-similarity-ii/)|Sentence Similarity II|中等|
-|[223](https://leetcode-cn.com/problems/rectangle-area/)|Rectangle Area|中等|
-|[850](https://leetcode-cn.com/problems/rectangle-area-ii/)|Rectangle Area II|困难|
-|[1141](https://leetcode-cn.com/problems/user-activity-for-the-past-30-days-i/)|User Activity for the Past 30 Days I|简单|
-|[1142](https://leetcode-cn.com/problems/user-activity-for-the-past-30-days-ii/)|User Activity for the Past 30 Days II|简单|
-|[131](https://leetcode-cn.com/problems/palindrome-partitioning/)|Palindrome Partitioning|中等|
-|[132](https://leetcode-cn.com/problems/palindrome-partitioning-ii/)|Palindrome Partitioning II|困难|
-|[1278](https://leetcode-cn.com/problems/palindrome-partitioning-iii/)|Palindrome Partitioning III|困难|
-|[252](https://leetcode-cn.com/problems/meeting-rooms/)|Meeting Rooms|简单|
-|[253](https://leetcode-cn.com/problems/meeting-rooms-ii/)|Meeting Rooms II|中等|
-|[285](https://leetcode-cn.com/problems/inorder-successor-in-bst/)|Inorder Successor in BST|中等|
-|[510](https://leetcode-cn.com/problems/inorder-successor-in-bst-ii/)|Inorder Successor in BST II|中等|
-|[551](https://leetcode-cn.com/problems/student-attendance-record-i/)|Student Attendance Record I|简单|
-|[552](https://leetcode-cn.com/problems/student-attendance-record-ii/)|Student Attendance Record II|困难|
-|[511](https://leetcode-cn.com/problems/game-play-analysis-i/)|Game Play Analysis I|简单|
-|[512](https://leetcode-cn.com/problems/game-play-analysis-ii/)|Game Play Analysis II|简单|
-|[534](https://leetcode-cn.com/problems/game-play-analysis-iii/)|Game Play Analysis III|中等|
-|[550](https://leetcode-cn.com/problems/game-play-analysis-iv/)|Game Play Analysis IV|中等|
-|[1097](https://leetcode-cn.com/problems/game-play-analysis-v/)|Game Play Analysis V|困难|
-|[151](https://leetcode-cn.com/problems/reverse-words-in-a-string/)|Reverse Words in a String|中等|
-|[186](https://leetcode-cn.com/problems/reverse-words-in-a-string-ii/)|Reverse Words in a String II|中等|
-|[557](https://leetcode-cn.com/problems/reverse-words-in-a-string-iii/)|Reverse Words in a String III|简单|
-|[349](https://leetcode-cn.com/problems/intersection-of-two-arrays/)|Intersection of Two Arrays|简单|
-|[350](https://leetcode-cn.com/problems/intersection-of-two-arrays-ii/)|Intersection of Two Arrays II|简单|
-|[339](https://leetcode-cn.com/problems/nested-list-weight-sum/)|Nested List Weight Sum|简单|
-|[364](https://leetcode-cn.com/problems/nested-list-weight-sum-ii/)|Nested List Weight Sum II|中等|
-|[924](https://leetcode-cn.com/problems/minimize-malware-spread/)|Minimize Malware Spread|困难|
-|[928](https://leetcode-cn.com/problems/minimize-malware-spread-ii/)|Minimize Malware Spread II|困难|
-|[115](https://leetcode-cn.com/problems/distinct-subsequences/)|Distinct Subsequences|困难|
-|[940](https://leetcode-cn.com/problems/distinct-subsequences-ii/)|Distinct Subsequences II|困难|
-|[78](https://leetcode-cn.com/problems/subsets/)|Subsets|中等|
-|[90](https://leetcode-cn.com/problems/subsets-ii/)|Subsets II|中等|
-|[102](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/)|Binary Tree Level Order Traversal|中等|
-|[107](https://leetcode-cn.com/problems/binary-tree-level-order-traversal-ii/)|[Binary Tree Level Order Traversal II](./src/0107-binary-tree-level-order-traversal-ii/)|简单|
-|[293](https://leetcode-cn.com/problems/flip-game/)|Flip Game|简单|
-|[294](https://leetcode-cn.com/problems/flip-game-ii/)|Flip Game II|中等|
-|[42](https://leetcode-cn.com/problems/trapping-rain-water/)|[Trapping Rain Water](./src/0042-trapping-rain-water/)|困难|
-|[407](https://leetcode-cn.com/problems/trapping-rain-water-ii/)|Trapping Rain Water II|困难|
-|[694](https://leetcode-cn.com/problems/number-of-distinct-islands/)|Number of Distinct Islands|中等|
-|[711](https://leetcode-cn.com/problems/number-of-distinct-islands-ii/)|Number of Distinct Islands II|困难|
-|[1075](https://leetcode-cn.com/problems/project-employees-i/)|Project Employees I|简单|
-|[1076](https://leetcode-cn.com/problems/project-employees-ii/)|Project Employees II|简单|
-|[1077](https://leetcode-cn.com/problems/project-employees-iii/)|Project Employees III|中等|
-|[1158](https://leetcode-cn.com/problems/market-analysis-i/)|Market Analysis I|中等|
-|[1159](https://leetcode-cn.com/problems/market-analysis-ii/)|Market Analysis II|困难|
-|[95](https://leetcode-cn.com/problems/unique-binary-search-trees-ii/)|Unique Binary Search Trees II|中等|
-|[96](https://leetcode-cn.com/problems/unique-binary-search-trees/)|Unique Binary Search Trees|中等|
-|[116](https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/)|Populating Next Right Pointers in Each Node|中等|
-|[117](https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node-ii/)|Populating Next Right Pointers in Each Node II|中等|
-|[207](https://leetcode-cn.com/problems/course-schedule/)|Course Schedule|中等|
-|[210](https://leetcode-cn.com/problems/course-schedule-ii/)|Course Schedule II|中等|
-|[630](https://leetcode-cn.com/problems/course-schedule-iii/)|Course Schedule III|困难|
-|[1462](https://leetcode-cn.com/problems/course-schedule-iv/)|Course Schedule IV|中等|
-|[485](https://leetcode-cn.com/problems/max-consecutive-ones/)|Max Consecutive Ones|简单|
-|[487](https://leetcode-cn.com/problems/max-consecutive-ones-ii/)|Max Consecutive Ones II|中等|
-|[1004](https://leetcode-cn.com/problems/max-consecutive-ones-iii/)|Max Consecutive Ones III|中等|
-|[521](https://leetcode-cn.com/problems/longest-uncommon-subsequence-i/)|Longest Uncommon Subsequence I |简单|
-|[522](https://leetcode-cn.com/problems/longest-uncommon-subsequence-ii/)|Longest Uncommon Subsequence II|中等|
-|[526](https://leetcode-cn.com/problems/beautiful-arrangement/)|Beautiful Arrangement|中等|
-|[667](https://leetcode-cn.com/problems/beautiful-arrangement-ii/)|Beautiful Arrangement II|中等|
-|[1087](https://leetcode-cn.com/problems/brace-expansion/)|Brace Expansion|中等|
-|[1096](https://leetcode-cn.com/problems/brace-expansion-ii/)|Brace Expansion II|困难|
-|[931](https://leetcode-cn.com/problems/minimum-falling-path-sum/)|Minimum Falling Path Sum|中等|
-|[1289](https://leetcode-cn.com/problems/minimum-falling-path-sum-ii/)|Minimum Falling Path Sum II|困难|
-|[126](https://leetcode-cn.com/problems/word-ladder-ii/)|Word Ladder II|困难|
-|[127](https://leetcode-cn.com/problems/word-ladder/)|Word Ladder|中等|
-|[217](https://leetcode-cn.com/problems/contains-duplicate/)|Contains Duplicate|简单|
-|[219](https://leetcode-cn.com/problems/contains-duplicate-ii/)|Contains Duplicate II|简单|
-|[220](https://leetcode-cn.com/problems/contains-duplicate-iii/)|Contains Duplicate III|中等|
-|[74](https://leetcode-cn.com/problems/search-a-2d-matrix/)|Search a 2D Matrix|中等|
-|[240](https://leetcode-cn.com/problems/search-a-2d-matrix-ii/)|Search a 2D Matrix II|中等|
-|[256](https://leetcode-cn.com/problems/paint-house/)|Paint House|简单|
-|[265](https://leetcode-cn.com/problems/paint-house-ii/)|Paint House II|困难|
-|[1473](https://leetcode-cn.com/problems/paint-house-iii/)|Paint House III|困难|
-|[298](https://leetcode-cn.com/problems/binary-tree-longest-consecutive-sequence/)|Binary Tree Longest Consecutive Sequence|中等|
-|[549](https://leetcode-cn.com/problems/binary-tree-longest-consecutive-sequence-ii/)|Binary Tree Longest Consecutive Sequence II|中等|
-|[654](https://leetcode-cn.com/problems/maximum-binary-tree/)|Maximum Binary Tree|中等|
-|[998](https://leetcode-cn.com/problems/maximum-binary-tree-ii/)|Maximum Binary Tree II|中等|
-|[498](https://leetcode-cn.com/problems/diagonal-traverse/)|Diagonal Traverse|中等|
-|[1424](https://leetcode-cn.com/problems/diagonal-traverse-ii/)|Diagonal Traverse II|中等|
-|[62](https://leetcode-cn.com/problems/unique-paths/)|Unique Paths|中等|
-|[63](https://leetcode-cn.com/problems/unique-paths-ii/)|Unique Paths II|中等|
-|[980](https://leetcode-cn.com/problems/unique-paths-iii/)|Unique Paths III|困难|
-|[33](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/)|[Search in Rotated Sorted Array](./src/0033-search-in-rotated-sorted-array/)|中等|
-|[81](https://leetcode-cn.com/problems/search-in-rotated-sorted-array-ii/)|Search in Rotated Sorted Array II|中等|
-|[246](https://leetcode-cn.com/problems/strobogrammatic-number/)|Strobogrammatic Number|简单|
-|[247](https://leetcode-cn.com/problems/strobogrammatic-number-ii/)|Strobogrammatic Number II|中等|
-|[248](https://leetcode-cn.com/problems/strobogrammatic-number-iii/)|Strobogrammatic Number III|困难|
-|[643](https://leetcode-cn.com/problems/maximum-average-subarray-i/)|Maximum Average Subarray I|简单|
-|[644](https://leetcode-cn.com/problems/maximum-average-subarray-ii/)|Maximum Average Subarray II|困难|
-|[1068](https://leetcode-cn.com/problems/product-sales-analysis-i/)|Product Sales Analysis I|简单|
-|[1069](https://leetcode-cn.com/problems/product-sales-analysis-ii/)|Product Sales Analysis II|简单|
-|[1070](https://leetcode-cn.com/problems/product-sales-analysis-iii/)|Product Sales Analysis III|中等|
-|[51](https://leetcode-cn.com/problems/n-queens/)|N-Queens|困难|
-|[52](https://leetcode-cn.com/problems/n-queens-ii/)|N-Queens II|困难|
-|[54](https://leetcode-cn.com/problems/spiral-matrix/)|Spiral Matrix|中等|
-|[59](https://leetcode-cn.com/problems/spiral-matrix-ii/)|Spiral Matrix II|中等|
-|[885](https://leetcode-cn.com/problems/spiral-matrix-iii/)|Spiral Matrix III|中等|
-|[224](https://leetcode-cn.com/problems/basic-calculator/)|Basic Calculator|困难|
-|[227](https://leetcode-cn.com/problems/basic-calculator-ii/)|Basic Calculator II|中等|
-|[770](https://leetcode-cn.com/problems/basic-calculator-iv/)|Basic Calculator IV|困难|
-|[772](https://leetcode-cn.com/problems/basic-calculator-iii/)|Basic Calculator III|困难|
-|[18](https://leetcode-cn.com/problems/4sum/)|[4Sum](./src/0018-4sum/)|中等|
-|[454](https://leetcode-cn.com/problems/4sum-ii/)|4Sum II|中等|
-|[370](https://leetcode-cn.com/problems/range-addition/)|Range Addition|中等|
-|[598](https://leetcode-cn.com/problems/range-addition-ii/)|Range Addition II|简单|
-|[729](https://leetcode-cn.com/problems/my-calendar-i/)|My Calendar I|中等|
-|[731](https://leetcode-cn.com/problems/my-calendar-ii/)|My Calendar II|中等|
-|[732](https://leetcode-cn.com/problems/my-calendar-iii/)|My Calendar III|困难|
-|[944](https://leetcode-cn.com/problems/delete-columns-to-make-sorted/)|Delete Columns to Make Sorted|简单|
-|[955](https://leetcode-cn.com/problems/delete-columns-to-make-sorted-ii/)|Delete Columns to Make Sorted II|中等|
-|[960](https://leetcode-cn.com/problems/delete-columns-to-make-sorted-iii/)|Delete Columns to Make Sorted III|困难|
-|[1082](https://leetcode-cn.com/problems/sales-analysis-i/)|Sales Analysis I|简单|
-|[1083](https://leetcode-cn.com/problems/sales-analysis-ii/)|Sales Analysis II|简单|
-|[1084](https://leetcode-cn.com/problems/sales-analysis-iii/)|Sales Analysis III|简单|
-|[741](https://leetcode-cn.com/problems/cherry-pickup/)|Cherry Pickup|困难|
-|[1463](https://leetcode-cn.com/problems/cherry-pickup-ii/)|Cherry Pickup II|困难|
-|[118](https://leetcode-cn.com/problems/pascals-triangle/)|[Pascal&#39;s Triangle](./src/0118-pascals-triangle/)|简单|
-|[119](https://leetcode-cn.com/problems/pascals-triangle-ii/)|[Pascal&#39;s Triangle II](./src/0119-pascals-triangle-ii/)|简单|
-|[136](https://leetcode-cn.com/problems/single-number/)|[Single Number](./src/0136-single-number/)|简单|
-|[137](https://leetcode-cn.com/problems/single-number-ii/)|Single Number II|中等|
-|[260](https://leetcode-cn.com/problems/single-number-iii/)|Single Number III|中等|
-|[263](https://leetcode-cn.com/problems/ugly-number/)|Ugly Number|简单|
-|[264](https://leetcode-cn.com/problems/ugly-number-ii/)|Ugly Number II|中等|
-|[1201](https://leetcode-cn.com/problems/ugly-number-iii/)|Ugly Number III|中等|
-|[908](https://leetcode-cn.com/problems/smallest-range-i/)|Smallest Range I|简单|
-|[910](https://leetcode-cn.com/problems/smallest-range-ii/)|Smallest Range II|中等|
-|[1046](https://leetcode-cn.com/problems/last-stone-weight/)|Last Stone Weight|简单|
-|[1049](https://leetcode-cn.com/problems/last-stone-weight-ii/)|Last Stone Weight II|中等|
-
+![leetcli](https://raw.githubusercontent.com/evercyan/cantor/master/resource/80/803bac1363e065a5e0fa7f8ac9d6db6a.png)
 
 ---
 
-[⬆️Top](#leetcli)
+[⬆️](#leetcli)
