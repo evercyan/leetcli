@@ -38,23 +38,21 @@ var tplReadme = `# leetcli
 
 ---
 
-#### 标签
+## Tag
 
 {{.DrawQuestionTagList}}
 
 ---
 
-#### 列表
+## Question
 
 {{.DrawQuestionList}}
 
-#### 指北
+#### Snapshot
 
 ![leetcli](https://raw.githubusercontent.com/evercyan/cantor/master/resource/80/803bac1363e065a5e0fa7f8ac9d6db6a.png)
 
 ---
-
-[⬆️](#leetcli)
 `
 
 // 题目描述 README 模板
@@ -251,16 +249,11 @@ type LCQuestionDetail struct {
 // 获取问题列表
 func (this *LeetCode) getQuestionList() error {
 	req := request.NewRequest(new(http.Client))
-	req.Headers = map[string]string{
-		"Accept-Encoding": "",
-		"Referer":         "",
-	}
 	resp, err := req.Get(LCProbAllURL)
 	defer resp.Body.Close()
 	if err != nil {
 		return err
 	}
-
 	respJson, err := resp.Json()
 	if err != nil {
 		return err
@@ -379,12 +372,10 @@ func (this *LeetCode) Init() error {
 	if err != nil {
 		return err
 	}
-
 	err = this.getQuestionTagList()
 	if err != nil {
 		return err
 	}
-
 	return nil
 }
 
@@ -430,7 +421,6 @@ type LeetCodeFile struct {
 // 生成答题相关文件
 func (this *LeetCodeFile) GenerateQuestion(slug string, lang string, questionDetail *LCQuestionDetail) (err error) {
 	questionInfo, _ := LC.QuestionMap[slug]
-
 	questionPath := getQustionPath(questionInfo.FQID, questionInfo.QID, questionInfo.Slug)
 	if !util.IsExist(questionPath) {
 		err = os.MkdirAll(questionPath, 0755)
@@ -442,9 +432,10 @@ func (this *LeetCodeFile) GenerateQuestion(slug string, lang string, questionDet
 	// 问题标签
 	tagStr := ""
 	for _, tag := range questionDetail.TagList {
-		if tag["slug"] != "" {
-			tagStr += fmt.Sprintf(" [%s](%s) ", tag["translatedName"], fmt.Sprintf(LCTagLinkURL, tag["slug"]))
+		if tag["slug"] == "" {
+			continue
 		}
+		tagStr += fmt.Sprintf(" [%s](%s) ", tag["translatedName"], fmt.Sprintf(LCTagLinkURL, tag["slug"]))
 	}
 	if tagStr != "" {
 		tagStr = fmt.Sprintf("> 分类: %s", tagStr)
@@ -575,51 +566,6 @@ func (this *LeetCodeFile) DrawQuestionList() string {
 		resp += fmt.Sprintf("[%s](%s)|", question.Title, questionPath)
 		resp += fmt.Sprintf("%s|\n", question.Difficulty)
 	}
-	return resp
-}
-
-// readme - 渲染类似题型
-// 已从 readme 中去除
-func (this *LeetCodeFile) DrawSimilarQuestionList() string {
-	questionList := LC.QuestionList
-	if len(questionList) <= 0 {
-		return ""
-	}
-
-	similarMap := make(map[string][]LCQuestionInfo)
-	reg := regexp.MustCompile(`^(.*)-ii$`)
-	for _, question := range questionList {
-		regRet := reg.FindStringSubmatch(question.Slug)
-		if len(regRet) > 1 {
-			similarMap[regRet[1]] = []LCQuestionInfo{}
-		}
-	}
-
-	for _, question := range questionList {
-		for key := range similarMap {
-			if ok, _ := regexp.MatchString("^"+key+"[-iv]*$", question.Slug); ok {
-				similarMap[key] = append(similarMap[key], question)
-			}
-		}
-	}
-
-	resp := fmt.Sprintln("|#|标题|难度|")
-	resp += fmt.Sprintln("|:-:|:-|:-|")
-	for _, questionList := range similarMap {
-		for _, question := range questionList {
-			resp += fmt.Sprintf("|[%s](%s)|", question.FQID, question.Link)
-
-			solutionUrl := fmt.Sprintf("./src/%04d-%s/", question.QID, question.Slug)
-			if !util.IsExist(solutionUrl) {
-				resp += fmt.Sprintf("%s|", question.Title)
-			} else {
-				resp += fmt.Sprintf("[%s](%s)|", question.Title, solutionUrl)
-			}
-
-			resp += fmt.Sprintf("%s|\n", question.Difficulty)
-		}
-	}
-
 	return resp
 }
 
