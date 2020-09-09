@@ -1,17 +1,11 @@
-## [596. 超过5名学生的课](https://leetcode-cn.com/problems/classes-more-than-5-students/)
+# [596. Classes More Than 5 Students](https://leetcode-cn.com/problems/classes-more-than-5-students/)
+
+`[简单]`
 
 ---
 
-> 难度: 简单
-
-
-
----
-
-##### 题目描述
-
-```
-有一个courses 表 ，有: student (学生) 和 class (课程)。
+```json
+有一个courses 表 ，有: student (学生) 和 class (课程)。
 
 请列出所有超过或等于5名学生的课。
 
@@ -47,5 +41,3 @@ Note:
 学生在每个课中不应被重复计算。
 
 ```
-
----

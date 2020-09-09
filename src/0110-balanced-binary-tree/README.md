@@ -1,22 +1,16 @@
-## [110. 平衡二叉树](https://leetcode-cn.com/problems/balanced-binary-tree/)
+# [110. Balanced Binary Tree](https://leetcode-cn.com/problems/balanced-binary-tree/)
+
+`[简单]` [树](https://leetcode-cn.com/tag/tree/)  [深度优先搜索](https://leetcode-cn.com/tag/depth-first-search/) 
 
 ---
 
-> 难度: 简单
-
-> 分类:  [树](https://leetcode-cn.com/tag/tree/)  [深度优先搜索](https://leetcode-cn.com/tag/depth-first-search/) 
-
----
-
-##### 题目描述
-
-```
+```json
 给定一个二叉树，判断它是否是高度平衡的二叉树。
 
 本题中，一棵高度平衡二叉树定义为：
 
 
-一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过1。
+一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过1。
 
 
 示例 1:
@@ -44,8 +38,8 @@
  4   4
 
 
-返回 false 。
+返回 false 。
+
+ 
 
 ```
-
----

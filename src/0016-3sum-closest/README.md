@@ -1,23 +1,29 @@
-## [16. 最接近的三数之和](https://leetcode-cn.com/problems/3sum-closest/)
+# [16. 3Sum Closest](https://leetcode-cn.com/problems/3sum-closest/)
+
+`[中等]` [数组](https://leetcode-cn.com/tag/array/)  [双指针](https://leetcode-cn.com/tag/two-pointers/) 
 
 ---
 
-> 难度: 中等
+```json
+给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三个整数，使得它们的和与 target 最接近。返回这三个数的和。假定每组输入只存在唯一答案。
 
-> 分类:  [数组](https://leetcode-cn.com/tag/array/)  [双指针](https://leetcode-cn.com/tag/two-pointers/) 
+ 
 
----
+示例：
 
-##### 题目描述
+输入：nums = [-1,2,1,-4], target = 1
+输出：2
+解释：与 target 最接近的和是 2 (-1 + 2 + 1 = 2) 。
+
+
+ 
+
+提示：
+
+
+	3 <= nums.length <= 10^3
+	-10^3 <= nums[i] <= 10^3
+	-10^4 <= target <= 10^4
+
 
 ```
-给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三个整数，使得它们的和与 target 最接近。返回这三个数的和。假定每组输入只存在唯一答案。
-
-例如，给定数组 nums = [-1，2，1，-4], 和 target = 1.
-
-与 target 最接近的三个数的和为 2. (-1 + 2 + 1 = 2).
-
-
-```
-
----

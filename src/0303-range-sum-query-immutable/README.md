@@ -1,17 +1,11 @@
-## [303. 区域和检索 - 数组不可变](https://leetcode-cn.com/problems/range-sum-query-immutable/)
+# [303. Range Sum Query - Immutable](https://leetcode-cn.com/problems/range-sum-query-immutable/)
+
+`[简单]` [动态规划](https://leetcode-cn.com/tag/dynamic-programming/) 
 
 ---
 
-> 难度: 简单
-
-> 分类:  [动态规划](https://leetcode-cn.com/tag/dynamic-programming/) 
-
----
-
-##### 题目描述
-
-```
-给定一个整数数组  nums，求出数组从索引 i 到 j  (i <= j) 范围内元素的总和，包含 i,  j 两点。
+```json
+给定一个整数数组  nums，求出数组从索引 i 到 j  (i ≤ j) 范围内元素的总和，包含 i,  j 两点。
 
 示例：
 
@@ -25,9 +19,7 @@ sumRange(0, 5) -> -3
 
 
 	你可以假设数组不可变。
-	会多次调用 sumRange 方法。
+	会多次调用 sumRange 方法。
 
 
 ```
-
----

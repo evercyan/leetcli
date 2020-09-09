@@ -1,19 +1,13 @@
-## [6. Z 字形变换](https://leetcode-cn.com/problems/zigzag-conversion/)
+# [6. ZigZag Conversion](https://leetcode-cn.com/problems/zigzag-conversion/)
+
+`[中等]` [字符串](https://leetcode-cn.com/tag/string/) 
 
 ---
 
-> 难度: 中等
+```json
+将一个给定字符串根据给定的行数，以从上往下、从左到右进行 Z 字形排列。
 
-> 分类:  [字符串](https://leetcode-cn.com/tag/string/) 
-
----
-
-##### 题目描述
-
-```
-将一个给定字符串根据给定的行数，以从上往下、从左到右进行 Z 字形排列。
-
-比如输入字符串为 "LEETCODEISHIRING" 行数为 3 时，排列如下：
+比如输入字符串为 "LEETCODEISHIRING" 行数为 3 时，排列如下：
 
 L   C   I   R
 E T O E S I I G
@@ -26,16 +20,16 @@ E   D   H   N
 
 string convert(string s, int numRows);
 
-示例 1:
+示例 1:
 
 输入: s = "LEETCODEISHIRING", numRows = 3
 输出: "LCIRETOESIIGEDHN"
 
 
-示例 2:
+示例 2:
 
-输入: s = "LEETCODEISHIRING", numRows = 4
-输出: "LDREOEIIECIHNTSG"
+输入: s = "LEETCODEISHIRING", numRows = 4
+输出: "LDREOEIIECIHNTSG"
 解释:
 
 L     D     R
@@ -44,5 +38,3 @@ E C   I H   N
 T     S     G
 
 ```
-
----

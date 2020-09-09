@@ -1,22 +1,16 @@
-## [192. 统计词频](https://leetcode-cn.com/problems/word-frequency/)
+# [192. Word Frequency](https://leetcode-cn.com/problems/word-frequency/)
+
+`[中等]`
 
 ---
 
-> 难度: 中等
-
-
-
----
-
-##### 题目描述
-
-```
-写一个 bash 脚本以统计一个文本文件 words.txt 中每个单词出现的频率。
+```json
+写一个 bash 脚本以统计一个文本文件 words.txt 中每个单词出现的频率。
 
 为了简单起见，你可以假设：
 
 
-	words.txt只包括小写字母和 ' ' 。
+	words.txt只包括小写字母和 ' ' 。
 	每个单词只由小写字母组成。
 	单词间由一个或多个空格字符分隔。
 
@@ -41,9 +35,7 @@ day 1
 
 
 	不要担心词频相同的单词的排序问题，每个单词出现的频率都是唯一的。
-	你可以使用一行 Unix pipes 实现吗？
+	你可以使用一行 Unix pipes 实现吗？
 
 
 ```
-
----

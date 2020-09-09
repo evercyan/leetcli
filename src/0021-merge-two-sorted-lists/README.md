@@ -1,17 +1,13 @@
-## [21. 合并两个有序链表](https://leetcode-cn.com/problems/merge-two-sorted-lists/)
+# [21. Merge Two Sorted Lists](https://leetcode-cn.com/problems/merge-two-sorted-lists/)
+
+`[简单]` [链表](https://leetcode-cn.com/tag/linked-list/) 
 
 ---
 
-> 难度: 简单
+```json
+将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
 
-> 分类:  [链表](https://leetcode-cn.com/tag/linked-list/) 
-
----
-
-##### 题目描述
-
-```
-将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
+ 
 
 示例：
 
@@ -20,5 +16,3 @@
 
 
 ```
-
----

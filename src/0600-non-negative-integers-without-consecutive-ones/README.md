@@ -1,17 +1,11 @@
-## [600. 不含连续1的非负整数](https://leetcode-cn.com/problems/non-negative-integers-without-consecutive-ones/)
+# [600. Non-negative Integers without Consecutive Ones](https://leetcode-cn.com/problems/non-negative-integers-without-consecutive-ones/)
+
+`[困难]` [动态规划](https://leetcode-cn.com/tag/dynamic-programming/) 
 
 ---
 
-> 难度: 困难
-
-> 分类:  [动态规划](https://leetcode-cn.com/tag/dynamic-programming/) 
-
----
-
-##### 题目描述
-
-```
-给定一个正整数 n，找出小于或等于 n 的非负整数中，其二进制表示不包含 连续的1 的个数。
+```json
+给定一个正整数 n，找出小于或等于 n 的非负整数中，其二进制表示不包含 连续的1 的个数。
 
 示例 1:
 
@@ -30,5 +24,3 @@
 说明: 1 <= n <= 109
 
 ```
-
----

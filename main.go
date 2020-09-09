@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"html"
 	"html/template"
 	"log"
 	"net/http"
@@ -22,9 +23,7 @@ import (
 )
 
 /**
- * ********************************
- * 模板配置
- * ********************************
+ * ******************************** 模板配置
  */
 
 // Repo README 模板
@@ -34,43 +33,33 @@ var tplReadme = `# leetcli
 [![Build Status](https://www.travis-ci.org/evercyan/leetcli.svg?branch=master)](https://www.travis-ci.org/evercyan/leetcli)
 [![codecov](https://codecov.io/gh/evercyan/leetcli/branch/master/graph/badge.svg?token=RbJTUtAlvl)](https://codecov.io/gh/evercyan/leetcli)
 
-> leetcode 刷题小助手, 帮助生成 readme, 答题文件, 答题测试文件等
+> leetcode 刷题小工具, 生成 README, 答题文件, 测试文件等
 
 ---
 
 ## Tag
 
 {{.DrawQuestionTagList}}
-
 ---
 
 ## Question
 
 {{.DrawQuestionList}}
+---
 
-#### Snapshot
+## Snapshot
 
 ![leetcli](https://raw.githubusercontent.com/evercyan/cantor/master/resource/80/803bac1363e065a5e0fa7f8ac9d6db6a.png)
-
----
 `
 
-// 题目描述 README 模板
-var tplQuestionReadme = `## [{{.FQID}}. {{.Title}}]({{.Link}})
+// 题目 README 模板
+var tplQuestionReadme = `# [{{.FQID}}. {{.Title}}]({{.Link}})
+
+` + "`" + `[{{.Difficulty}}]` + "`" + `{{.Tags}}
 
 ---
-
-{{.Difficulty}}
-
-{{.Tags}}
-
----
-
-#### 题目描述
 
 {{.Content}}
-
----
 `
 
 // 题目 go 测试模板
@@ -110,43 +99,20 @@ func TestSolution(t *testing.T) {
 }`
 
 /**
- * ********************************
- * 公共函数
- * ********************************
+ * ******************************** 公共函数
  */
 
-func formatHtml(s string) string {
-	// 先处理 img 标签, 生成 markdown 格式, ![](图片链接地址)
+func formatContent(str string) string {
+	// 处理 img 标签, 生成 markdown 格式, ![](图片链接地址)
 	rImg, _ := regexp.Compile(`<img[^<>]*src="([^"]+)"[^<>]*>`)
-	s = rImg.ReplaceAllString(s, "```\n\n![]($1)\n\n```")
-	replaceMap := map[string]string{
-		"&amp;quot;": "\"",
-		"&amp;lt;":   "<",
-		"&amp;gt;":   ">",
-		"&amp;ge;":   ">=",
-		"&amp;le;":   "<=",
-		"&amp;nbsp;": " ",
-		"&amp;amp;":  "&",
-		"&amp;#39;":  "'",
-		"&amp;#43;":  "+",
-		"&quot;":     "\"",
-		"&lt;":       "<",
-		"&gt;":       ">",
-		"&ge;":       ">=",
-		"&le;":       "<=",
-		"&nbsp;":     " ",
-		"&amp;":      "&",
-		"&#39;":      "'",
-		"&#43;":      "+",
-		"\n\n\n\n\n": "\n\n",
-		"\n\n\n\n":   "\n\n",
-		"\n\n\n":     "\n\n",
-	}
-	for k, v := range replaceMap {
-		s = strings.Replace(s, k, v, -1)
-	}
+	str = rImg.ReplaceAllString(str, "```\n\n![]($1)\n\n```")
+	// 处理 &nbsp; &lt; 等 html escape
+	str = html.UnescapeString(str)
+	// 处理多行换行
+	str = regexp.MustCompile(`(\n){3,}`).ReplaceAllString(str, "\n\n")
+	// 处理标签
 	re, _ := regexp.Compile("\\<[^<>]+\\>")
-	return fmt.Sprintf("```\n%s\n```", re.ReplaceAllString(s, ""))
+	return fmt.Sprintf("```json\n%s\n```", re.ReplaceAllString(str, ""))
 }
 
 func getQustionPath(fid string, id int, slug string) string {
@@ -174,18 +140,16 @@ func warning(text string) {
 }
 
 /**
- * ********************************
- * leetcode 数据
- * ********************************
+ * ******************************** leetcode
  */
 
 var (
-	LCProbAllURL      = "https://leetcode-cn.com/api/problems/all/" // 问题列表地址
-	LCGraphqlURL      = "https://leetcode-cn.com/graphql"           // 问题数据地址
-	LCQuestionLinkURL = "https://leetcode-cn.com/problems/%s/"      // 问题页面地址
-	LCTagLinkURL      = "https://leetcode-cn.com/tag/%s/"           // 标签页面地址
-	LCQuestionSetURL  = "https://leetcode-cn.com/problemset/all/"   // 题库首页
-	LCDifficulty      = []string{"", "简单", "中等", "困难"}              // 难度类型
+	LCAllURL         = "https://leetcode-cn.com/api/problems/all/" // 问题列表地址
+	LCGraphqlURL     = "https://leetcode-cn.com/graphql"           // 问题数据地址
+	LCQuestionURL    = "https://leetcode-cn.com/problems/%s/"      // 问题页面地址
+	LCTagURL         = "https://leetcode-cn.com/tag/%s/"           // 标签页面地址
+	LCQuestionSetURL = "https://leetcode-cn.com/problemset/all/"   // 题库首页
+	LCDifficulty     = []string{"", "简单", "中等", "困难"}              // 难度类型
 )
 
 type LeetCode struct {
@@ -194,7 +158,6 @@ type LeetCode struct {
 	QuestionTagList []LCQuestionTagInfo
 }
 
-// 问题
 type LCQuestionInfo struct {
 	FQID           string `json:"fqid"`            // 前端 id
 	QID            int    `json:"qid"`             // id
@@ -206,14 +169,12 @@ type LCQuestionInfo struct {
 	Difficulty     string `json:"difficulty"`      // 困难度
 }
 
-// 问题标签
 type LCQuestionTagInfo struct {
 	Title string
 	Link  string
 	Count int
 }
 
-// 原始问题
 type LCOriginQuestionInfo struct {
 	Paid_only bool        `json:"paid_only"`
 	Status    interface{} `json:"status"`
@@ -236,7 +197,6 @@ type LCOriginQuestionInfo struct {
 	} `json:"difficulty"`
 }
 
-// 问题详情
 type LCQuestionDetail struct {
 	Slug     string                       `json:"slug"`
 	Title    string                       `json:"title"`
@@ -246,10 +206,9 @@ type LCQuestionDetail struct {
 	CodeMap  map[string]map[string]string `json:"code_list"`
 }
 
-// 获取问题列表
 func (this *LeetCode) getQuestionList() error {
 	req := request.NewRequest(new(http.Client))
-	resp, err := req.Get(LCProbAllURL)
+	resp, err := req.Get(LCAllURL)
 	defer resp.Body.Close()
 	if err != nil {
 		return err
@@ -272,7 +231,7 @@ func (this *LeetCode) getQuestionList() error {
 			QID:            qList2[i].Stat.Question_id,
 			Title:          qList2[i].Stat.Question__title,
 			Slug:           qList2[i].Stat.Question__title_slug,
-			Link:           fmt.Sprintf(LCQuestionLinkURL, qList2[i].Stat.Question__title_slug),
+			Link:           fmt.Sprintf(LCQuestionURL, qList2[i].Stat.Question__title_slug),
 			TotalAcs:       qList2[i].Stat.Total_acs,
 			TotalSubmitted: qList2[i].Stat.Total_submitted,
 			Difficulty:     LCDifficulty[qList2[i].Difficulty.Level],
@@ -285,7 +244,6 @@ func (this *LeetCode) getQuestionList() error {
 	return nil
 }
 
-// 获取问题标签列表
 func (this *LeetCode) getQuestionTagList() error {
 	resp, err := http.Get(LCQuestionSetURL)
 	defer resp.Body.Close()
@@ -309,7 +267,6 @@ func (this *LeetCode) getQuestionTagList() error {
 	return nil
 }
 
-// 获取问题详情
 func (this *LeetCode) getQuestionDetail(slug string) (*LCQuestionDetail, error) {
 	req := request.NewRequest(new(http.Client))
 	req.Headers = map[string]string{
@@ -336,7 +293,7 @@ func (this *LeetCode) getQuestionDetail(slug string) (*LCQuestionDetail, error) 
 	questionDetail.Title, _ = respJson.Get("data").Get("question").Get("translatedTitle").String()
 	questionDetail.Content, _ = respJson.Get("data").Get("question").Get("translatedContent").String()
 	// 处理 html 标签
-	questionDetail.Content = formatHtml(questionDetail.Content)
+	questionDetail.Content = formatContent(questionDetail.Content)
 
 	// 标签
 	tagListTmp, _ := respJson.Get("data").Get("question").Get("topicTags").Array()
@@ -366,7 +323,6 @@ func (this *LeetCode) getQuestionDetail(slug string) (*LCQuestionDetail, error) 
 	return questionDetail, nil
 }
 
-// leetcode 数据初始化
 func (this *LeetCode) Init() error {
 	err := this.getQuestionList()
 	if err != nil {
@@ -380,9 +336,7 @@ func (this *LeetCode) Init() error {
 }
 
 /**
- * ********************************
- * 答题文件处理
- * ********************************
+ * ******************************** 答题文件处理
  */
 
 // 默认答题配置
@@ -415,8 +369,7 @@ var (
 	}
 )
 
-type LeetCodeFile struct {
-}
+type LeetCodeFile struct{}
 
 // 生成答题相关文件
 func (this *LeetCodeFile) GenerateQuestion(slug string, lang string, questionDetail *LCQuestionDetail) (err error) {
@@ -435,10 +388,7 @@ func (this *LeetCodeFile) GenerateQuestion(slug string, lang string, questionDet
 		if tag["slug"] == "" {
 			continue
 		}
-		tagStr += fmt.Sprintf(" [%s](%s) ", tag["translatedName"], fmt.Sprintf(LCTagLinkURL, tag["slug"]))
-	}
-	if tagStr != "" {
-		tagStr = fmt.Sprintf("> 分类: %s", tagStr)
+		tagStr += fmt.Sprintf(" [%s](%s) ", tag["translatedName"], fmt.Sprintf(LCTagURL, tag["slug"]))
 	}
 
 	// 问题模板数据
@@ -454,7 +404,7 @@ func (this *LeetCodeFile) GenerateQuestion(slug string, lang string, questionDet
 		Title:      template.HTML(questionInfo.Title),
 		Link:       questionInfo.Link,
 		Content:    template.HTML(questionDetail.Content),
-		Difficulty: template.HTML(fmt.Sprintf("> 难度: %s", questionInfo.Difficulty)),
+		Difficulty: template.HTML(questionInfo.Difficulty),
 		Tags:       template.HTML(tagStr),
 	}
 
@@ -504,18 +454,16 @@ func (this *LeetCodeFile) GenerateQuestion(slug string, lang string, questionDet
 	return nil
 }
 
-// 生成 Resp README.md
 func (this *LeetCodeFile) GenerateReadme() error {
 	var b bytes.Buffer
-	tmpl := template.Must(template.New("readme").Parse(tplReadme))
-	err := tmpl.Execute(&b, this)
+	tpl := template.Must(template.New("readme").Parse(tplReadme))
+	err := tpl.Execute(&b, this)
 	if err != nil {
 		return err
 	}
 	return util.WriteFile("./README.md", string(b.Bytes()))
 }
 
-// readme - 渲染标签列表
 // [![数组](https://img.shields.io/badge/数组-99-red.svg)](https://shields.io/)
 func (this *LeetCodeFile) DrawQuestionTagList() string {
 	tagList := LC.QuestionTagList
@@ -529,21 +477,19 @@ func (this *LeetCodeFile) DrawQuestionTagList() string {
 		if len(tagLinks) < 4 {
 			continue
 		}
-		link := fmt.Sprintf(LCTagLinkURL, tagLinks[2])
+		url := fmt.Sprintf(LCTagURL, tagLinks[2])
 		title := strings.Replace(tag.Title, " ", "", -1)
-		color := "lightgray"
-		if tag.Count > 100 {
-			color = "brightgreen"
-		} else if tag.Count > 60 {
-			color = "yellowgreen"
-		} else if tag.Count > 40 {
-			color = "orange"
-		} else if tag.Count > 20 {
-			color = "blue"
+		color := "ff9985"
+		if tag.Count > 200 {
+			color = "8a0808"
+		} else if tag.Count > 100 {
+			color = "b80909"
+		} else if tag.Count > 50 {
+			color = "e64546"
 		} else if tag.Count > 10 {
-			color = "red"
+			color = "f57567"
 		}
-		resp += fmt.Sprintf("[![%s](https://img.shields.io/badge/%s-%d-%s.svg?style=flat)](%s)\n", title, title, tag.Count, color, link)
+		resp += fmt.Sprintf("[![%s](https://img.shields.io/badge/%s-%d-%s.svg?style=flat)](%s)\n", title, title, tag.Count, color, url)
 	}
 	return resp
 }
@@ -570,9 +516,7 @@ func (this *LeetCodeFile) DrawQuestionList() string {
 }
 
 /**
- * ********************************
- * Main
- * ********************************
+ * ******************************** main
  */
 
 var LC = new(LeetCode)
@@ -587,8 +531,8 @@ func main() {
 	}
 	app := cli.NewApp()
 	app.Name = "leetcli"
-	app.Usage = "A CLI tool for leetcode"
-	app.Version = "1.0.1"
+	app.Usage = "leetcode 刷题小工具, 生成 README.md, 答题文件, 测试文件等"
+	app.Version = "0.0.1"
 	app.Flags = []cli.Flag{}
 	app.Commands = []cli.Command{
 		{
@@ -635,14 +579,13 @@ func main() {
 					warning("无效的编程语言")
 					return
 				}
-				notice("已选择的答题编辑语言: " + lang)
+				notice("已选择的答题编程语言: " + lang)
 				err = LCFile.GenerateQuestion(slug, lang, questionDetail)
 				if err != nil {
 					warning("创建答题文件失败: " + err.Error())
 					return
 				}
 				success("创建答题文件成功")
-
 				return
 			},
 		},

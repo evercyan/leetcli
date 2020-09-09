@@ -1,17 +1,11 @@
-## [19. 删除链表的倒数第N个节点](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/)
+# [19. Remove Nth Node From End of List](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/)
+
+`[中等]` [链表](https://leetcode-cn.com/tag/linked-list/)  [双指针](https://leetcode-cn.com/tag/two-pointers/) 
 
 ---
 
-> 难度: 中等
-
-> 分类:  [链表](https://leetcode-cn.com/tag/linked-list/)  [双指针](https://leetcode-cn.com/tag/two-pointers/) 
-
----
-
-##### 题目描述
-
-```
-给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点。
+```json
+给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点。
 
 示例：
 
@@ -22,12 +16,10 @@
 
 说明：
 
-给定的 n 保证是有效的。
+给定的 n 保证是有效的。
 
 进阶：
 
 你能尝试使用一趟扫描实现吗？
 
 ```
-
----

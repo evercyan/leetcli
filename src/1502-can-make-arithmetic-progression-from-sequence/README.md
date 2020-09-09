@@ -1,23 +1,17 @@
-## [1502. 判断能否形成等差数列](https://leetcode-cn.com/problems/can-make-arithmetic-progression-from-sequence/)
+# [1502. Can Make Arithmetic Progression From Sequence](https://leetcode-cn.com/problems/can-make-arithmetic-progression-from-sequence/)
+
+`[简单]` [排序](https://leetcode-cn.com/tag/sort/)  [数组](https://leetcode-cn.com/tag/array/) 
 
 ---
 
-> 难度: 简单
-
-> 分类:  [排序](https://leetcode-cn.com/tag/sort/)  [数组](https://leetcode-cn.com/tag/array/) 
-
----
-
-##### 题目描述
-
-```
+```json
 给你一个数字数组 arr 。
 
 如果一个数列中，任意相邻两项的差总等于同一个常数，那么这个数列就称为 等差数列 。
 
 如果可以重新排列数组形成等差数列，请返回 true ；否则，返回 false 。
 
- 
+ 
 
 示例 1：
 
@@ -33,7 +27,7 @@
 解释：无法通过重新排序得到等差数列。
 
 
- 
+ 
 
 提示：
 
@@ -43,5 +37,3 @@
 
 
 ```
-
----

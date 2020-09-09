@@ -1,16 +1,10 @@
-## [180. 连续出现的数字](https://leetcode-cn.com/problems/consecutive-numbers/)
+# [180. Consecutive Numbers](https://leetcode-cn.com/problems/consecutive-numbers/)
+
+`[中等]`
 
 ---
 
-> 难度: 中等
-
-
-
----
-
-##### 题目描述
-
-```
+```json
 编写一个 SQL 查询，查找所有至少连续出现三次的数字。
 
 +----+-----+
@@ -36,5 +30,3 @@
 
 
 ```
-
----

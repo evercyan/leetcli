@@ -1,19 +1,13 @@
-## [108. 将有序数组转换为二叉搜索树](https://leetcode-cn.com/problems/convert-sorted-array-to-binary-search-tree/)
+# [108. Convert Sorted Array to Binary Search Tree](https://leetcode-cn.com/problems/convert-sorted-array-to-binary-search-tree/)
+
+`[简单]` [树](https://leetcode-cn.com/tag/tree/)  [深度优先搜索](https://leetcode-cn.com/tag/depth-first-search/) 
 
 ---
 
-> 难度: 简单
-
-> 分类:  [树](https://leetcode-cn.com/tag/tree/)  [深度优先搜索](https://leetcode-cn.com/tag/depth-first-search/) 
-
----
-
-##### 题目描述
-
-```
+```json
 将一个按照升序排列的有序数组，转换为一棵高度平衡二叉搜索树。
 
-本题中，一个高度平衡二叉树是指一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过 1。
+本题中，一个高度平衡二叉树是指一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过 1。
 
 示例:
 
@@ -29,5 +23,3 @@
 
 
 ```
-
----

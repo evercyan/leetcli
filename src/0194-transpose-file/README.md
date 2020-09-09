@@ -1,23 +1,17 @@
-## [194. 转置文件](https://leetcode-cn.com/problems/transpose-file/)
+# [194. Transpose File](https://leetcode-cn.com/problems/transpose-file/)
+
+`[中等]`
 
 ---
 
-> 难度: 中等
+```json
+给定一个文件 file.txt，转置它的内容。
 
-
-
----
-
-##### 题目描述
-
-```
-给定一个文件 file.txt，转置它的内容。
-
-你可以假设每行列数相同，并且每个字段由 ' ' 分隔.
+你可以假设每行列数相同，并且每个字段由 ' ' 分隔.
 
 示例:
 
-假设 file.txt 文件内容如下：
+假设 file.txt 文件内容如下：
 
 name age
 alice 21
@@ -31,5 +25,3 @@ age 21 30
 
 
 ```
-
----

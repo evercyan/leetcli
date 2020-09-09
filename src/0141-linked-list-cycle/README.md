@@ -1,21 +1,15 @@
-## [141. 环形链表](https://leetcode-cn.com/problems/linked-list-cycle/)
+# [141. Linked List Cycle](https://leetcode-cn.com/problems/linked-list-cycle/)
+
+`[简单]` [链表](https://leetcode-cn.com/tag/linked-list/)  [双指针](https://leetcode-cn.com/tag/two-pointers/) 
 
 ---
 
-> 难度: 简单
-
-> 分类:  [链表](https://leetcode-cn.com/tag/linked-list/)  [双指针](https://leetcode-cn.com/tag/two-pointers/) 
-
----
-
-##### 题目描述
-
-```
+```json
 给定一个链表，判断链表中是否有环。
 
 为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。
 
- 
+ 
 
 示例 1：
 
@@ -30,7 +24,7 @@
 
 ```
 
-示例 2：
+示例 2：
 
 输入：head = [1,2], pos = 0
 输出：true
@@ -56,12 +50,10 @@
 
 ```
 
- 
+ 
 
 进阶：
 
 你能用 O(1)（即，常量）内存解决此问题吗？
 
 ```
-
----

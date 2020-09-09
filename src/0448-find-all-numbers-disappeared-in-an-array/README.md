@@ -1,17 +1,11 @@
-## [448. 找到所有数组中消失的数字](https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array/)
+# [448. Find All Numbers Disappeared in an Array](https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array/)
+
+`[简单]` [数组](https://leetcode-cn.com/tag/array/) 
 
 ---
 
-> 难度: 简单
-
-> 分类:  [数组](https://leetcode-cn.com/tag/array/) 
-
----
-
-##### 题目描述
-
-```
-给定一个范围在  1 <= a[i] <= n ( n = 数组大小 ) 的 整型数组，数组中的元素一些出现了两次，另一些只出现一次。
+```json
+给定一个范围在  1 ≤ a[i] ≤ n ( n = 数组大小 ) 的 整型数组，数组中的元素一些出现了两次，另一些只出现一次。
 
 找到所有在 [1, n] 范围之间没有出现在数组中的数字。
 
@@ -28,5 +22,3 @@
 
 
 ```
-
----

@@ -1,21 +1,15 @@
-## [100. 相同的树](https://leetcode-cn.com/problems/same-tree/)
+# [100. Same Tree](https://leetcode-cn.com/problems/same-tree/)
+
+`[简单]` [树](https://leetcode-cn.com/tag/tree/)  [深度优先搜索](https://leetcode-cn.com/tag/depth-first-search/) 
 
 ---
 
-> 难度: 简单
-
-> 分类:  [树](https://leetcode-cn.com/tag/tree/)  [深度优先搜索](https://leetcode-cn.com/tag/depth-first-search/) 
-
----
-
-##### 题目描述
-
-```
+```json
 给定两个二叉树，编写一个函数来检验它们是否相同。
 
 如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。
 
-示例 1:
+示例 1:
 
 输入:       1         1
           / \       / \
@@ -36,7 +30,7 @@
 输出: false
 
 
-示例 3:
+示例 3:
 
 输入:       1         1
           / \       / \
@@ -48,5 +42,3 @@
 
 
 ```
-
----

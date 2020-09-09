@@ -1,17 +1,11 @@
-## [176. 第二高的薪水](https://leetcode-cn.com/problems/second-highest-salary/)
+# [176. Second Highest Salary](https://leetcode-cn.com/problems/second-highest-salary/)
+
+`[简单]`
 
 ---
 
-> 难度: 简单
-
-
-
----
-
-##### 题目描述
-
-```
-编写一个 SQL 查询，获取 Employee 表中第二高的薪水（Salary） 。
+```json
+编写一个 SQL 查询，获取 Employee 表中第二高的薪水（Salary） 。
 
 +----+--------+
 | Id | Salary |
@@ -22,7 +16,7 @@
 +----+--------+
 
 
-例如上述 Employee 表，SQL查询应该返回 200 作为第二高的薪水。如果不存在第二高的薪水，那么查询应返回 null。
+例如上述 Employee 表，SQL查询应该返回 200 作为第二高的薪水。如果不存在第二高的薪水，那么查询应返回 null。
 
 +---------------------+
 | SecondHighestSalary |
@@ -32,5 +26,3 @@
 
 
 ```
-
----

@@ -1,42 +1,36 @@
-## [1504. 统计全 1 子矩形](https://leetcode-cn.com/problems/count-submatrices-with-all-ones/)
+# [1504. Count Submatrices With All Ones](https://leetcode-cn.com/problems/count-submatrices-with-all-ones/)
+
+`[中等]` [动态规划](https://leetcode-cn.com/tag/dynamic-programming/) 
 
 ---
 
-> 难度: 中等
+```json
+给你一个只包含 0 和 1 的 rows * columns 矩阵 mat ，请你返回有多少个 子矩形 的元素全部都是 1 。
 
-> 分类:  [动态规划](https://leetcode-cn.com/tag/dynamic-programming/) 
-
----
-
-##### 题目描述
-
-```
-给你一个只包含 0 和 1 的 rows * columns 矩阵 mat ，请你返回有多少个 子矩形 的元素全部都是 1 。
-
- 
+ 
 
 示例 1：
 
 
 输入：mat = [[1,0,1],
-            [1,1,0],
-            [1,1,0]]
+            [1,1,0],
+            [1,1,0]]
 输出：13
 解释：
-有 6 个 1x1 的矩形。
+有 6 个 1x1 的矩形。
 有 2 个 1x2 的矩形。
 有 3 个 2x1 的矩形。
 有 1 个 2x2 的矩形。
 有 1 个 3x1 的矩形。
-矩形数目总共 = 6 + 2 + 3 + 1 + 1 = 13 。
+矩形数目总共 = 6 + 2 + 3 + 1 + 1 = 13 。
 
 
 示例 2：
 
 
 输入：mat = [[0,1,1,0],
-            [0,1,1,1],
-            [1,1,1,0]]
+            [0,1,1,1],
+            [1,1,1,0]]
 输出：24
 解释：
 有 8 个 1x1 的子矩形。
@@ -63,16 +57,14 @@
 输出：5
 
 
- 
+ 
 
 提示：
 
 
-	1 <= rows <= 150
-	1 <= columns <= 150
+	1 <= rows <= 150
+	1 <= columns <= 150
 	0 <= mat[i][j] <= 1
 
 
 ```
-
----

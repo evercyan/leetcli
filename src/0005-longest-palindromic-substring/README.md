@@ -1,17 +1,11 @@
-## [5. 最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/)
+# [5. Longest Palindromic Substring](https://leetcode-cn.com/problems/longest-palindromic-substring/)
+
+`[中等]` [字符串](https://leetcode-cn.com/tag/string/)  [动态规划](https://leetcode-cn.com/tag/dynamic-programming/) 
 
 ---
 
-> 难度: 中等
-
-> 分类:  [字符串](https://leetcode-cn.com/tag/string/)  [动态规划](https://leetcode-cn.com/tag/dynamic-programming/) 
-
----
-
-##### 题目描述
-
-```
-给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
+```json
+给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
 
 示例 1：
 
@@ -27,5 +21,3 @@
 
 
 ```
-
----

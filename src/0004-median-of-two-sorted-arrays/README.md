@@ -1,21 +1,17 @@
-## [4. 寻找两个有序数组的中位数](https://leetcode-cn.com/problems/median-of-two-sorted-arrays/)
+# [4. Median of Two Sorted Arrays](https://leetcode-cn.com/problems/median-of-two-sorted-arrays/)
+
+`[困难]` [数组](https://leetcode-cn.com/tag/array/)  [二分查找](https://leetcode-cn.com/tag/binary-search/)  [分治算法](https://leetcode-cn.com/tag/divide-and-conquer/) 
 
 ---
 
-> 难度: 困难
+```json
+给定两个大小为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。
 
-> 分类:  [数组](https://leetcode-cn.com/tag/array/)  [二分查找](https://leetcode-cn.com/tag/binary-search/)  [分治算法](https://leetcode-cn.com/tag/divide-and-conquer/) 
+请你找出这两个正序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。
 
----
+你可以假设 nums1 和 nums2 不会同时为空。
 
-##### 题目描述
-
-```
-给定两个大小为 m 和 n 的有序数组 nums1 和 nums2。
-
-请你找出这两个有序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。
-
-你可以假设 nums1 和 nums2 不会同时为空。
+ 
 
 示例 1:
 
@@ -34,5 +30,3 @@ nums2 = [3, 4]
 
 
 ```
-
----

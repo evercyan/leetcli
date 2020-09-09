@@ -1,17 +1,11 @@
-## [1179. Reformat Department Table](https://leetcode-cn.com/problems/reformat-department-table/)
+# [1179. Reformat Department Table](https://leetcode-cn.com/problems/reformat-department-table/)
+
+`[简单]`
 
 ---
 
-> 难度: 简单
-
-
-
----
-
-#### 题目描述
-
-```
-部门表 Department：
+```json
+部门表 Department：
 
 
 +---------------+---------+
@@ -26,9 +20,9 @@
 月份（month）可以取下列值 ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]。
 
 
- 
+ 
 
-编写一个 SQL 查询来重新格式化表，使得新的表中有一个部门 id 列和一些对应 每个月 的收入（revenue）列。
+编写一个 SQL 查询来重新格式化表，使得新的表中有一个部门 id 列和一些对应 每个月 的收入（revenue）列。
 
 查询结果格式如下面的示例所示：
 
@@ -57,5 +51,3 @@ Department 表：
 
 
 ```
-
----

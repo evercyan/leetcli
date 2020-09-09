@@ -1,26 +1,20 @@
-## [982. 按位与为零的三元组](https://leetcode-cn.com/problems/triples-with-bitwise-and-equal-to-zero/)
+# [982. Triples with Bitwise AND Equal To Zero](https://leetcode-cn.com/problems/triples-with-bitwise-and-equal-to-zero/)
+
+`[困难]` [动态规划](https://leetcode-cn.com/tag/dynamic-programming/) 
 
 ---
 
-> 难度: 困难
-
-> 分类:  [动态规划](https://leetcode-cn.com/tag/dynamic-programming/) 
-
----
-
-##### 题目描述
-
-```
-给定一个整数数组 A，找出索引为 (i, j, k) 的三元组，使得：
+```json
+给定一个整数数组 A，找出索引为 (i, j, k) 的三元组，使得：
 
 
 	0 <= i < A.length
 	0 <= j < A.length
 	0 <= k < A.length
-	A[i] & A[j] & A[k] == 0，其中 & 表示按位与（AND）操作符。
+	A[i] & A[j] & A[k] == 0，其中 & 表示按位与（AND）操作符。
 
 
- 
+ 
 
 示例：
 
@@ -41,7 +35,7 @@
 (i=2, j=1, k=0) : 3 & 1 & 2
 
 
- 
+ 
 
 提示：
 
@@ -51,5 +45,3 @@
 
 
 ```
-
----

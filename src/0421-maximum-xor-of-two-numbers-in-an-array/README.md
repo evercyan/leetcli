@@ -1,19 +1,13 @@
-## [421. 数组中两个数的最大异或值](https://leetcode-cn.com/problems/maximum-xor-of-two-numbers-in-an-array/)
+# [421. Maximum XOR of Two Numbers in an Array](https://leetcode-cn.com/problems/maximum-xor-of-two-numbers-in-an-array/)
+
+`[中等]` [位运算](https://leetcode-cn.com/tag/bit-manipulation/)  [字典树](https://leetcode-cn.com/tag/trie/) 
 
 ---
 
-> 题目难度: Medium
+```json
+给定一个非空数组，数组中元素为 a0, a1, a2, … , an-1，其中 0 ≤ ai < 231 。
 
-> 题目分类:  [位运算](https://leetcode.com-cn/tag/bit-manipulation/)  [字典树](https://leetcode.com-cn/tag/trie/) 
-
----
-
-##### 题目描述
-
-```
-给定一个非空数组，数组中元素为 a0, a1, a2, &hellip; , an-1，其中 0 <= ai < 231 。
-
-找到 ai 和aj 最大的异或 (XOR) 运算结果，其中0 <= i,  j < n 。
+找到 ai 和aj 最大的异或 (XOR) 运算结果，其中0 ≤ i,  j < n 。
 
 你能在O(n)的时间解决这个问题吗？
 
@@ -28,5 +22,3 @@
 
 
 ```
-
----

@@ -1,16 +1,10 @@
-## [136. 只出现一次的数字](https://leetcode-cn.com/problems/single-number/)
+# [136. Single Number](https://leetcode-cn.com/problems/single-number/)
+
+`[简单]` [位运算](https://leetcode-cn.com/tag/bit-manipulation/)  [哈希表](https://leetcode-cn.com/tag/hash-table/) 
 
 ---
 
-> 难度: 简单
-
-> 分类:  [位运算](https://leetcode-cn.com/tag/bit-manipulation/)  [哈希表](https://leetcode-cn.com/tag/hash-table/) 
-
----
-
-##### 题目描述
-
-```
+```json
 给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
 
 说明：
@@ -23,11 +17,9 @@
 输出: 1
 
 
-示例 2:
+示例 2:
 
 输入: [4,1,2,1,2]
 输出: 4
 
 ```
-
----

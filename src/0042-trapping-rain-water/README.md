@@ -1,17 +1,11 @@
-## [42. 接雨水](https://leetcode-cn.com/problems/trapping-rain-water/)
+# [42. Trapping Rain Water](https://leetcode-cn.com/problems/trapping-rain-water/)
+
+`[困难]` [栈](https://leetcode-cn.com/tag/stack/)  [数组](https://leetcode-cn.com/tag/array/)  [双指针](https://leetcode-cn.com/tag/two-pointers/) 
 
 ---
 
-> 难度: 困难
-
-> 分类:  [栈](https://leetcode-cn.com/tag/stack/)  [数组](https://leetcode-cn.com/tag/array/)  [双指针](https://leetcode-cn.com/tag/two-pointers/) 
-
----
-
-##### 题目描述
-
-```
-给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
+```json
+给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
 
 ```
 
@@ -19,7 +13,7 @@
 
 ```
 
-上面是由数组 [0,1,0,2,1,0,1,3,2,1,2,1] 表示的高度图，在这种情况下，可以接 6 个单位的雨水（蓝色部分表示雨水）。 感谢 Marcos 贡献此图。
+上面是由数组 [0,1,0,2,1,0,1,3,2,1,2,1] 表示的高度图，在这种情况下，可以接 6 个单位的雨水（蓝色部分表示雨水）。 感谢 Marcos 贡献此图。
 
 示例:
 
@@ -27,5 +21,3 @@
 输出: 6
 
 ```
-
----

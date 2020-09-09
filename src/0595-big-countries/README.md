@@ -1,17 +1,11 @@
-## [595. 大的国家](https://leetcode-cn.com/problems/big-countries/)
+# [595. Big Countries](https://leetcode-cn.com/problems/big-countries/)
+
+`[简单]`
 
 ---
 
-> 难度: 简单
-
-
-
----
-
-##### 题目描述
-
-```
-这里有张 World 表
+```json
+这里有张 World 表
 
 +-----------------+------------+------------+--------------+---------------+
 | name            | continent  | area       | population   | gdp           |
@@ -39,5 +33,3 @@
 
 
 ```
-
----

@@ -1,17 +1,11 @@
-## [196. 删除重复的电子邮箱](https://leetcode-cn.com/problems/delete-duplicate-emails/)
+# [196. Delete Duplicate Emails](https://leetcode-cn.com/problems/delete-duplicate-emails/)
+
+`[简单]`
 
 ---
 
-> 难度: 简单
-
-
-
----
-
-##### 题目描述
-
-```
-编写一个 SQL 查询，来删除 Person 表中所有重复的电子邮箱，重复的邮箱里只保留 Id 最小 的那个。
+```json
+编写一个 SQL 查询，来删除 Person 表中所有重复的电子邮箱，重复的邮箱里只保留 Id 最小 的那个。
 
 +----+------------------+
 | Id | Email            |
@@ -33,6 +27,13 @@ Id 是这个表的主键。
 +----+------------------+
 
 
-```
+ 
 
----
+提示：
+
+
+	执行 SQL 之后，输出是整个 Person 表。
+	使用 delete 语句。
+
+
+```

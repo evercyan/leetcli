@@ -1,21 +1,15 @@
-## [24. 两两交换链表中的节点](https://leetcode-cn.com/problems/swap-nodes-in-pairs/)
+# [24. Swap Nodes in Pairs](https://leetcode-cn.com/problems/swap-nodes-in-pairs/)
+
+`[中等]` [链表](https://leetcode-cn.com/tag/linked-list/) 
 
 ---
 
-> 难度: 中等
-
-> 分类:  [链表](https://leetcode-cn.com/tag/linked-list/) 
-
----
-
-##### 题目描述
-
-```
+```json
 给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。
 
 你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
 
- 
+ 
 
 示例:
 
@@ -23,5 +17,3 @@
 
 
 ```
-
----

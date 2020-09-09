@@ -4,51 +4,50 @@
 [![Build Status](https://www.travis-ci.org/evercyan/leetcli.svg?branch=master)](https://www.travis-ci.org/evercyan/leetcli)
 [![codecov](https://codecov.io/gh/evercyan/leetcli/branch/master/graph/badge.svg?token=RbJTUtAlvl)](https://codecov.io/gh/evercyan/leetcli)
 
-> leetcode 刷题小助手, 帮助生成 readme, 答题文件, 答题测试文件等
+> leetcode 刷题小工具, 生成 README, 答题文件, 测试文件等
 
 ---
 
 ## Tag
 
-[![数组](https://img.shields.io/badge/数组-310-brightgreen.svg?style=flat)](https://leetcode-cn.com/tag/array/)
-[![动态规划](https://img.shields.io/badge/动态规划-236-brightgreen.svg?style=flat)](https://leetcode-cn.com/tag/dynamic-programming/)
-[![字符串](https://img.shields.io/badge/字符串-213-brightgreen.svg?style=flat)](https://leetcode-cn.com/tag/string/)
-[![数学](https://img.shields.io/badge/数学-202-brightgreen.svg?style=flat)](https://leetcode-cn.com/tag/math/)
-[![树](https://img.shields.io/badge/树-165-brightgreen.svg?style=flat)](https://leetcode-cn.com/tag/tree/)
-[![深度优先搜索](https://img.shields.io/badge/深度优先搜索-145-brightgreen.svg?style=flat)](https://leetcode-cn.com/tag/depth-first-search/)
-[![哈希表](https://img.shields.io/badge/哈希表-139-brightgreen.svg?style=flat)](https://leetcode-cn.com/tag/hash-table/)
-[![二分查找](https://img.shields.io/badge/二分查找-97-yellowgreen.svg?style=flat)](https://leetcode-cn.com/tag/binary-search/)
-[![贪心算法](https://img.shields.io/badge/贪心算法-90-yellowgreen.svg?style=flat)](https://leetcode-cn.com/tag/greedy/)
-[![广度优先搜索](https://img.shields.io/badge/广度优先搜索-77-yellowgreen.svg?style=flat)](https://leetcode-cn.com/tag/breadth-first-search/)
-[![双指针](https://img.shields.io/badge/双指针-71-yellowgreen.svg?style=flat)](https://leetcode-cn.com/tag/two-pointers/)
-[![位运算](https://img.shields.io/badge/位运算-66-yellowgreen.svg?style=flat)](https://leetcode-cn.com/tag/bit-manipulation/)
-[![栈](https://img.shields.io/badge/栈-66-yellowgreen.svg?style=flat)](https://leetcode-cn.com/tag/stack/)
-[![排序](https://img.shields.io/badge/排序-65-yellowgreen.svg?style=flat)](https://leetcode-cn.com/tag/sort/)
-[![回溯算法](https://img.shields.io/badge/回溯算法-62-yellowgreen.svg?style=flat)](https://leetcode-cn.com/tag/backtracking/)
-[![设计](https://img.shields.io/badge/设计-61-yellowgreen.svg?style=flat)](https://leetcode-cn.com/tag/design/)
-[![链表](https://img.shields.io/badge/链表-53-orange.svg?style=flat)](https://leetcode-cn.com/tag/linked-list/)
-[![图](https://img.shields.io/badge/图-47-orange.svg?style=flat)](https://leetcode-cn.com/tag/graph/)
-[![堆](https://img.shields.io/badge/堆-40-blue.svg?style=flat)](https://leetcode-cn.com/tag/heap/)
-[![并查集](https://img.shields.io/badge/并查集-31-blue.svg?style=flat)](https://leetcode-cn.com/tag/union-find/)
-[![SlidingWindow](https://img.shields.io/badge/SlidingWindow-29-blue.svg?style=flat)](https://leetcode-cn.com/tag/sliding-window/)
-[![分治算法](https://img.shields.io/badge/分治算法-28-blue.svg?style=flat)](https://leetcode-cn.com/tag/divide-and-conquer/)
-[![递归](https://img.shields.io/badge/递归-23-blue.svg?style=flat)](https://leetcode-cn.com/tag/recursion/)
-[![字典树](https://img.shields.io/badge/字典树-18-red.svg?style=flat)](https://leetcode-cn.com/tag/trie/)
-[![线段树](https://img.shields.io/badge/线段树-14-red.svg?style=flat)](https://leetcode-cn.com/tag/segment-tree/)
-[![几何](https://img.shields.io/badge/几何-11-red.svg?style=flat)](https://leetcode-cn.com/tag/geometry/)
-[![队列](https://img.shields.io/badge/队列-11-red.svg?style=flat)](https://leetcode-cn.com/tag/queue/)
-[![OrderedMap](https://img.shields.io/badge/OrderedMap-10-lightgray.svg?style=flat)](https://leetcode-cn.com/tag/ordered-map/)
-[![极小化极大](https://img.shields.io/badge/极小化极大-8-lightgray.svg?style=flat)](https://leetcode-cn.com/tag/minimax/)
-[![树状数组](https://img.shields.io/badge/树状数组-6-lightgray.svg?style=flat)](https://leetcode-cn.com/tag/binary-indexed-tree/)
-[![脑筋急转弯](https://img.shields.io/badge/脑筋急转弯-6-lightgray.svg?style=flat)](https://leetcode-cn.com/tag/brainteaser/)
-[![LineSweep](https://img.shields.io/badge/LineSweep-6-lightgray.svg?style=flat)](https://leetcode-cn.com/tag/line-sweep/)
-[![Random](https://img.shields.io/badge/Random-6-lightgray.svg?style=flat)](https://leetcode-cn.com/tag/random/)
-[![拓扑排序](https://img.shields.io/badge/拓扑排序-6-lightgray.svg?style=flat)](https://leetcode-cn.com/tag/topological-sort/)
-[![二叉搜索树](https://img.shields.io/badge/二叉搜索树-5-lightgray.svg?style=flat)](https://leetcode-cn.com/tag/binary-search-tree/)
-[![记忆化](https://img.shields.io/badge/记忆化-3-lightgray.svg?style=flat)](https://leetcode-cn.com/tag/memoization/)
-[![RejectionSampling](https://img.shields.io/badge/RejectionSampling-2-lightgray.svg?style=flat)](https://leetcode-cn.com/tag/rejection-sampling/)
-[![蓄水池抽样](https://img.shields.io/badge/蓄水池抽样-2-lightgray.svg?style=flat)](https://leetcode-cn.com/tag/reservoir-sampling/)
-
+[![数组](https://img.shields.io/badge/数组-312-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/array/)
+[![动态规划](https://img.shields.io/badge/动态规划-237-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/dynamic-programming/)
+[![字符串](https://img.shields.io/badge/字符串-215-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/string/)
+[![数学](https://img.shields.io/badge/数学-203-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/math/)
+[![树](https://img.shields.io/badge/树-165-b80909.svg?style=flat)](https://leetcode-cn.com/tag/tree/)
+[![深度优先搜索](https://img.shields.io/badge/深度优先搜索-145-b80909.svg?style=flat)](https://leetcode-cn.com/tag/depth-first-search/)
+[![哈希表](https://img.shields.io/badge/哈希表-140-b80909.svg?style=flat)](https://leetcode-cn.com/tag/hash-table/)
+[![二分查找](https://img.shields.io/badge/二分查找-98-e64546.svg?style=flat)](https://leetcode-cn.com/tag/binary-search/)
+[![贪心算法](https://img.shields.io/badge/贪心算法-91-e64546.svg?style=flat)](https://leetcode-cn.com/tag/greedy/)
+[![广度优先搜索](https://img.shields.io/badge/广度优先搜索-77-e64546.svg?style=flat)](https://leetcode-cn.com/tag/breadth-first-search/)
+[![双指针](https://img.shields.io/badge/双指针-71-e64546.svg?style=flat)](https://leetcode-cn.com/tag/two-pointers/)
+[![位运算](https://img.shields.io/badge/位运算-66-e64546.svg?style=flat)](https://leetcode-cn.com/tag/bit-manipulation/)
+[![栈](https://img.shields.io/badge/栈-66-e64546.svg?style=flat)](https://leetcode-cn.com/tag/stack/)
+[![排序](https://img.shields.io/badge/排序-65-e64546.svg?style=flat)](https://leetcode-cn.com/tag/sort/)
+[![回溯算法](https://img.shields.io/badge/回溯算法-62-e64546.svg?style=flat)](https://leetcode-cn.com/tag/backtracking/)
+[![设计](https://img.shields.io/badge/设计-62-e64546.svg?style=flat)](https://leetcode-cn.com/tag/design/)
+[![链表](https://img.shields.io/badge/链表-53-e64546.svg?style=flat)](https://leetcode-cn.com/tag/linked-list/)
+[![图](https://img.shields.io/badge/图-47-f57567.svg?style=flat)](https://leetcode-cn.com/tag/graph/)
+[![堆](https://img.shields.io/badge/堆-40-f57567.svg?style=flat)](https://leetcode-cn.com/tag/heap/)
+[![并查集](https://img.shields.io/badge/并查集-32-f57567.svg?style=flat)](https://leetcode-cn.com/tag/union-find/)
+[![SlidingWindow](https://img.shields.io/badge/SlidingWindow-29-f57567.svg?style=flat)](https://leetcode-cn.com/tag/sliding-window/)
+[![分治算法](https://img.shields.io/badge/分治算法-28-f57567.svg?style=flat)](https://leetcode-cn.com/tag/divide-and-conquer/)
+[![递归](https://img.shields.io/badge/递归-23-f57567.svg?style=flat)](https://leetcode-cn.com/tag/recursion/)
+[![字典树](https://img.shields.io/badge/字典树-18-f57567.svg?style=flat)](https://leetcode-cn.com/tag/trie/)
+[![线段树](https://img.shields.io/badge/线段树-14-f57567.svg?style=flat)](https://leetcode-cn.com/tag/segment-tree/)
+[![几何](https://img.shields.io/badge/几何-11-f57567.svg?style=flat)](https://leetcode-cn.com/tag/geometry/)
+[![队列](https://img.shields.io/badge/队列-11-f57567.svg?style=flat)](https://leetcode-cn.com/tag/queue/)
+[![OrderedMap](https://img.shields.io/badge/OrderedMap-10-ff9985.svg?style=flat)](https://leetcode-cn.com/tag/ordered-map/)
+[![极小化极大](https://img.shields.io/badge/极小化极大-8-ff9985.svg?style=flat)](https://leetcode-cn.com/tag/minimax/)
+[![树状数组](https://img.shields.io/badge/树状数组-6-ff9985.svg?style=flat)](https://leetcode-cn.com/tag/binary-indexed-tree/)
+[![脑筋急转弯](https://img.shields.io/badge/脑筋急转弯-6-ff9985.svg?style=flat)](https://leetcode-cn.com/tag/brainteaser/)
+[![LineSweep](https://img.shields.io/badge/LineSweep-6-ff9985.svg?style=flat)](https://leetcode-cn.com/tag/line-sweep/)
+[![Random](https://img.shields.io/badge/Random-6-ff9985.svg?style=flat)](https://leetcode-cn.com/tag/random/)
+[![拓扑排序](https://img.shields.io/badge/拓扑排序-6-ff9985.svg?style=flat)](https://leetcode-cn.com/tag/topological-sort/)
+[![二叉搜索树](https://img.shields.io/badge/二叉搜索树-5-ff9985.svg?style=flat)](https://leetcode-cn.com/tag/binary-search-tree/)
+[![记忆化](https://img.shields.io/badge/记忆化-3-ff9985.svg?style=flat)](https://leetcode-cn.com/tag/memoization/)
+[![RejectionSampling](https://img.shields.io/badge/RejectionSampling-2-ff9985.svg?style=flat)](https://leetcode-cn.com/tag/rejection-sampling/)
+[![蓄水池抽样](https://img.shields.io/badge/蓄水池抽样-2-ff9985.svg?style=flat)](https://leetcode-cn.com/tag/reservoir-sampling/)
 
 ---
 
@@ -107,7 +106,6 @@
 |[67](https://leetcode-cn.com/problems/add-binary/)|[Add Binary](./src/0067-add-binary/)|简单|
 |[69](https://leetcode-cn.com/problems/sqrtx/)|[Sqrt(x)](./src/0069-sqrtx/)|简单|
 |[70](https://leetcode-cn.com/problems/climbing-stairs/)|[Climbing Stairs](./src/0070-climbing-stairs/)|简单|
-|[82](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/)|[Remove Duplicates from Sorted List II](./src/0082-remove-duplicates-from-sorted-list-ii/)|中等|
 |[83](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/)|[Remove Duplicates from Sorted List](./src/0083-remove-duplicates-from-sorted-list/)|简单|
 |[88](https://leetcode-cn.com/problems/merge-sorted-array/)|[Merge Sorted Array](./src/0088-merge-sorted-array/)|简单|
 |[100](https://leetcode-cn.com/problems/same-tree/)|[Same Tree](./src/0100-same-tree/)|简单|
@@ -193,9 +191,8 @@
 |[面试题 16.11](https://leetcode-cn.com/problems/diving-board-lcci/)|[Diving Board LCCI](./src/100352-diving-board-lcci/)|简单|
 |[面试题 17.16](https://leetcode-cn.com/problems/the-masseuse-lcci/)|[The Masseuse LCCI](./src/1000023-the-masseuse-lcci/)|简单|
 
+---
 
-#### Snapshot
+## Snapshot
 
 ![leetcli](https://raw.githubusercontent.com/evercyan/cantor/master/resource/80/803bac1363e065a5e0fa7f8ac9d6db6a.png)
-
----

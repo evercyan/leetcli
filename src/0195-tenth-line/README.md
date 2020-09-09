@@ -1,21 +1,15 @@
-## [195. 第十行](https://leetcode-cn.com/problems/tenth-line/)
+# [195. Tenth Line](https://leetcode-cn.com/problems/tenth-line/)
+
+`[简单]`
 
 ---
 
-> 难度: 简单
-
-
-
----
-
-##### 题目描述
-
-```
-给定一个文本文件 file.txt，请只打印这个文件中的第十行。
+```json
+给定一个文本文件 file.txt，请只打印这个文件中的第十行。
 
 示例:
 
-假设 file.txt 有如下内容：
+假设 file.txt 有如下内容：
 
 Line 1
 Line 2
@@ -39,5 +33,3 @@ Line 10
 2. 至少有三种不同的解法，请尝试尽可能多的方法来解题。
 
 ```
-
----

@@ -1,17 +1,11 @@
-## [182. 查找重复的电子邮箱](https://leetcode-cn.com/problems/duplicate-emails/)
+# [182. Duplicate Emails](https://leetcode-cn.com/problems/duplicate-emails/)
+
+`[简单]`
 
 ---
 
-> 难度: 简单
-
-
-
----
-
-##### 题目描述
-
-```
-编写一个 SQL 查询，查找 Person 表中所有重复的电子邮箱。
+```json
+编写一个 SQL 查询，查找 Person 表中所有重复的电子邮箱。
 
 示例：
 
@@ -36,5 +30,3 @@
 说明：所有电子邮箱都是小写字母。
 
 ```
-
----

@@ -1,17 +1,11 @@
-## [20. 有效的括号](https://leetcode-cn.com/problems/valid-parentheses/)
+# [20. Valid Parentheses](https://leetcode-cn.com/problems/valid-parentheses/)
+
+`[简单]` [栈](https://leetcode-cn.com/tag/stack/)  [字符串](https://leetcode-cn.com/tag/string/) 
 
 ---
 
-> 难度: 简单
-
-> 分类:  [栈](https://leetcode-cn.com/tag/stack/)  [字符串](https://leetcode-cn.com/tag/string/) 
-
----
-
-##### 题目描述
-
-```
-给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。
+```json
+给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。
 
 有效字符串需满足：
 
@@ -28,29 +22,27 @@
 输出: true
 
 
-示例 2:
+示例 2:
 
 输入: "()[]{}"
 输出: true
 
 
-示例 3:
+示例 3:
 
 输入: "(]"
 输出: false
 
 
-示例 4:
+示例 4:
 
 输入: "([)]"
 输出: false
 
 
-示例 5:
+示例 5:
 
 输入: "{[]}"
 输出: true
 
 ```
-
----

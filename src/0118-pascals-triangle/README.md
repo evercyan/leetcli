@@ -1,17 +1,11 @@
-## [118. 杨辉三角](https://leetcode-cn.com/problems/pascals-triangle/)
+# [118. Pascal's Triangle](https://leetcode-cn.com/problems/pascals-triangle/)
+
+`[简单]` [数组](https://leetcode-cn.com/tag/array/) 
 
 ---
 
-> 难度: 简单
-
-> 分类:  [数组](https://leetcode-cn.com/tag/array/) 
-
----
-
-##### 题目描述
-
-```
-给定一个非负整数 numRows，生成杨辉三角的前 numRows 行。
+```json
+给定一个非负整数 numRows，生成杨辉三角的前 numRows 行。
 
 ```
 
@@ -34,5 +28,3 @@
 ]
 
 ```
-
----
