@@ -9,6 +9,7 @@ then
     exit
 fi
 
+rm -rf ./dist
 git tag -a $version -m $version
 git push origin master
 git push origin $version
