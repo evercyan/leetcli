@@ -1,18 +1,17 @@
 package solution
 
 import (
-	"reflect"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestSolution(t *testing.T) {
 	cases := []struct {
-		name    string
 		inputs  []interface{}
 		expects []interface{}
 	}{
 		{
-			"Test",
 			[]interface{}{
 				[]int{4, 3, 2, 7, 8, 2, 3, 1},
 			},
@@ -21,7 +20,6 @@ func TestSolution(t *testing.T) {
 			},
 		},
 		{
-			"Test",
 			[]interface{}{
 				[]int{},
 			},
@@ -30,14 +28,10 @@ func TestSolution(t *testing.T) {
 			},
 		},
 	}
-	index := 1
 	for _, c := range cases {
-		t.Run(c.name, func(t *testing.T) {
+		t.Run("findDisappearedNumbers", func(t *testing.T) {
 			ret := findDisappearedNumbers(c.inputs[0].([]int))
-			if !reflect.DeepEqual(ret, c.expects[0].([]int)) {
-				t.Fatalf("FAIL ----> name: %v-%v, inputs: %v, expects: %v, ret: %v", c.name, index, c.inputs, c.expects[0], ret)
-			}
+			assert.ElementsMatch(t, c.expects[0].([]int), ret)
 		})
-		index++
 	}
 }

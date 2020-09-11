@@ -18,7 +18,7 @@ func levelOrderBottom(root *TreeNode) [][]int {
 		}
 		// 出现了新的层级, 后序遍历, 插至切片头部
 		if level >= len(res) {
-			res = append([][]int{[]int{}}, res...)
+			res = append([][]int{{}}, res...)
 		}
 		// 写入元素值
 		// 如果 len(res) = 4, 则 level = 1 表示第二层, 写入 key = 2

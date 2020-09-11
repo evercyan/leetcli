@@ -35,13 +35,12 @@ func Constructor(nums []int) NumArray {
 	}
 }
 
-func (this *NumArray) SumRange(i int, j int) int {
-	if j > len(this.nums) || i < 0 {
+func (na *NumArray) SumRange(i int, j int) int {
+	if j > len(na.nums) || i < 0 {
 		return 0
 	}
 	if i == 0 {
-		return this.dp[j]
-	} else {
-		return this.dp[j] - this.dp[i-1]
+		return na.dp[j]
 	}
+	return na.dp[j] - na.dp[i-1]
 }

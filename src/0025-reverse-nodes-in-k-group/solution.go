@@ -45,7 +45,8 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 	}
 	// 递规剩余节点
 	prev := reverseKGroup(l, k)
-	curr, next := head, &ListNode{}
+	curr := head
+	var next *ListNode
 	for i := 0; i < k; i++ {
 		// 纪录 next 节点
 		next = curr.Next

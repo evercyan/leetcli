@@ -18,34 +18,34 @@ func Constructor() TimeMap {
 	}
 }
 
-func (this *TimeMap) Set(key string, value string, timestamp int) {
-	if _, ok := this.Val[key]; !ok {
-		this.Val[key] = []string{}
-		this.Time[key] = []int{}
+func (tm *TimeMap) Set(key string, value string, timestamp int) {
+	if _, ok := tm.Val[key]; !ok {
+		tm.Val[key] = []string{}
+		tm.Time[key] = []int{}
 	}
-	this.Val[key] = append(this.Val[key], value)
-	this.Time[key] = append(this.Time[key], timestamp)
+	tm.Val[key] = append(tm.Val[key], value)
+	tm.Time[key] = append(tm.Time[key], timestamp)
 	return
 }
 
-func (this *TimeMap) Get(key string, timestamp int) string {
-	if _, ok := this.Time[key]; !ok {
+func (tm *TimeMap) Get(key string, timestamp int) string {
+	if _, ok := tm.Time[key]; !ok {
 		return ""
 	}
-	l, h := 0, len(this.Time[key])-1
+	l, h := 0, len(tm.Time[key])-1
 	for l <= h {
 		mid := (l + h) / 2
-		if this.Time[key][mid] >= timestamp {
+		if tm.Time[key][mid] >= timestamp {
 			h = mid - 1
 		} else {
 			l = mid + 1
 		}
 	}
-	if l < len(this.Time[key]) && this.Time[key][l] == timestamp {
-		return this.Val[key][l]
+	if l < len(tm.Time[key]) && tm.Time[key][l] == timestamp {
+		return tm.Val[key][l]
 	}
 	if l >= 1 {
-		return this.Val[key][l-1]
+		return tm.Val[key][l-1]
 	}
 	return ""
 }

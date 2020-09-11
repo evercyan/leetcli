@@ -14,7 +14,7 @@ func TestSolution(t *testing.T) {
 		{
 			"Test 1",
 			[]interface{}{
-				[]int{1,2,2,6,6,6,6,7,10},
+				[]int{1, 2, 2, 6, 6, 6, 6, 7, 10},
 			},
 			[]interface{}{
 				6,
@@ -41,7 +41,7 @@ func TestSolution(t *testing.T) {
 		{
 			"Test 4",
 			[]interface{}{
-				[]int{1,1,2,2,3,3,3,3},
+				[]int{1, 1, 2, 2, 3, 3, 3, 3},
 			},
 			[]interface{}{
 				3,

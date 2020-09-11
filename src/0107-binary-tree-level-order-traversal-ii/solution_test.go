@@ -32,9 +32,9 @@ func TestSolution(t *testing.T) {
 			},
 			[]interface{}{
 				[][]int{
-					[]int{15, 7},
-					[]int{9, 20},
-					[]int{3},
+					{15, 7},
+					{9, 20},
+					{3},
 				},
 			},
 		},

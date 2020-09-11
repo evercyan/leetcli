@@ -6,9 +6,6 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-/**
- * 递规
- */
 func sumRootToLeaf(root *TreeNode) int {
 	return getSum(root, 0)
 }

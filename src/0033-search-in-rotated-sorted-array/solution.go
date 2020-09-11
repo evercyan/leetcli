@@ -35,18 +35,17 @@ func search(nums []int, target int) int {
 			}
 		}
 		return ret
-	} else {
-		// 无序数组, 一分为二, 递规左右两个子数组
-		mid := nlen / 2
-		lRet := search(nums[:mid], target)
-		if lRet >= 0 {
-			return lRet
-		}
-		rRet := search(nums[mid:], target)
-		if rRet >= 0 {
-			// key 加上偏移值
-			return rRet + mid
-		}
-		return -1
 	}
+	// 无序数组, 一分为二, 递规左右两个子数组
+	mid := nlen / 2
+	lRet := search(nums[:mid], target)
+	if lRet >= 0 {
+		return lRet
+	}
+	rRet := search(nums[mid:], target)
+	if rRet >= 0 {
+		// key 加上偏移值
+		return rRet + mid
+	}
+	return -1
 }

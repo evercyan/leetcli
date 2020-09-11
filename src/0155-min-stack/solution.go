@@ -17,37 +17,37 @@ func Constructor() MinStack {
 	}
 }
 
-func (this *MinStack) Push(x int) {
+func (s *MinStack) Push(x int) {
 	var min int
-	if len(this.list) <= 0 {
+	if len(s.list) <= 0 {
 		min = x
 	} else {
-		if x < this.list[1] {
+		if x < s.list[1] {
 			min = x
 		} else {
-			min = this.list[1]
+			min = s.list[1]
 		}
 	}
-	this.list = append([]int{x, min}, this.list...)
+	s.list = append([]int{x, min}, s.list...)
 }
 
-func (this *MinStack) Pop() {
-	if len(this.list) < 2 {
+func (s *MinStack) Pop() {
+	if len(s.list) < 2 {
 		return
 	}
-	this.list = append([]int{}, this.list[2:]...)
+	s.list = append([]int{}, s.list[2:]...)
 }
 
-func (this *MinStack) Top() int {
-	if len(this.list) <= 0 {
+func (s *MinStack) Top() int {
+	if len(s.list) <= 0 {
 		return 0
 	}
-	return this.list[0]
+	return s.list[0]
 }
 
-func (this *MinStack) GetMin() int {
-	if len(this.list) <= 0 {
+func (s *MinStack) GetMin() int {
+	if len(s.list) <= 0 {
 		return 0
 	}
-	return this.list[1]
+	return s.list[1]
 }

@@ -15,11 +15,11 @@ func TestSolution(t *testing.T) {
 			"Test 1",
 			[]interface{}{
 				[]Interval{
-					Interval{
+					{
 						Start: 1,
 						End:   3,
 					},
-					Interval{
+					{
 						Start: 6,
 						End:   9,
 					},
@@ -31,11 +31,11 @@ func TestSolution(t *testing.T) {
 			},
 			[]interface{}{
 				[]Interval{
-					Interval{
+					{
 						Start: 1,
 						End:   5,
 					},
-					Interval{
+					{
 						Start: 6,
 						End:   9,
 					},
@@ -46,23 +46,23 @@ func TestSolution(t *testing.T) {
 			"Test 2",
 			[]interface{}{
 				[]Interval{
-					Interval{
+					{
 						Start: 1,
 						End:   2,
 					},
-					Interval{
+					{
 						Start: 3,
 						End:   5,
 					},
-					Interval{
+					{
 						Start: 6,
 						End:   7,
 					},
-					Interval{
+					{
 						Start: 8,
 						End:   10,
 					},
-					Interval{
+					{
 						Start: 12,
 						End:   16,
 					},
@@ -74,15 +74,15 @@ func TestSolution(t *testing.T) {
 			},
 			[]interface{}{
 				[]Interval{
-					Interval{
+					{
 						Start: 1,
 						End:   2,
 					},
-					Interval{
+					{
 						Start: 3,
 						End:   10,
 					},
-					Interval{
+					{
 						Start: 12,
 						End:   16,
 					},
@@ -100,7 +100,7 @@ func TestSolution(t *testing.T) {
 			},
 			[]interface{}{
 				[]Interval{
-					Interval{
+					{
 						Start: 4,
 						End:   8,
 					},

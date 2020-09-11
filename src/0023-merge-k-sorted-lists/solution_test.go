@@ -15,7 +15,7 @@ func TestSolution(t *testing.T) {
 			"Test 1",
 			[]interface{}{
 				[]*ListNode{
-					&ListNode{
+					{
 						Val: 1,
 						Next: &ListNode{
 							Val: 4,
@@ -24,7 +24,7 @@ func TestSolution(t *testing.T) {
 							},
 						},
 					},
-					&ListNode{
+					{
 						Val: 1,
 						Next: &ListNode{
 							Val: 3,
@@ -33,7 +33,7 @@ func TestSolution(t *testing.T) {
 							},
 						},
 					},
-					&ListNode{
+					{
 						Val: 2,
 						Next: &ListNode{
 							Val: 6,
@@ -72,7 +72,7 @@ func TestSolution(t *testing.T) {
 			"Test 2",
 			[]interface{}{
 				[]*ListNode{
-					&ListNode{
+					{
 						Val: 1,
 					},
 				},

@@ -3,10 +3,10 @@ package solution
 func numEnclaves(A [][]int) int {
 	// 上下左右四个方向 key 偏移
 	direction := [][]int{
-		[]int{0, 1},
-		[]int{0, -1},
-		[]int{1, 0},
-		[]int{-1, 0},
+		{0, 1},
+		{0, -1},
+		{1, 0},
+		{-1, 0},
 	}
 	// 纪录节点值为 0, 2 的数量
 	count0, count2 := 0, 0
@@ -24,7 +24,7 @@ func numEnclaves(A [][]int) int {
 
 				// 写入待处理节点列表
 				nodes := [][]int{
-					[]int{i, j},
+					{i, j},
 				}
 				for {
 					if len(nodes) <= 0 {

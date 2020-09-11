@@ -53,13 +53,13 @@ func massage2(nums []int) int {
 		return maxList(nums)
 	}
 	// 前 i-2, i-1, n 间的最大收益(初始状态)
-	i_2, i_1, result := nums[0], max(nums[0], nums[1]), 0
+	i2, i1, result := nums[0], max(nums[0], nums[1]), 0
 
 	for i := 2; i < len(nums); i++ {
-		result = max(i_2+nums[i], i_1)
+		result = max(i2+nums[i], i1)
 		// 变量交换偏移
-		i_2 = i_1
-		i_1 = result
+		i2 = i1
+		i1 = result
 	}
 
 	return result

@@ -19,38 +19,38 @@ func Constructor(capacity int) LRUCache {
 	return r
 }
 
-func (this *LRUCache) Get(key int) int {
-	val, ok := this.Hash[key]
+func (c *LRUCache) Get(key int) int {
+	val, ok := c.Hash[key]
 	if !ok {
 		return -1
 	}
-	this.MoveToFront(key)
+	c.MoveToFront(key)
 	return val
 }
 
-func (this *LRUCache) Put(key int, value int) {
-	if _, ok := this.Hash[key]; !ok {
+func (c *LRUCache) Put(key int, value int) {
+	if _, ok := c.Hash[key]; !ok {
 		// 添加
-		if this.Capacity <= len(this.Hash) {
+		if c.Capacity <= len(c.Hash) {
 			// 如果长度超过了, 删除链表中最后位, 同时清除其 hash 数据
-			lastKey := this.List.Back().Value
-			delete(this.Hash, lastKey.(int))
-			this.List.Remove(this.List.Back())
+			lastKey := c.List.Back().Value
+			delete(c.Hash, lastKey.(int))
+			c.List.Remove(c.List.Back())
 		}
-		this.Hash[key] = value
-		this.List.PushFront(key)
+		c.Hash[key] = value
+		c.List.PushFront(key)
 	} else {
 		// 更新
-		this.Hash[key] = value
-		this.MoveToFront(key)
+		c.Hash[key] = value
+		c.MoveToFront(key)
 	}
 	return
 }
 
-func (this *LRUCache) MoveToFront(key int) {
-	for v := this.List.Front(); v != nil; v = v.Next() {
+func (c *LRUCache) MoveToFront(key int) {
+	for v := c.List.Front(); v != nil; v = v.Next() {
 		if key == v.Value {
-			this.List.MoveToFront(v)
+			c.List.MoveToFront(v)
 		}
 	}
 	return

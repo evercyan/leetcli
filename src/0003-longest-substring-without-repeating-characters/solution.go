@@ -3,7 +3,7 @@ package solution
 func lengthOfLongestSubstring(s string) int {
 	start, max := 0, 0
 	var usedChar = make(map[string]int)
-	for i, _ := range s {
+	for i := range s {
 		char := string(s[i])
 		if _, ok := usedChar[char]; ok && start <= usedChar[char] {
 			start = usedChar[char] + 1

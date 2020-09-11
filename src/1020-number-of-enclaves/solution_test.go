@@ -15,10 +15,10 @@ func TestSolution(t *testing.T) {
 			"Test 1",
 			[]interface{}{
 				[][]int{
-					[]int{0, 0, 0, 0},
-					[]int{1, 0, 1, 0},
-					[]int{0, 1, 1, 0},
-					[]int{0, 0, 0, 0},
+					{0, 0, 0, 0},
+					{1, 0, 1, 0},
+					{0, 1, 1, 0},
+					{0, 0, 0, 0},
 				},
 			},
 			[]interface{}{
@@ -29,10 +29,10 @@ func TestSolution(t *testing.T) {
 			"Test 2",
 			[]interface{}{
 				[][]int{
-					[]int{0, 1, 1, 0},
-					[]int{0, 0, 1, 0},
-					[]int{0, 0, 1, 0},
-					[]int{0, 0, 0, 0},
+					{0, 1, 1, 0},
+					{0, 0, 1, 0},
+					{0, 0, 1, 0},
+					{0, 0, 0, 0},
 				},
 			},
 			[]interface{}{
@@ -43,10 +43,10 @@ func TestSolution(t *testing.T) {
 			"Test 3",
 			[]interface{}{
 				[][]int{
-					[]int{0, 1, 1, 0},
-					[]int{0, 0, 1, 1},
-					[]int{0, 0, 1, 0},
-					[]int{0, 0, 0, 0},
+					{0, 1, 1, 0},
+					{0, 0, 1, 1},
+					{0, 0, 1, 0},
+					{0, 0, 0, 0},
 				},
 			},
 			[]interface{}{

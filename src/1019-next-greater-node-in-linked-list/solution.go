@@ -1,5 +1,10 @@
 package solution
 
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
+
 /**
  * 题解
  * 即下一个最大元素的链表版本
@@ -7,11 +12,6 @@ package solution
  * input : [1, 3, 2, 4, 5]
  * answer: [3, 4, 4, 5, -1]
  */
-
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
 
 func nextLargerNodes(head *ListNode) []int {
 	// 先将链表转为数组
