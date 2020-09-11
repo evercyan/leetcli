@@ -38,7 +38,7 @@ var (
  */
 
 // Repo README 模板
-var tplReadme = `<div style="text-align: center;">
+var tplReadme = `<div align="center">
 
 ![leetcli](https://raw.githubusercontent.com/evercyan/cantor/master/resource/69/69f055fa7ccfe73114bf6608a2789d8f.png)
 
@@ -501,6 +501,7 @@ func (lf *leetCodeFile) DrawQuestionTagList() string {
 	}
 
 	resp := ""
+	preColor := ""
 	for _, tag := range tagList {
 		tagLinks := strings.Split(tag.Link, "/")
 		if len(tagLinks) < 4 {
@@ -518,6 +519,10 @@ func (lf *leetCodeFile) DrawQuestionTagList() string {
 		} else if tag.Count > 10 {
 			color = "f57567"
 		}
+		if preColor != "" && preColor != color {
+			resp += "\n"
+		}
+		preColor = color
 		resp += fmt.Sprintf("[![%s](https://img.shields.io/badge/%s-%d-%s.svg?style=flat)](%s)\n", title, title, tag.Count, color, url)
 	}
 	return strings.Trim(resp, "\n")
@@ -566,7 +571,7 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "leetcli"
 	app.Usage = "leetcode 刷题小工具, 生成 README.md, 答题文件, 测试文件等"
-	app.Version = "v0.0.3"
+	app.Version = "v0.0.8"
 	app.Flags = []cli.Flag{}
 	app.Commands = []cli.Command{
 		{
