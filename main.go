@@ -539,7 +539,7 @@ func (lf *leetCodeFile) DrawQuestionList() string {
 	resp += fmt.Sprintln("|:-:|:-|:-:|")
 	for _, question := range questionList {
 		questionPath := getQustionPath(question.FQID, question.QID, question.Slug)
-		questionPath = lf.ProjectPath + questionPath
+		questionPath = "." + questionPath
 		if !util.IsExist(questionPath) {
 			continue
 		}
@@ -571,7 +571,7 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "leetcli"
 	app.Usage = "leetcode 刷题小工具, 生成 README.md, 答题文件, 测试文件等"
-	app.Version = "v0.0.8"
+	app.Version = "v0.0.2"
 	app.Flags = []cli.Flag{}
 	app.Commands = []cli.Command{
 		{
