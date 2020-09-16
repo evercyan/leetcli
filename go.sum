@@ -24,6 +24,8 @@ github.com/dgrijalva/jwt-go v3.2.0+incompatible h1:7qlOGliEKZXTDg6OTjfoBKDXWrumC
 github.com/dgrijalva/jwt-go v3.2.0+incompatible/go.mod h1:E3ru+11k8xSBh+hMPgOLZmtrrCbhqsmaPHjLKYnJCaQ=
 github.com/evercyan/letitgo v0.0.2 h1:X1cOhV+MR/mZVB5bZuMmIG30W48O3H+tMwO7okJqoXs=
 github.com/evercyan/letitgo v0.0.2/go.mod h1:w2l132sbFv6kS5a1wF4udGTcVQ/G9NVPhWyGgrYx3GI=
+github.com/evercyan/letitgo v0.0.3 h1:SzQ6YI62u4wQtm+hX5nZMW5sLNB3UN/q8hDjay7N+Qk=
+github.com/evercyan/letitgo v0.0.3/go.mod h1:w2l132sbFv6kS5a1wF4udGTcVQ/G9NVPhWyGgrYx3GI=
 github.com/gomodule/redigo/redis v0.0.0-20200429221454-e14091dffc1b/go.mod h1:0zioC1ElIFjAFjnYHA9Y8oeU9SHff86XhZgs2tpx9SU=
 github.com/kr/pretty v0.1.0 h1:L/CwN0zerZDmRFUapSPitk6f+Q3+0za1rQkzVuMiMFI=
 github.com/kr/pretty v0.1.0/go.mod h1:dAy3ld7l9f0ibDNOQOHHMYYIIbhfbHSm3C4ZsoJORNo=
