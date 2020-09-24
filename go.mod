@@ -16,7 +16,7 @@ require (
 	github.com/mozillazg/request v0.8.0
 	github.com/peterh/liner v1.2.0
 	github.com/stretchr/testify v1.6.1
-	github.com/urfave/cli v1.22.4
+	github.com/urfave/cli/v2 v2.2.0
 	golang.org/x/net v0.0.0-20200904194848-62affa334b73 // indirect
 	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
 )
