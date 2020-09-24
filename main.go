@@ -47,7 +47,6 @@ var tplReadme = `<div align="center">
 [![travis-ci](https://www.travis-ci.org/evercyan/leetcli.svg?branch=master)](https://www.travis-ci.org/evercyan/leetcli)
 [![codecov](https://codecov.io/gh/evercyan/leetcli/branch/master/graph/badge.svg?token=RbJTUtAlvl)](https://codecov.io/gh/evercyan/leetcli)
 [![goreportcard](https://goreportcard.com/badge/github.com/evercyan/leetcli)](https://goreportcard.com/report/github.com/evercyan/leetcli)
-[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
 
 leetcode 刷题小工具, 生成 README, 答题文件, 测试文件等
 </div>
@@ -727,7 +726,6 @@ func main() {
 			}
 			return
 		})
-		showCyan("输入 `help` 试一试")
 		for {
 			commandLine, err := line.Prompt(fmt.Sprintf("%s > ", app.Name))
 			if err != nil {
