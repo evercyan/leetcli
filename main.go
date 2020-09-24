@@ -16,7 +16,8 @@ import (
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
-	lcli "github.com/evercyan/letitgo/cli"
+	"github.com/evercyan/gocli/color"
+	"github.com/evercyan/gocli/table"
 	"github.com/evercyan/letitgo/crypto"
 	"github.com/evercyan/letitgo/util"
 	"github.com/mozillazg/request"
@@ -149,19 +150,19 @@ func getConfigFile() (string, error) {
 }
 
 func showGreen(text string) {
-	fmt.Println(lcli.Style(text).Color(lcli.Green).Text())
+	color.New(text).Color(color.Green).Render()
 }
 
 func showCyan(text string) {
-	fmt.Println(lcli.Style(text).Color(lcli.Cyan).Text())
+	color.New(text).Color(color.Cyan).Render()
 }
 
 func showMagenta(text string) {
-	fmt.Println(lcli.Style(text).Color(lcli.Magenta).Text())
+	color.New(text).Color(color.Magenta).Render()
 }
 
 func showRed(text string) {
-	fmt.Println(lcli.Style("错误: " + text).Color(lcli.Red).Text())
+	color.New("错误:", text).Color(color.Red).Render()
 }
 
 /**
@@ -628,7 +629,7 @@ func main() {
 						item.Difficulty,
 					})
 				}
-				lcli.Table(list).Header([]string{"id", "标题", "标识", "难度"}).Title("问题列表").Output()
+				table.New(list).Header([]string{"id", "标题", "标识", "难度"}).Render()
 			},
 		},
 		{

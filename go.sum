@@ -18,6 +18,10 @@ github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/dgrijalva/jwt-go v3.2.0+incompatible h1:7qlOGliEKZXTDg6OTjfoBKDXWrumCAMpl/TFQ4/5kLM=
 github.com/dgrijalva/jwt-go v3.2.0+incompatible/go.mod h1:E3ru+11k8xSBh+hMPgOLZmtrrCbhqsmaPHjLKYnJCaQ=
+github.com/evercyan/gocli v0.0.0-20200923081920-f0127dfc78b4 h1:3PSpO9Dx216H/BJKpVZjTOXL2S+xX8QmpG3rKH66FSY=
+github.com/evercyan/gocli v0.0.0-20200923081920-f0127dfc78b4/go.mod h1:jkOFfJb0vov/FJjNVhoZ08yDI62SsKL/n1KZUCU7d/E=
+github.com/evercyan/gocli v0.0.1 h1:GlBvyWIw4wWPnnC3uSqoAe7cKMLuN6E+y8QksqSctJQ=
+github.com/evercyan/gocli v0.0.1/go.mod h1:jkOFfJb0vov/FJjNVhoZ08yDI62SsKL/n1KZUCU7d/E=
 github.com/evercyan/letitgo v0.0.3 h1:SzQ6YI62u4wQtm+hX5nZMW5sLNB3UN/q8hDjay7N+Qk=
 github.com/evercyan/letitgo v0.0.3/go.mod h1:w2l132sbFv6kS5a1wF4udGTcVQ/G9NVPhWyGgrYx3GI=
 github.com/gomodule/redigo/redis v0.0.0-20200429221454-e14091dffc1b/go.mod h1:0zioC1ElIFjAFjnYHA9Y8oeU9SHff86XhZgs2tpx9SU=
