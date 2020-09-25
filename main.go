@@ -51,10 +51,11 @@ leetcode 刷题小工具, 生成 README, 答题文件, 测试文件等
 
 ---
 
-## Install
+## Usage
 
 ` + "```sh" + `
 go get -v github.com/evercyan/leetcli
+leetcli --help
 ` + "```" + `
 
 ---
@@ -166,7 +167,7 @@ func fail(texts ...string) {
 	color.New(texts...).Color(color.Red).Render()
 }
 
-func prefix(prefixStr, successStr, failStr string) {
+func show(prefixStr, successStr, failStr string) {
 	content := color.New(prefixStr).Color(color.Yellow).Content() + " "
 	if successStr != "" {
 		content += color.New(successStr).Color(color.Green).Content()
@@ -471,7 +472,7 @@ func (lf *leetCodeFile) GenerateQuestion(slug string, lang string, questionDetai
 	// 创建答题文件
 	questionFile := fmt.Sprintf("%s/%s", questionPath, file)
 	if util.IsExist(questionFile) {
-		prefix("答题文件已存在:", questionFile, "")
+		show("答题文件已存在:", questionFile, "")
 	} else {
 		util.WriteFile(questionFile, fmt.Sprintf(fileTpl, questionDetail.CodeMap[lang]["code"]))
 	}
@@ -480,7 +481,7 @@ func (lf *leetCodeFile) GenerateQuestion(slug string, lang string, questionDetai
 	if testfile != "" {
 		questionTestFile := fmt.Sprintf("%s/%s", questionPath, testfile)
 		if util.IsExist(questionTestFile) {
-			prefix("答题测试文件已存在:", questionTestFile, "")
+			show("答题测试文件已存在:", questionTestFile, "")
 		} else {
 			// 替换测试文件中函数名称
 			matchs := regexp.MustCompile(`func ([^\(]+)\(`).FindStringSubmatch(questionDetail.CodeMap[lang]["code"])
@@ -506,14 +507,12 @@ func (lf *leetCodeFile) GenerateReadme() error {
 
 // [![数组](https://img.shields.io/badge/数组-99-red.svg)](https://shields.io/)
 func (lf *leetCodeFile) DrawQuestionTagList() string {
-	tagList := lc.QuestionTagList
-	if len(tagList) <= 0 {
+	if len(lc.QuestionTagList) <= 0 {
 		return ""
 	}
 
-	resp := ""
-	preColor := ""
-	for _, tag := range tagList {
+	resp, preColor := "", ""
+	for _, tag := range lc.QuestionTagList {
 		tagLinks := strings.Split(tag.Link, "/")
 		if len(tagLinks) < 4 {
 			continue
@@ -545,7 +544,6 @@ func (lf *leetCodeFile) DrawQuestionList() string {
 	if len(questionList) <= 0 {
 		return ""
 	}
-
 	resp := fmt.Sprintln("|#|标题|难度|")
 	resp += fmt.Sprintln("|:-:|:-|:-:|")
 	for _, question := range questionList {
@@ -585,7 +583,7 @@ func main() {
 		{
 			Name:    "config",
 			Aliases: []string{"c"},
-			Usage:   "全局配置",
+			Usage:   "配置",
 			Subcommands: []*cli.Command{
 				{
 					Name:  "path",
@@ -593,7 +591,7 @@ func main() {
 					Action: func(c *cli.Context) error {
 						path := c.Args().Get(0)
 						if path == "" {
-							prefix("答题文件目录:", lcFile.Path, "未设置")
+							show("答题文件目录:", lcFile.Path, "未设置")
 							return nil
 						}
 						if !util.IsExist(path) {
@@ -615,12 +613,12 @@ func main() {
 					Action: func(c *cli.Context) error {
 						lang := c.Args().Get(0)
 						if lang == "" {
-							prefix("默认编程语言:", lcFile.Lang, "未设置")
+							show("默认编程语言:", lcFile.Lang, "未设置")
 							return nil
 						}
 						if !util.InArray(lang, LangList) {
 							fail("无效的编程语言:", lang)
-							prefix("支持的编程语言:", crypto.JsonEncode(LangList), "")
+							show("支持的编程语言:", crypto.JsonEncode(LangList), "")
 							return nil
 						}
 						lcFile.Lang = lang
@@ -660,11 +658,11 @@ func main() {
 		{
 			Name:    "question",
 			Aliases: []string{"q"},
-			Usage:   "生成答题相关文件 [eg: question two-sum]",
+			Usage:   "生成答题文件 [eg: question two-sum]",
 			Action: func(c *cli.Context) error {
 				slug := c.Args().Get(0)
 				if slug == "" {
-					prefix("请输入问题标识:", "[eg: question two-sum]", "")
+					show("请输入问题标识:", "[eg: question two-sum]", "")
 					return nil
 				}
 				if _, ok := lc.QuestionMap[slug]; !ok {
@@ -680,9 +678,9 @@ func main() {
 				lang := ""
 				if lcFile.Lang != "" && util.InArray(lcFile.Lang, questionDetail.LangList) {
 					lang = lcFile.Lang
-					prefix("已使用默认编程语言:", lang, "")
+					show("已使用默认编程语言:", lang, "")
 				} else {
-					prefix("支持的编程语言:", crypto.JsonEncode(questionDetail.LangList), "")
+					show("支持的编程语言:", crypto.JsonEncode(questionDetail.LangList), "")
 					// 监听输入, 并对编程语言自动补全
 					line := liner.NewLiner()
 					defer line.Close()
@@ -722,11 +720,11 @@ func main() {
 		{
 			Name:    "list",
 			Aliases: []string{"l"},
-			Usage:   "显示问题列表 [eg: list two-sum; 支持关键字, 最多显示 20 条]",
+			Usage:   "问题列表 [eg: list two-sum; 最多显示 20 条]",
 			Action: func(c *cli.Context) error {
 				keyword := c.Args().Get(0)
 				if keyword == "" {
-					prefix("请输入关键字:", "[eg: list two-sum]", "")
+					show("请输入关键字:", "[eg: list two-sum]", "")
 					return nil
 				}
 				list := [][]interface{}{}
@@ -753,7 +751,7 @@ func main() {
 		{
 			Name:    "exit",
 			Aliases: []string{"e"},
-			Usage:   "退出程序",
+			Usage:   "退出",
 			Action: func(c *cli.Context) error {
 				return cli.NewExitError("", 0)
 			},
@@ -788,6 +786,7 @@ func main() {
 
 		for {
 			commandLine, err := line.Prompt(fmt.Sprintf("%s > ", app.Name))
+			// ctrl + c
 			if err == liner.ErrPromptAborted {
 				os.Exit(0)
 			}
@@ -804,7 +803,7 @@ func main() {
 				continue
 			}
 			if !strings.HasPrefix(cmdArgs[0], "config") && lcFile.Path == "" {
-				fail("请先设置答题项目目录, 输入 `config` 试一试")
+				fail("请先设置答题文件目录, 输入 `config` 试一试")
 				continue
 			}
 			line.AppendHistory(commandLine)

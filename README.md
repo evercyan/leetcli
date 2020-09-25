@@ -11,14 +11,16 @@ leetcode 刷题小工具, 生成 README, 答题文件, 测试文件等
 
 ---
 
-## Install
-
+## Usage
 
 ```sh
-go get -u -v https://github.com/evercyan/leetcli/cmd/leetcli
+go get -v github.com/evercyan/leetcli
+leetcli --help
 ```
 
-## Tag
+---
+
+## Tag List
 
 [![数组](https://img.shields.io/badge/数组-316-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/array/)
 [![动态规划](https://img.shields.io/badge/动态规划-238-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/dynamic-programming/)
@@ -65,7 +67,7 @@ go get -u -v https://github.com/evercyan/leetcli/cmd/leetcli
 
 ---
 
-## Question
+## Question List
 
 |#|标题|难度|
 |:-:|:-|:-:|
