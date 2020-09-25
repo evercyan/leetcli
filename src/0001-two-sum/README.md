@@ -1,6 +1,6 @@
 # [1. Two Sum](https://leetcode-cn.com/problems/two-sum/)
 
-`[简单]` [数组](https://leetcode-cn.com/tag/array/)  [哈希表](https://leetcode-cn.com/tag/hash-table/) 
+`[简单]` [数组](https://leetcode-cn.com/tag/array/) [哈希表](https://leetcode-cn.com/tag/hash-table/)
 
 ---
 
@@ -20,3 +20,4 @@
 
 
 ```
+

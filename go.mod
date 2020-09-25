@@ -9,13 +9,14 @@ require (
 	github.com/bmizerany/assert v0.0.0-20160611221934-b7ed37b82869 // indirect
 	github.com/cpuguy83/go-md2man/v2 v2.0.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/evercyan/gocli v0.0.1
 	github.com/evercyan/letitgo v0.0.3
 	github.com/kr/pretty v0.1.0 // indirect
 	github.com/mattn/go-runewidth v0.0.9 // indirect
 	github.com/mozillazg/request v0.8.0
 	github.com/peterh/liner v1.2.0
 	github.com/stretchr/testify v1.6.1
-	github.com/urfave/cli v1.22.4
+	github.com/urfave/cli/v2 v2.2.0
 	golang.org/x/net v0.0.0-20200904194848-62affa334b73 // indirect
 	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
 )

@@ -5,36 +5,44 @@
 [![travis-ci](https://www.travis-ci.org/evercyan/leetcli.svg?branch=master)](https://www.travis-ci.org/evercyan/leetcli)
 [![codecov](https://codecov.io/gh/evercyan/leetcli/branch/master/graph/badge.svg?token=RbJTUtAlvl)](https://codecov.io/gh/evercyan/leetcli)
 [![goreportcard](https://goreportcard.com/badge/github.com/evercyan/leetcli)](https://goreportcard.com/report/github.com/evercyan/leetcli)
-[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
 
 leetcode 刷题小工具, 生成 README, 答题文件, 测试文件等
 </div>
 
 ---
 
-## Tag
+## Usage
 
-[![数组](https://img.shields.io/badge/数组-314-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/array/)
-[![动态规划](https://img.shields.io/badge/动态规划-236-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/dynamic-programming/)
-[![字符串](https://img.shields.io/badge/字符串-216-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/string/)
+```sh
+go get -v github.com/evercyan/leetcli
+leetcli --help
+```
+
+---
+
+## Tag List
+
+[![数组](https://img.shields.io/badge/数组-316-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/array/)
+[![动态规划](https://img.shields.io/badge/动态规划-238-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/dynamic-programming/)
+[![字符串](https://img.shields.io/badge/字符串-218-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/string/)
 [![数学](https://img.shields.io/badge/数学-203-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/math/)
 
-[![树](https://img.shields.io/badge/树-165-b80909.svg?style=flat)](https://leetcode-cn.com/tag/tree/)
+[![树](https://img.shields.io/badge/树-166-b80909.svg?style=flat)](https://leetcode-cn.com/tag/tree/)
 [![深度优先搜索](https://img.shields.io/badge/深度优先搜索-146-b80909.svg?style=flat)](https://leetcode-cn.com/tag/depth-first-search/)
 [![哈希表](https://img.shields.io/badge/哈希表-140-b80909.svg?style=flat)](https://leetcode-cn.com/tag/hash-table/)
 
-[![二分查找](https://img.shields.io/badge/二分查找-98-e64546.svg?style=flat)](https://leetcode-cn.com/tag/binary-search/)
-[![贪心算法](https://img.shields.io/badge/贪心算法-93-e64546.svg?style=flat)](https://leetcode-cn.com/tag/greedy/)
+[![二分查找](https://img.shields.io/badge/二分查找-99-e64546.svg?style=flat)](https://leetcode-cn.com/tag/binary-search/)
+[![贪心算法](https://img.shields.io/badge/贪心算法-96-e64546.svg?style=flat)](https://leetcode-cn.com/tag/greedy/)
 [![广度优先搜索](https://img.shields.io/badge/广度优先搜索-78-e64546.svg?style=flat)](https://leetcode-cn.com/tag/breadth-first-search/)
 [![双指针](https://img.shields.io/badge/双指针-71-e64546.svg?style=flat)](https://leetcode-cn.com/tag/two-pointers/)
 [![位运算](https://img.shields.io/badge/位运算-66-e64546.svg?style=flat)](https://leetcode-cn.com/tag/bit-manipulation/)
 [![栈](https://img.shields.io/badge/栈-66-e64546.svg?style=flat)](https://leetcode-cn.com/tag/stack/)
 [![排序](https://img.shields.io/badge/排序-65-e64546.svg?style=flat)](https://leetcode-cn.com/tag/sort/)
-[![回溯算法](https://img.shields.io/badge/回溯算法-62-e64546.svg?style=flat)](https://leetcode-cn.com/tag/backtracking/)
-[![设计](https://img.shields.io/badge/设计-62-e64546.svg?style=flat)](https://leetcode-cn.com/tag/design/)
+[![回溯算法](https://img.shields.io/badge/回溯算法-63-e64546.svg?style=flat)](https://leetcode-cn.com/tag/backtracking/)
+[![设计](https://img.shields.io/badge/设计-63-e64546.svg?style=flat)](https://leetcode-cn.com/tag/design/)
 [![链表](https://img.shields.io/badge/链表-53-e64546.svg?style=flat)](https://leetcode-cn.com/tag/linked-list/)
 
-[![图](https://img.shields.io/badge/图-47-f57567.svg?style=flat)](https://leetcode-cn.com/tag/graph/)
+[![图](https://img.shields.io/badge/图-48-f57567.svg?style=flat)](https://leetcode-cn.com/tag/graph/)
 [![堆](https://img.shields.io/badge/堆-40-f57567.svg?style=flat)](https://leetcode-cn.com/tag/heap/)
 [![并查集](https://img.shields.io/badge/并查集-33-f57567.svg?style=flat)](https://leetcode-cn.com/tag/union-find/)
 [![SlidingWindow](https://img.shields.io/badge/SlidingWindow-29-f57567.svg?style=flat)](https://leetcode-cn.com/tag/sliding-window/)
@@ -59,7 +67,7 @@ leetcode 刷题小工具, 生成 README, 答题文件, 测试文件等
 
 ---
 
-## Question
+## Question List
 
 |#|标题|难度|
 |:-:|:-|:-:|

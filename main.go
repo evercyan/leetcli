@@ -7,21 +7,20 @@ import (
 	"fmt"
 	"html"
 	"html/template"
-	"log"
 	"net/http"
 	"os"
 	"os/user"
 	"regexp"
-	"sort"
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
-	lcli "github.com/evercyan/letitgo/cli"
+	"github.com/evercyan/gocli/color"
+	"github.com/evercyan/gocli/table"
 	"github.com/evercyan/letitgo/crypto"
 	"github.com/evercyan/letitgo/util"
 	"github.com/mozillazg/request"
 	"github.com/peterh/liner"
-	"github.com/urfave/cli"
+	cli "github.com/urfave/cli/v2"
 )
 
 var (
@@ -31,7 +30,7 @@ var (
 	lcTagURL         = "https://leetcode-cn.com/tag/%s/"           // 标签页面地址
 	lcQuestionSetURL = "https://leetcode-cn.com/problemset/all/"   // 题库首页
 	lcDifficulty     = []string{"", "简单", "中等", "困难"}              // 难度类型
-	configCommands   = []string{"project_path", "default_lang"}    // 配置命令
+	commandList      = []string{"help", "h"}                       // 命令列表
 )
 
 /**
@@ -46,20 +45,28 @@ var tplReadme = `<div align="center">
 [![travis-ci](https://www.travis-ci.org/evercyan/leetcli.svg?branch=master)](https://www.travis-ci.org/evercyan/leetcli)
 [![codecov](https://codecov.io/gh/evercyan/leetcli/branch/master/graph/badge.svg?token=RbJTUtAlvl)](https://codecov.io/gh/evercyan/leetcli)
 [![goreportcard](https://goreportcard.com/badge/github.com/evercyan/leetcli)](https://goreportcard.com/report/github.com/evercyan/leetcli)
-[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
 
 leetcode 刷题小工具, 生成 README, 答题文件, 测试文件等
 </div>
 
 ---
 
-## Tag
+## Usage
+
+` + "```sh" + `
+go get -v github.com/evercyan/leetcli
+leetcli --help
+` + "```" + `
+
+---
+
+## Tag List
 
 {{.DrawQuestionTagList}}
 
 ---
 
-## Question
+## Question List
 
 {{.DrawQuestionList}}
 
@@ -148,20 +155,26 @@ func getConfigFile() (string, error) {
 	return appPath + "/config.json", nil
 }
 
-func showGreen(text string) {
-	fmt.Println(lcli.Style(text).Color(lcli.Green).Text())
+func success(texts ...string) {
+	color.New(texts...).Color(color.Green).Render()
 }
 
-func showCyan(text string) {
-	fmt.Println(lcli.Style(text).Color(lcli.Cyan).Text())
+func notice(texts ...string) {
+	color.New(texts...).Color(color.Yellow).Render()
 }
 
-func showMagenta(text string) {
-	fmt.Println(lcli.Style(text).Color(lcli.Magenta).Text())
+func fail(texts ...string) {
+	color.New(texts...).Color(color.Red).Render()
 }
 
-func showRed(text string) {
-	fmt.Println(lcli.Style("错误: " + text).Color(lcli.Red).Text())
+func show(prefixStr, successStr, failStr string) {
+	content := color.New(prefixStr).Color(color.Yellow).Content() + " "
+	if successStr != "" {
+		content += color.New(successStr).Color(color.Green).Content()
+	} else {
+		content += color.New(failStr).Color(color.Red).Content()
+	}
+	fmt.Println(content)
 }
 
 /**
@@ -368,8 +381,8 @@ var (
 )
 
 type leetCodeFile struct {
-	ProjectPath string `json:"project_path"`
-	DefaultLang string `json:"default_lang"`
+	Path string `json:"path" desc:"答题文件目录"`
+	Lang string `json:"lang" desc:"默认编程语言"`
 }
 
 func (lf *leetCodeFile) Init() error {
@@ -396,7 +409,7 @@ func (lf *leetCodeFile) Save() error {
 func (lf *leetCodeFile) GenerateQuestion(slug string, lang string, questionDetail *lcQuestionDetail) (err error) {
 	questionInfo, _ := lc.QuestionMap[slug]
 	questionPath := getQustionPath(questionInfo.FQID, questionInfo.QID, questionInfo.Slug)
-	questionPath = lf.ProjectPath + questionPath
+	questionPath = lf.Path + questionPath
 	if !util.IsExist(questionPath) {
 		err = os.MkdirAll(questionPath, 0755)
 		if err != nil {
@@ -459,7 +472,7 @@ func (lf *leetCodeFile) GenerateQuestion(slug string, lang string, questionDetai
 	// 创建答题文件
 	questionFile := fmt.Sprintf("%s/%s", questionPath, file)
 	if util.IsExist(questionFile) {
-		showCyan("答题文件已存在 - " + questionFile)
+		show("答题文件已存在:", questionFile, "")
 	} else {
 		util.WriteFile(questionFile, fmt.Sprintf(fileTpl, questionDetail.CodeMap[lang]["code"]))
 	}
@@ -468,7 +481,7 @@ func (lf *leetCodeFile) GenerateQuestion(slug string, lang string, questionDetai
 	if testfile != "" {
 		questionTestFile := fmt.Sprintf("%s/%s", questionPath, testfile)
 		if util.IsExist(questionTestFile) {
-			showCyan("答题测试文件已存在 - " + questionTestFile)
+			show("答题测试文件已存在:", questionTestFile, "")
 		} else {
 			// 替换测试文件中函数名称
 			matchs := regexp.MustCompile(`func ([^\(]+)\(`).FindStringSubmatch(questionDetail.CodeMap[lang]["code"])
@@ -489,19 +502,17 @@ func (lf *leetCodeFile) GenerateReadme() error {
 	if err != nil {
 		return err
 	}
-	return util.WriteFile(lf.ProjectPath+"/README.md", string(b.Bytes()))
+	return util.WriteFile(lf.Path+"/README.md", string(b.Bytes()))
 }
 
 // [![数组](https://img.shields.io/badge/数组-99-red.svg)](https://shields.io/)
 func (lf *leetCodeFile) DrawQuestionTagList() string {
-	tagList := lc.QuestionTagList
-	if len(tagList) <= 0 {
+	if len(lc.QuestionTagList) <= 0 {
 		return ""
 	}
 
-	resp := ""
-	preColor := ""
-	for _, tag := range tagList {
+	resp, preColor := "", ""
+	for _, tag := range lc.QuestionTagList {
 		tagLinks := strings.Split(tag.Link, "/")
 		if len(tagLinks) < 4 {
 			continue
@@ -533,7 +544,6 @@ func (lf *leetCodeFile) DrawQuestionList() string {
 	if len(questionList) <= 0 {
 		return ""
 	}
-
 	resp := fmt.Sprintln("|#|标题|难度|")
 	resp += fmt.Sprintln("|:-:|:-|:-:|")
 	for _, question := range questionList {
@@ -558,69 +568,175 @@ var lcFile = new(leetCodeFile)
 
 func main() {
 	if err := lc.Init(); err != nil {
-		showRed("加载数据失败 - " + err.Error())
+		fail("加载数据失败:", err.Error())
 		return
 	}
 	if err := lcFile.Init(); err != nil {
-		showRed("加载配置失败 - " + err.Error())
+		fail("加载配置失败:", err.Error())
 		return
 	}
-
 	app := cli.NewApp()
 	app.Name = "leetcli"
 	app.Usage = "leetcode 刷题小工具, 生成 README.md, 答题文件, 测试文件等"
-	app.Version = "v0.0.3"
-	app.Flags = []cli.Flag{}
-	app.Commands = []cli.Command{
+	app.Version = "v0.0.4"
+	app.Commands = []*cli.Command{
 		{
 			Name:    "config",
 			Aliases: []string{"c"},
-			Usage:   "更新配置",
-			Action: func(c *cli.Context) {
-				if len(c.Args()) == 2 && util.InArray(c.Args()[0], configCommands) {
-					command, value := c.Args()[0], c.Args()[1]
-					if command == "project_path" {
-						// 配置目录
-						if !util.IsExist(value) {
-							showRed("项目目录不存在 - " + value)
-							return
+			Usage:   "配置",
+			Subcommands: []*cli.Command{
+				{
+					Name:  "path",
+					Usage: "设置答题文件目录 [eg: config path /tmp]",
+					Action: func(c *cli.Context) error {
+						path := c.Args().Get(0)
+						if path == "" {
+							show("答题文件目录:", lcFile.Path, "未设置")
+							return nil
 						}
-						lcFile.ProjectPath = value
-					} else if command == "default_lang" {
-						// 配置编程语言
-						if !util.InArray(value, LangList) {
-							showRed("无效的编程语言 - " + value)
-							showCyan("支持配置的编程语言 - " + crypto.JsonEncode(LangList))
-							return
+						if !util.IsExist(path) {
+							fail("答题文件目录不存在:", path)
+							return nil
 						}
-						lcFile.DefaultLang = value
-					}
-					if err := lcFile.Save(); err != nil {
-						showRed("更新配置失败 - " + err.Error())
-						return
-					}
-					showGreen("更新配置成功")
-					return
+						lcFile.Path = path
+						if err := lcFile.Save(); err != nil {
+							fail("更新答题文件目录失败:", err.Error())
+							return nil
+						}
+						success("更新答题文件目录成功")
+						return nil
+					},
+				},
+				{
+					Name:  "lang",
+					Usage: "设置默认编程语言 [eg: config lang golang]",
+					Action: func(c *cli.Context) error {
+						lang := c.Args().Get(0)
+						if lang == "" {
+							show("默认编程语言:", lcFile.Lang, "未设置")
+							return nil
+						}
+						if !util.InArray(lang, LangList) {
+							fail("无效的编程语言:", lang)
+							show("支持的编程语言:", crypto.JsonEncode(LangList), "")
+							return nil
+						}
+						lcFile.Lang = lang
+						if err := lcFile.Save(); err != nil {
+							fail("更新默认编程语言失败:", err.Error())
+							return nil
+						}
+						success("更新默认编程语言成功")
+						return nil
+					},
+				},
+			},
+			Before: func(c *cli.Context) error {
+				subCommand := c.Args().Get(0)
+				if subCommand != "" && !util.InArray("config "+subCommand, commandList) {
+					fail("无效命令, 输入 `help` 试一试")
+					return errors.New("")
 				}
-				showMagenta(fmt.Sprintf("config project_path xxx [设置项目目录] [当前配置: %s]", lcFile.ProjectPath))
-				showMagenta(fmt.Sprintf("config default_lang xxx [设置编程语言] [当前配置: %s]", lcFile.DefaultLang))
+				return nil
+			},
+		},
+		{
+			Name:    "readme",
+			Aliases: []string{"r"},
+			Usage:   "生成 README.md",
+			Action: func(c *cli.Context) error {
+				err := lcFile.GenerateReadme()
+				if err != nil {
+					fail(err.Error())
+					return nil
+				}
+				success("生成 README.md 成功")
+				return nil
+			},
+		},
+
+		{
+			Name:    "question",
+			Aliases: []string{"q"},
+			Usage:   "生成答题文件 [eg: question two-sum]",
+			Action: func(c *cli.Context) error {
+				slug := c.Args().Get(0)
+				if slug == "" {
+					show("请输入问题标识:", "[eg: question two-sum]", "")
+					return nil
+				}
+				if _, ok := lc.QuestionMap[slug]; !ok {
+					fail("无效的问题标识")
+					return nil
+				}
+				questionDetail, err := lc.getQuestionDetail(slug)
+				if err != nil {
+					fail("读取问题信息失败:", err.Error())
+					return nil
+				}
+
+				lang := ""
+				if lcFile.Lang != "" && util.InArray(lcFile.Lang, questionDetail.LangList) {
+					lang = lcFile.Lang
+					show("已使用默认编程语言:", lang, "")
+				} else {
+					show("支持的编程语言:", crypto.JsonEncode(questionDetail.LangList), "")
+					// 监听输入, 并对编程语言自动补全
+					line := liner.NewLiner()
+					defer line.Close()
+					line.SetCtrlCAborts(true)
+					line.SetCompleter(func(line string) (c []string) {
+						for _, command := range questionDetail.LangList {
+							if strings.HasPrefix(command, strings.ToLower(line)) {
+								c = append(c, command)
+							}
+						}
+						return
+					})
+					for {
+						lang, err := line.Prompt("请输入编程语言 > ")
+						if err == liner.ErrPromptAborted {
+							os.Exit(0)
+						}
+						if lang != "" {
+							break
+						}
+					}
+					if !util.InArray(lang, questionDetail.LangList) {
+						fail("无效的编程语言")
+						return nil
+					}
+				}
+
+				err = lcFile.GenerateQuestion(slug, lang, questionDetail)
+				if err != nil {
+					fail("生成答题文件失败:", err.Error())
+					return nil
+				}
+				success("生成答题文件成功")
+				return nil
 			},
 		},
 		{
 			Name:    "list",
 			Aliases: []string{"l"},
-			Usage:   "显示问题列表 [eg: list two-sum]",
-			Action: func(c *cli.Context) {
-				list := [][]interface{}{}
-				keyword := ""
-				if len(c.Args()) > 0 {
-					keyword = c.Args()[0]
+			Usage:   "问题列表 [eg: list two-sum; 最多显示 20 条]",
+			Action: func(c *cli.Context) error {
+				keyword := c.Args().Get(0)
+				if keyword == "" {
+					show("请输入关键字:", "[eg: list two-sum]", "")
+					return nil
 				}
+				list := [][]interface{}{}
+				count := 0
 				for _, item := range lc.QuestionList {
-					// 过滤关键字
-					if keyword != "" && !strings.Contains(item.FQID, keyword) && !strings.Contains(item.Title, keyword) && !strings.Contains(item.Slug, keyword) {
+					if !strings.Contains(item.FQID, keyword) && !strings.Contains(item.Title, keyword) && !strings.Contains(item.Slug, keyword) {
 						continue
 					}
+					if count >= 20 {
+						break
+					}
+					count++
 					list = append(list, []interface{}{
 						item.FQID,
 						item.Title,
@@ -628,130 +744,74 @@ func main() {
 						item.Difficulty,
 					})
 				}
-				lcli.Table(list).Header([]string{"id", "标题", "标识", "难度"}).Title("问题列表").Output()
+				success(table.New(list).Header([]string{"id", "标题", "标识", "难度"}).Content())
+				return nil
 			},
 		},
 		{
-			Name:    "readme",
-			Aliases: []string{"r"},
-			Usage:   "生成 README.md",
-			Action: func(c *cli.Context) {
-				if lcFile.ProjectPath == "" {
-					showRed("请先配置项目目录, 输入 `config` 试一试")
-					return
-				}
-				err := lcFile.GenerateReadme()
-				if err != nil {
-					showRed(err.Error())
-					return
-				}
-				showGreen("生成项目 README.md 成功")
-				return
-			},
-		},
-		{
-			Name:    "question",
-			Aliases: []string{"q"},
-			Usage:   "生成答题文件 [eg: question two-sum]",
-			Action: func(c *cli.Context) {
-				if lcFile.ProjectPath == "" {
-					showRed("请先配置项目目录, 输入 `config` 试一试")
-					return
-				}
-				if len(c.Args()) <= 0 {
-					showRed("请输入问题标识 - https://leetcode-cn.com/problems/\033[0;32mtwo-sum\033[0m")
-					return
-				}
-				slug := c.Args()[0]
-				if _, ok := lc.QuestionMap[slug]; !ok {
-					showRed("无效的问题标识 - https://leetcode-cn.com/problems/\033[0;32mtwo-sum\033[0m")
-					return
-				}
-				questionDetail, err := lc.getQuestionDetail(slug)
-				if err != nil {
-					showRed("读取问题信息失败 - " + err.Error())
-					return
-				}
-
-				lang := ""
-				if lcFile.DefaultLang != "" && util.InArray(lcFile.DefaultLang, questionDetail.LangList) {
-					lang = lcFile.DefaultLang
-					showCyan("已使用默认编程语言 - " + lang)
-				} else {
-					showCyan("支持的编程语言 - " + crypto.JsonEncode(questionDetail.LangList))
-					line := liner.NewLiner()
-					defer line.Close()
-					lang, _ = line.Prompt("请选择编程语言 > ")
-					if lang == "" || !util.InArray(lang, questionDetail.LangList) {
-						showRed("无效的编程语言")
-						return
-					}
-				}
-
-				err = lcFile.GenerateQuestion(slug, lang, questionDetail)
-				if err != nil {
-					showRed("生成答题文件失败 - " + err.Error())
-					return
-				}
-				showGreen("生成答题文件成功")
-				return
-			},
-		},
-		{
-			Name:    "quit",
-			Aliases: []string{"exit"},
-			Usage:   "退出程序",
+			Name:    "exit",
+			Aliases: []string{"e"},
+			Usage:   "退出",
 			Action: func(c *cli.Context) error {
 				return cli.NewExitError("", 0)
 			},
 		},
 	}
-	commandList := []string{"help"}
+
+	// 命令列表
 	for _, command := range app.Commands {
 		commandList = append(commandList, command.Name)
 		commandList = append(commandList, command.Aliases...)
+		if len(command.Subcommands) > 0 {
+			for _, subCommand := range command.Subcommands {
+				commandList = append(commandList, command.Name+" "+subCommand.Name)
+			}
+		}
 	}
-	for _, command := range configCommands {
-		commandList = append(commandList, "config "+command)
-	}
+
 	app.Action = func(c *cli.Context) error {
 		line := liner.NewLiner()
 		defer line.Close()
+
+		// 处理命令补全
 		line.SetCtrlCAborts(true)
 		line.SetCompleter(func(line string) (c []string) {
-			for _, n := range commandList {
-				if strings.HasPrefix(n, strings.ToLower(line)) {
-					c = append(c, n)
+			for _, command := range commandList {
+				if strings.HasPrefix(command, strings.ToLower(line)) {
+					c = append(c, command)
 				}
 			}
 			return
 		})
-		showCyan("输入 `help` 试一试")
+
 		for {
 			commandLine, err := line.Prompt(fmt.Sprintf("%s > ", app.Name))
-			if err != nil {
-				fmt.Println(err)
-				return err
+			// ctrl + c
+			if err == liner.ErrPromptAborted {
+				os.Exit(0)
 			}
-			line.AppendHistory(commandLine)
+			commandLine = strings.Trim(commandLine, " ")
+			if commandLine == "" {
+				continue
+			}
 			cmdArgs := strings.Split(commandLine, " ")
 			if len(cmdArgs) == 0 {
 				continue
 			}
-			if strings.Trim(cmdArgs[0], "") == "" {
-				continue
-			}
 			if !util.InArray(cmdArgs[0], commandList) {
-				showRed("无效命令, 输入 `help` 试一试")
+				fail("无效命令, 输入 `help` 试一试")
 				continue
 			}
+			if !strings.HasPrefix(cmdArgs[0], "config") && lcFile.Path == "" {
+				fail("请先设置答题文件目录, 输入 `config` 试一试")
+				continue
+			}
+			line.AppendHistory(commandLine)
 			s := []string{os.Args[0]}
 			s = append(s, cmdArgs...)
 			c.App.Run(s)
 		}
 	}
-	sort.Sort(cli.FlagsByName(app.Flags))
-	if err := app.Run(os.Args); err != nil {
-		log.Fatal(err)
-	}
+
+	app.Run(os.Args)
 }
