@@ -15,6 +15,7 @@ import (
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/evercyan/gocli/color"
+	"github.com/evercyan/gocli/table"
 	"github.com/evercyan/letitgo/crypto"
 	"github.com/evercyan/letitgo/util"
 	"github.com/mozillazg/request"
@@ -50,13 +51,19 @@ leetcode 刷题小工具, 生成 README, 答题文件, 测试文件等
 
 ---
 
-## Tag
+## Install
+
+` + "```sh" + `
+go get -u -v github.com/evercyan/leetcli
+` + "```" + `
+
+## Tag List
 
 {{.DrawQuestionTagList}}
 
 ---
 
-## Question
+## Question List
 
 {{.DrawQuestionList}}
 
@@ -462,7 +469,7 @@ func (lf *leetCodeFile) GenerateQuestion(slug string, lang string, questionDetai
 	// 创建答题文件
 	questionFile := fmt.Sprintf("%s/%s", questionPath, file)
 	if util.IsExist(questionFile) {
-		notice("答题文件已存在 -", questionFile)
+		prefix("答题文件已存在:", questionFile, "")
 	} else {
 		util.WriteFile(questionFile, fmt.Sprintf(fileTpl, questionDetail.CodeMap[lang]["code"]))
 	}
@@ -471,7 +478,7 @@ func (lf *leetCodeFile) GenerateQuestion(slug string, lang string, questionDetai
 	if testfile != "" {
 		questionTestFile := fmt.Sprintf("%s/%s", questionPath, testfile)
 		if util.IsExist(questionTestFile) {
-			notice("答题测试文件已存在 -", questionTestFile)
+			prefix("答题测试文件已存在:", questionTestFile, "")
 		} else {
 			// 替换测试文件中函数名称
 			matchs := regexp.MustCompile(`func ([^\(]+)\(`).FindStringSubmatch(questionDetail.CodeMap[lang]["code"])
@@ -561,11 +568,11 @@ var lcFile = new(leetCodeFile)
 
 func main() {
 	if err := lc.Init(); err != nil {
-		fail("加载数据失败 -", err.Error())
+		fail("加载数据失败:", err.Error())
 		return
 	}
 	if err := lcFile.Init(); err != nil {
-		fail("加载配置失败 -", err.Error())
+		fail("加载配置失败:", err.Error())
 		return
 	}
 
@@ -577,11 +584,11 @@ func main() {
 		{
 			Name:    "config",
 			Aliases: []string{"c"},
-			Usage:   "更新配置",
+			Usage:   "全局配置",
 			Subcommands: []*cli.Command{
 				{
 					Name:  "path",
-					Usage: "设置答题文件目录 [eg: config path `/tmp`]",
+					Usage: "设置答题文件目录 [eg: config path /tmp]",
 					Action: func(c *cli.Context) error {
 						path := c.Args().Get(0)
 						if path == "" {
@@ -612,7 +619,7 @@ func main() {
 						}
 						if !util.InArray(lang, LangList) {
 							fail("无效的编程语言:", lang)
-							notice("支持配置的编程语言:", crypto.JsonEncode(LangList))
+							prefix("支持的编程语言:", crypto.JsonEncode(LangList), "")
 							return nil
 						}
 						lcFile.Lang = lang
@@ -644,7 +651,7 @@ func main() {
 					fail(err.Error())
 					return nil
 				}
-				success("生成项目 README.md 成功")
+				success("生成 README.md 成功")
 				return nil
 			},
 		},
@@ -652,7 +659,7 @@ func main() {
 		{
 			Name:    "question",
 			Aliases: []string{"q"},
-			Usage:   "生成答题文件 [eg: question two-sum]",
+			Usage:   "生成答题相关文件 [eg: question two-sum]",
 			Action: func(c *cli.Context) error {
 				slug := c.Args().Get(0)
 				if slug == "" {
@@ -701,6 +708,37 @@ func main() {
 					return nil
 				}
 				success("生成答题文件成功")
+				return nil
+			},
+		},
+		{
+			Name:    "list",
+			Aliases: []string{"l"},
+			Usage:   "显示问题列表 [eg: list two-sum; 支持关键字, 最多显示 20 条]",
+			Action: func(c *cli.Context) error {
+				keyword := c.Args().Get(0)
+				if keyword == "" {
+					prefix("请输入关键字:", "[eg: list two-sum]", "")
+					return nil
+				}
+				list := [][]interface{}{}
+				count := 0
+				for _, item := range lc.QuestionList {
+					if !strings.Contains(item.FQID, keyword) && !strings.Contains(item.Title, keyword) && !strings.Contains(item.Slug, keyword) {
+						continue
+					}
+					if count >= 20 {
+						break
+					}
+					count++
+					list = append(list, []interface{}{
+						item.FQID,
+						item.Title,
+						item.Slug,
+						item.Difficulty,
+					})
+				}
+				success(table.New(list).Header([]string{"id", "标题", "标识", "难度"}).Content())
 				return nil
 			},
 		},
@@ -755,7 +793,7 @@ func main() {
 			}
 
 			if !strings.HasPrefix(cmdArgs[0], "config") && lcFile.Path == "" {
-				fail("请先配置项目目录, 输入 `config` 试一试")
+				fail("请先设置答题项目目录, 输入 `config` 试一试")
 				continue
 			}
 

@@ -11,6 +11,13 @@ leetcode 刷题小工具, 生成 README, 答题文件, 测试文件等
 
 ---
 
+## Install
+
+
+```sh
+go get -u -v https://github.com/evercyan/leetcli/cmd/leetcli
+```
+
 ## Tag
 
 [![数组](https://img.shields.io/badge/数组-316-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/array/)
