@@ -54,8 +54,10 @@ leetcode 刷题小工具, 生成 README, 答题文件, 测试文件等
 ## Install
 
 ` + "```sh" + `
-go get -u -v github.com/evercyan/leetcli
+go get -v github.com/evercyan/leetcli
 ` + "```" + `
+
+---
 
 ## Tag List
 
@@ -610,7 +612,7 @@ func main() {
 				},
 				{
 					Name:  "lang",
-					Usage: "设置默认编程语言 [eg: config lang `golang`]",
+					Usage: "设置默认编程语言 [eg: config lang golang]",
 					Action: func(c *cli.Context) error {
 						lang := c.Args().Get(0)
 						if lang == "" {
@@ -781,24 +783,22 @@ func main() {
 		for {
 			commandLine, _ := line.Prompt(fmt.Sprintf("%s > ", app.Name))
 			commandLine = strings.Trim(commandLine, " ")
-
+			if commandLine == "" {
+				continue
+			}
 			cmdArgs := strings.Split(commandLine, " ")
 			if len(cmdArgs) == 0 {
 				continue
 			}
-
 			if !util.InArray(cmdArgs[0], commandList) {
 				fail("无效命令, 输入 `help` 试一试")
 				continue
 			}
-
 			if !strings.HasPrefix(cmdArgs[0], "config") && lcFile.Path == "" {
 				fail("请先设置答题项目目录, 输入 `config` 试一试")
 				continue
 			}
-
 			line.AppendHistory(commandLine)
-
 			s := []string{os.Args[0]}
 			s = append(s, cmdArgs...)
 			c.App.Run(s)
