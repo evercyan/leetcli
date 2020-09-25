@@ -5,7 +5,6 @@
 [![travis-ci](https://www.travis-ci.org/evercyan/leetcli.svg?branch=master)](https://www.travis-ci.org/evercyan/leetcli)
 [![codecov](https://codecov.io/gh/evercyan/leetcli/branch/master/graph/badge.svg?token=RbJTUtAlvl)](https://codecov.io/gh/evercyan/leetcli)
 [![goreportcard](https://goreportcard.com/badge/github.com/evercyan/leetcli)](https://goreportcard.com/report/github.com/evercyan/leetcli)
-[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
 
 leetcode 刷题小工具, 生成 README, 答题文件, 测试文件等
 </div>
@@ -16,10 +15,10 @@ leetcode 刷题小工具, 生成 README, 答题文件, 测试文件等
 
 [![数组](https://img.shields.io/badge/数组-316-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/array/)
 [![动态规划](https://img.shields.io/badge/动态规划-238-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/dynamic-programming/)
-[![字符串](https://img.shields.io/badge/字符串-217-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/string/)
+[![字符串](https://img.shields.io/badge/字符串-218-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/string/)
 [![数学](https://img.shields.io/badge/数学-203-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/math/)
 
-[![树](https://img.shields.io/badge/树-165-b80909.svg?style=flat)](https://leetcode-cn.com/tag/tree/)
+[![树](https://img.shields.io/badge/树-166-b80909.svg?style=flat)](https://leetcode-cn.com/tag/tree/)
 [![深度优先搜索](https://img.shields.io/badge/深度优先搜索-146-b80909.svg?style=flat)](https://leetcode-cn.com/tag/depth-first-search/)
 [![哈希表](https://img.shields.io/badge/哈希表-140-b80909.svg?style=flat)](https://leetcode-cn.com/tag/hash-table/)
 

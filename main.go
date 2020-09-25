@@ -150,11 +150,21 @@ func success(texts ...string) {
 }
 
 func notice(texts ...string) {
-	color.New(texts...).Color(color.Cyan).Render()
+	color.New(texts...).Color(color.Yellow).Render()
 }
 
 func fail(texts ...string) {
 	color.New(texts...).Color(color.Red).Render()
+}
+
+func prefix(prefixStr, successStr, failStr string) {
+	content := color.New(prefixStr).Color(color.Yellow).Content() + " "
+	if successStr != "" {
+		content += color.New(successStr).Color(color.Green).Content()
+	} else {
+		content += color.New(failStr).Color(color.Red).Content()
+	}
+	fmt.Println(content)
 }
 
 /**
@@ -575,16 +585,16 @@ func main() {
 					Action: func(c *cli.Context) error {
 						path := c.Args().Get(0)
 						if path == "" {
-							success("答题文件目录:", lcFile.Path)
+							prefix("答题文件目录:", lcFile.Path, "未设置")
 							return nil
 						}
 						if !util.IsExist(path) {
-							fail("答题文件目录不存在 -", path)
+							fail("答题文件目录不存在:", path)
 							return nil
 						}
 						lcFile.Path = path
 						if err := lcFile.Save(); err != nil {
-							fail("更新答题文件目录失败 -", err.Error())
+							fail("更新答题文件目录失败:", err.Error())
 							return nil
 						}
 						success("更新答题文件目录成功")
@@ -597,17 +607,17 @@ func main() {
 					Action: func(c *cli.Context) error {
 						lang := c.Args().Get(0)
 						if lang == "" {
-							success("默认编程语言:", lcFile.Lang)
+							prefix("默认编程语言:", lcFile.Lang, "未设置")
 							return nil
 						}
 						if !util.InArray(lang, LangList) {
-							fail("无效的编程语言 -", lang)
-							notice("支持配置的编程语言 -", crypto.JsonEncode(LangList))
+							fail("无效的编程语言:", lang)
+							notice("支持配置的编程语言:", crypto.JsonEncode(LangList))
 							return nil
 						}
 						lcFile.Lang = lang
 						if err := lcFile.Save(); err != nil {
-							fail("更新默认编程语言失败 -", err.Error())
+							fail("更新默认编程语言失败:", err.Error())
 							return nil
 						}
 						success("更新默认编程语言成功")
@@ -617,7 +627,6 @@ func main() {
 			},
 			Before: func(c *cli.Context) error {
 				subCommand := c.Args().Get(0)
-				fmt.Println("subCommand", subCommand)
 				if subCommand != "" && !util.InArray("config "+subCommand, commandList) {
 					fail("无效命令, 输入 `help` 试一试")
 					return errors.New("")
@@ -626,8 +635,78 @@ func main() {
 			},
 		},
 		{
-			Name:    "quit",
+			Name:    "readme",
+			Aliases: []string{"r"},
+			Usage:   "生成 README.md",
+			Action: func(c *cli.Context) error {
+				err := lcFile.GenerateReadme()
+				if err != nil {
+					fail(err.Error())
+					return nil
+				}
+				success("生成项目 README.md 成功")
+				return nil
+			},
+		},
+
+		{
+			Name:    "question",
 			Aliases: []string{"q"},
+			Usage:   "生成答题文件 [eg: question two-sum]",
+			Action: func(c *cli.Context) error {
+				slug := c.Args().Get(0)
+				if slug == "" {
+					prefix("请输入问题标识:", "[eg: question two-sum]", "")
+					return nil
+				}
+				if _, ok := lc.QuestionMap[slug]; !ok {
+					fail("无效的问题标识")
+					return nil
+				}
+				questionDetail, err := lc.getQuestionDetail(slug)
+				if err != nil {
+					fail("读取问题信息失败:", err.Error())
+					return nil
+				}
+
+				lang := ""
+				if lcFile.Lang != "" && util.InArray(lcFile.Lang, questionDetail.LangList) {
+					lang = lcFile.Lang
+					prefix("已使用默认编程语言:", lang, "")
+				} else {
+					prefix("支持的编程语言:", crypto.JsonEncode(questionDetail.LangList), "")
+
+					// 监听输入, 并对编程语言自动补全
+					line := liner.NewLiner()
+					defer line.Close()
+					line.SetCtrlCAborts(true)
+					line.SetCompleter(func(line string) (c []string) {
+						for _, command := range questionDetail.LangList {
+							if strings.HasPrefix(command, strings.ToLower(line)) {
+								c = append(c, command)
+							}
+						}
+						return
+					})
+					lang, _ = line.Prompt("请选择编程语言 > ")
+					if lang == "" || !util.InArray(lang, questionDetail.LangList) {
+						fail("无效的编程语言")
+						return nil
+					}
+				}
+
+				err = lcFile.GenerateQuestion(slug, lang, questionDetail)
+				if err != nil {
+					fail("生成答题文件失败:", err.Error())
+					return nil
+				}
+				success("生成答题文件成功")
+				return nil
+			},
+		},
+		{
+			Name:    "exit",
+			Aliases: []string{"e"},
 			Usage:   "退出程序",
 			Action: func(c *cli.Context) error {
 				return cli.NewExitError("", 0)
@@ -674,6 +753,12 @@ func main() {
 				fail("无效命令, 输入 `help` 试一试")
 				continue
 			}
+
+			if !strings.HasPrefix(cmdArgs[0], "config") && lcFile.Path == "" {
+				fail("请先配置项目目录, 输入 `config` 试一试")
+				continue
+			}
+
 			line.AppendHistory(commandLine)
 
 			s := []string{os.Args[0]}
