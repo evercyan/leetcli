@@ -577,7 +577,6 @@ func main() {
 		fail("加载配置失败:", err.Error())
 		return
 	}
-
 	app := cli.NewApp()
 	app.Name = "leetcli"
 	app.Usage = "leetcode 刷题小工具, 生成 README.md, 答题文件, 测试文件等"
@@ -697,7 +696,10 @@ func main() {
 						return
 					})
 					for {
-						lang, _ = line.Prompt("请输入编程语言 > ")
+						lang, err := line.Prompt("请输入编程语言 > ")
+						if err == liner.ErrPromptAborted {
+							os.Exit(0)
+						}
 						if lang != "" {
 							break
 						}
@@ -785,7 +787,10 @@ func main() {
 		})
 
 		for {
-			commandLine, _ := line.Prompt(fmt.Sprintf("%s > ", app.Name))
+			commandLine, err := line.Prompt(fmt.Sprintf("%s > ", app.Name))
+			if err == liner.ErrPromptAborted {
+				os.Exit(0)
+			}
 			commandLine = strings.Trim(commandLine, " ")
 			if commandLine == "" {
 				continue
