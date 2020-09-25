@@ -581,7 +581,7 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "leetcli"
 	app.Usage = "leetcode 刷题小工具, 生成 README.md, 答题文件, 测试文件等"
-	app.Version = "v0.0.3"
+	app.Version = "v0.0.4"
 	app.Commands = []*cli.Command{
 		{
 			Name:    "config",
@@ -684,7 +684,6 @@ func main() {
 					prefix("已使用默认编程语言:", lang, "")
 				} else {
 					prefix("支持的编程语言:", crypto.JsonEncode(questionDetail.LangList), "")
-
 					// 监听输入, 并对编程语言自动补全
 					line := liner.NewLiner()
 					defer line.Close()
@@ -697,8 +696,13 @@ func main() {
 						}
 						return
 					})
-					lang, _ = line.Prompt("请选择编程语言 > ")
-					if lang == "" || !util.InArray(lang, questionDetail.LangList) {
+					for {
+						lang, _ = line.Prompt("请输入编程语言 > ")
+						if lang != "" {
+							break
+						}
+					}
+					if !util.InArray(lang, questionDetail.LangList) {
 						fail("无效的编程语言")
 						return nil
 					}
