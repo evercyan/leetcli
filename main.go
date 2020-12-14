@@ -137,9 +137,9 @@ func getQustionPath(fid string, id int, slug string) string {
 	if qid == 0 {
 		qid = id
 	}
-	tpl := "/src/%d-%s/"
+	tpl := "/src/%d-%s"
 	if id < 10000 {
-		tpl = "/src/%04d-%s/"
+		tpl = "/src/%04d-%s"
 	}
 	return fmt.Sprintf(tpl, qid, slug)
 }
