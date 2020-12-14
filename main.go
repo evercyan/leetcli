@@ -35,7 +35,7 @@ var (
 )
 
 /**
- * ******************************** 模板配置
+ * ---------------- 模板配置
  */
 
 // Repo README 模板
@@ -116,7 +116,7 @@ func TestSolution(t *testing.T) {
 }`
 
 /**
- * ******************************** 公共函数
+ * ---------------- 公共函数
  */
 
 func formatContent(str string) string {
@@ -175,7 +175,7 @@ func show(prefixStr, successStr, failStr string) {
 }
 
 /**
- * ******************************** leetcode
+ * ---------------- leetcode
  */
 
 type leetCode struct {
@@ -347,7 +347,7 @@ func (l *leetCode) Init() error {
 }
 
 /**
- * ******************************** 答题文件处理
+ * ---------------- 答题文件处理
  */
 
 // 默认答题配置
@@ -559,7 +559,7 @@ func (lf *leetCodeFile) DrawQuestionList() string {
 }
 
 /**
- * ******************************** main
+ * ---------------- main
  */
 
 var lc = new(leetCode)
@@ -577,7 +577,7 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "leetcli"
 	app.Usage = "leetcode 刷题小工具, 生成 README.md, 答题文件, 测试文件等"
-	app.Version = "v0.0.4"
+	app.Version = "v0.0.5"
 	app.Commands = []*cli.Command{
 		{
 			Name:    "config",
