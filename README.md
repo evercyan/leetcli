@@ -115,6 +115,7 @@ leetcli --help
 |[42](https://leetcode-cn.com/problems/trapping-rain-water/)|[Trapping Rain Water](./src/0042-trapping-rain-water)|困难|
 |[43](https://leetcode-cn.com/problems/multiply-strings/)|[Multiply Strings](./src/0043-multiply-strings)|中等|
 |[44](https://leetcode-cn.com/problems/wildcard-matching/)|[Wildcard Matching](./src/0044-wildcard-matching)|困难|
+|[46](https://leetcode-cn.com/problems/permutations/)|[Permutations](./src/0046-permutations)|中等|
 |[53](https://leetcode-cn.com/problems/maximum-subarray/)|[Maximum Subarray](./src/0053-maximum-subarray)|简单|
 |[57](https://leetcode-cn.com/problems/insert-interval/)|[Insert Interval](./src/0057-insert-interval)|困难|
 |[58](https://leetcode-cn.com/problems/length-of-last-word/)|[Length of Last Word](./src/0058-length-of-last-word)|简单|
@@ -126,6 +127,7 @@ leetcli --help
 |[88](https://leetcode-cn.com/problems/merge-sorted-array/)|[Merge Sorted Array](./src/0088-merge-sorted-array)|简单|
 |[100](https://leetcode-cn.com/problems/same-tree/)|[Same Tree](./src/0100-same-tree)|简单|
 |[101](https://leetcode-cn.com/problems/symmetric-tree/)|[Symmetric Tree](./src/0101-symmetric-tree)|简单|
+|[102](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/)|[Binary Tree Level Order Traversal](./src/0102-binary-tree-level-order-traversal)|中等|
 |[104](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/)|[Maximum Depth of Binary Tree](./src/0104-maximum-depth-of-binary-tree)|简单|
 |[107](https://leetcode-cn.com/problems/binary-tree-level-order-traversal-ii/)|[Binary Tree Level Order Traversal II](./src/0107-binary-tree-level-order-traversal-ii)|简单|
 |[108](https://leetcode-cn.com/problems/convert-sorted-array-to-binary-search-tree/)|[Convert Sorted Array to Binary Search Tree](./src/0108-convert-sorted-array-to-binary-search-tree)|简单|
@@ -161,6 +163,7 @@ leetcli --help
 |[206](https://leetcode-cn.com/problems/reverse-linked-list/)|[Reverse Linked List](./src/0206-reverse-linked-list)|简单|
 |[262](https://leetcode-cn.com/problems/trips-and-users/)|[Trips and Users](./src/0262-trips-and-users)|困难|
 |[278](https://leetcode-cn.com/problems/first-bad-version/)|[First Bad Version](./src/0278-first-bad-version)|简单|
+|[283](https://leetcode-cn.com/problems/move-zeroes/)|[Move Zeroes](./src/0283-move-zeroes)|简单|
 |[292](https://leetcode-cn.com/problems/nim-game/)|[Nim Game](./src/0292-nim-game)|简单|
 |[303](https://leetcode-cn.com/problems/range-sum-query-immutable/)|[Range Sum Query - Immutable](./src/0303-range-sum-query-immutable)|简单|
 |[374](https://leetcode-cn.com/problems/guess-number-higher-or-lower/)|[Guess Number Higher or Lower](./src/0374-guess-number-higher-or-lower)|简单|
