@@ -10,9 +10,6 @@ type TreeNode struct {
 
 func levelOrder(root *TreeNode) [][]int {
 	var res [][]int
-	if root == nil {
-		return res
-	}
 
 	var dfs func(*TreeNode, int)
 	dfs = func(node *TreeNode, level int) {
