@@ -17,6 +17,7 @@ import (
 	"github.com/evercyan/gocli/color"
 	"github.com/evercyan/gocli/table"
 	"github.com/evercyan/letitgo/crypto"
+	lfile "github.com/evercyan/letitgo/file"
 	"github.com/evercyan/letitgo/util"
 	"github.com/mozillazg/request"
 	"github.com/peterh/liner"
@@ -132,7 +133,7 @@ func formatContent(str string) string {
 }
 
 func getQustionPath(fid string, id int, slug string) string {
-	qid := int(util.ToInt64(fid))
+	qid := int(util.ToUint(fid))
 	if qid == 0 {
 		qid = id
 	}
@@ -144,35 +145,31 @@ func getQustionPath(fid string, id int, slug string) string {
 }
 
 func getConfigFile() (string, error) {
-	user, err := user.Current()
+	userDir, err := user.Current()
 	if err != nil {
 		return "", err
 	}
-	appPath := user.HomeDir + "/.leetcli"
-	if !util.IsExist(appPath) {
+	appPath := userDir.HomeDir + "/.leetcli"
+	if !lfile.IsExist(appPath) {
 		os.Mkdir(appPath, os.ModePerm)
 	}
 	return appPath + "/config.json", nil
 }
 
 func success(texts ...string) {
-	color.New(texts...).Color(color.Green).Render()
-}
-
-func notice(texts ...string) {
-	color.New(texts...).Color(color.Yellow).Render()
+	color.NewColor(texts...).FgColor(color.Green).Render()
 }
 
 func fail(texts ...string) {
-	color.New(texts...).Color(color.Red).Render()
+	color.NewColor(texts...).FgColor(color.Red).Render()
 }
 
 func show(prefixStr, successStr, failStr string) {
-	content := color.New(prefixStr).Color(color.Yellow).Content() + " "
+	content := color.NewColor(prefixStr).FgColor(color.Yellow).Content() + " "
 	if successStr != "" {
-		content += color.New(successStr).Color(color.Green).Content()
+		content += color.NewColor(successStr).FgColor(color.Green).Content()
 	} else {
-		content += color.New(failStr).Color(color.Red).Content()
+		content += color.NewColor(failStr).FgColor(color.Red).Content()
 	}
 	fmt.Println(content)
 }
@@ -232,16 +229,17 @@ type lcQuestionDetail struct {
 func (l *leetCode) getQuestionList() error {
 	req := request.NewRequest(new(http.Client))
 	resp, err := req.Get(lcAllURL)
-	defer resp.Body.Close()
 	if err != nil {
 		return err
 	}
+	defer resp.Body.Close()
+
 	respJson, err := resp.Json()
 	if err != nil {
 		return err
 	}
 	qList1, _ := respJson.Get("stat_status_pairs").Array()
-	qList2 := []lcOriginQuestionInfo{}
+	var qList2 []lcOriginQuestionInfo
 	if err := json.Unmarshal([]byte(crypto.JsonEncode(qList1)), &qList2); err != nil {
 		return err
 	}
@@ -277,7 +275,7 @@ func (l *leetCode) getQuestionTagList() error {
 		item := lcQuestionTagInfo{}
 		item.Title = strings.TrimSpace(s.Find("span.text-gray").Text())
 		item.Link, _ = s.Attr("href")
-		item.Count = int(util.ToInt64(strings.TrimSpace(s.Find("span.badge").Text())))
+		item.Count = int(util.ToUint(strings.TrimSpace(s.Find("span.badge").Text())))
 		l.QuestionTagList = append(l.QuestionTagList, item)
 	})
 	return nil
@@ -296,10 +294,11 @@ func (l *leetCode) getQuestionDetail(slug string) (*lcQuestionDetail, error) {
 		},
 	}
 	resp, err := req.Post(lcGraphqlURL)
-	defer resp.Body.Close()
 	if err != nil {
 		return nil, err
 	}
+	defer resp.Body.Close()
+
 	respJson, _ := resp.Json()
 
 	questionDetail := &lcQuestionDetail{}
@@ -311,21 +310,21 @@ func (l *leetCode) getQuestionDetail(slug string) (*lcQuestionDetail, error) {
 	questionDetail.Content = formatContent(questionDetail.Content)
 	// 标签
 	tagListTmp, _ := respJson.Get("data").Get("question").Get("topicTags").Array()
-	tagList := []map[string]string{}
+	var tagList []map[string]string
 	if err := json.Unmarshal([]byte(crypto.JsonEncode(tagListTmp)), &tagList); err != nil {
 		return nil, err
 	}
 	questionDetail.TagList = tagList
 	// 代码片段
 	codeListTmp, _ := respJson.Get("data").Get("question").Get("codeSnippets").Array()
-	codeList := []map[string]string{}
+	var codeList []map[string]string
 	if err := json.Unmarshal([]byte(crypto.JsonEncode(codeListTmp)), &codeList); err != nil {
 		return nil, err
 	}
 	// 语言代码
 	codeMap := map[string]map[string]string{}
 	// 支持语言类型
-	langList := []string{}
+	var langList []string
 	for _, item := range codeList {
 		langList = append(langList, item["langSlug"])
 		codeMap[item["langSlug"]] = item
@@ -390,7 +389,7 @@ func (lf *leetCodeFile) Init() error {
 	if err != nil {
 		return err
 	}
-	content := util.ReadFile(configFile)
+	content := lfile.Read(configFile)
 	if content == "" {
 		return nil
 	}
@@ -402,7 +401,7 @@ func (lf *leetCodeFile) Save() error {
 	if err != nil {
 		return err
 	}
-	return util.WriteFile(configFile, crypto.JsonEncode(lf))
+	return lfile.Write(configFile, crypto.JsonEncode(lf))
 }
 
 // 生成答题相关文件
@@ -410,7 +409,7 @@ func (lf *leetCodeFile) GenerateQuestion(slug string, lang string, questionDetai
 	questionInfo, _ := lc.QuestionMap[slug]
 	questionPath := getQustionPath(questionInfo.FQID, questionInfo.QID, questionInfo.Slug)
 	questionPath = lf.Path + questionPath
-	if !util.IsExist(questionPath) {
+	if !lfile.IsExist(questionPath) {
 		err = os.MkdirAll(questionPath, 0755)
 		if err != nil {
 			return errors.New("创建答题文件目录失败")
@@ -452,7 +451,7 @@ func (lf *leetCodeFile) GenerateQuestion(slug string, lang string, questionDetai
 	if err != nil {
 		return errors.New("解析答题 README 模板失败")
 	}
-	if err = util.WriteFile(questionReadmeFile, string(b.Bytes())); err != nil {
+	if err = lfile.Write(questionReadmeFile, string(b.Bytes())); err != nil {
 		return errors.New("创建答题 README 文件失败")
 	}
 
@@ -471,16 +470,16 @@ func (lf *leetCodeFile) GenerateQuestion(slug string, lang string, questionDetai
 
 	// 创建答题文件
 	questionFile := fmt.Sprintf("%s/%s", questionPath, file)
-	if util.IsExist(questionFile) {
+	if lfile.IsExist(questionFile) {
 		show("答题文件已存在:", questionFile, "")
 	} else {
-		util.WriteFile(questionFile, fmt.Sprintf(fileTpl, questionDetail.CodeMap[lang]["code"]))
+		lfile.Write(questionFile, fmt.Sprintf(fileTpl, questionDetail.CodeMap[lang]["code"]))
 	}
 
 	// 创建答题测试文件
 	if testfile != "" {
 		questionTestFile := fmt.Sprintf("%s/%s", questionPath, testfile)
-		if util.IsExist(questionTestFile) {
+		if lfile.IsExist(questionTestFile) {
 			show("答题测试文件已存在:", questionTestFile, "")
 		} else {
 			// 替换测试文件中函数名称
@@ -488,7 +487,7 @@ func (lf *leetCodeFile) GenerateQuestion(slug string, lang string, questionDetai
 			if len(matchs) >= 2 {
 				testfileTpl = strings.Replace(testfileTpl, "FuncToReplace", matchs[1], -1)
 			}
-			util.WriteFile(questionTestFile, testfileTpl)
+			lfile.Write(questionTestFile, testfileTpl)
 		}
 	}
 
@@ -502,7 +501,7 @@ func (lf *leetCodeFile) GenerateReadme() error {
 	if err != nil {
 		return err
 	}
-	return util.WriteFile(lf.Path+"/README.md", string(b.Bytes()))
+	return lfile.Write(lf.Path+"/README.md", string(b.Bytes()))
 }
 
 // [![数组](https://img.shields.io/badge/数组-99-red.svg)](https://shields.io/)
@@ -519,21 +518,21 @@ func (lf *leetCodeFile) DrawQuestionTagList() string {
 		}
 		url := fmt.Sprintf(lcTagURL, tagLinks[2])
 		title := strings.Replace(tag.Title, " ", "", -1)
-		color := "ff9985"
+		curColor := "ff9985"
 		if tag.Count > 200 {
-			color = "8a0808"
+			curColor = "8a0808"
 		} else if tag.Count > 100 {
-			color = "b80909"
+			curColor = "b80909"
 		} else if tag.Count > 50 {
-			color = "e64546"
+			curColor = "e64546"
 		} else if tag.Count > 10 {
-			color = "f57567"
+			curColor = "f57567"
 		}
-		if preColor != "" && preColor != color {
+		if preColor != "" && preColor != curColor {
 			resp += "\n"
 		}
-		preColor = color
-		resp += fmt.Sprintf("[![%s](https://img.shields.io/badge/%s-%d-%s.svg?style=flat)](%s)\n", title, title, tag.Count, color, url)
+		preColor = curColor
+		resp += fmt.Sprintf("[![%s](https://img.shields.io/badge/%s-%d-%s.svg?style=flat)](%s)\n", title, title, tag.Count, curColor, url)
 	}
 	return strings.Trim(resp, "\n")
 }
@@ -549,7 +548,7 @@ func (lf *leetCodeFile) DrawQuestionList() string {
 	for _, question := range questionList {
 		questionPath := getQustionPath(question.FQID, question.QID, question.Slug)
 		questionPath = "." + questionPath
-		if !util.IsExist(questionPath) {
+		if !lfile.IsExist(questionPath) {
 			continue
 		}
 		resp += fmt.Sprintf("|[%s](%s)|", question.FQID, question.Link)
@@ -594,7 +593,7 @@ func main() {
 							show("答题文件目录:", lcFile.Path, "未设置")
 							return nil
 						}
-						if !util.IsExist(path) {
+						if !lfile.IsExist(path) {
 							fail("答题文件目录不存在:", path)
 							return nil
 						}
@@ -727,7 +726,7 @@ func main() {
 					show("请输入关键字:", "[eg: list two-sum]", "")
 					return nil
 				}
-				list := [][]interface{}{}
+				var list [][]interface{}
 				count := 0
 				for _, item := range lc.QuestionList {
 					if !strings.Contains(item.FQID, keyword) && !strings.Contains(item.Title, keyword) && !strings.Contains(item.Slug, keyword) {
@@ -744,7 +743,7 @@ func main() {
 						item.Difficulty,
 					})
 				}
-				success(table.New(list).Header([]string{"id", "标题", "标识", "难度"}).Content())
+				success(table.NewTable(list).Header([]string{"id", "标题", "标识", "难度"}).Content())
 				return nil
 			},
 		},

@@ -22,41 +22,41 @@ leetcli --help
 
 ## Tag List
 
-[![数组](https://img.shields.io/badge/数组-316-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/array/)
-[![动态规划](https://img.shields.io/badge/动态规划-238-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/dynamic-programming/)
-[![字符串](https://img.shields.io/badge/字符串-218-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/string/)
-[![数学](https://img.shields.io/badge/数学-203-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/math/)
+[![数组](https://img.shields.io/badge/数组-325-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/array/)
+[![动态规划](https://img.shields.io/badge/动态规划-257-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/dynamic-programming/)
+[![字符串](https://img.shields.io/badge/字符串-231-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/string/)
+[![数学](https://img.shields.io/badge/数学-212-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/math/)
 
-[![树](https://img.shields.io/badge/树-166-b80909.svg?style=flat)](https://leetcode-cn.com/tag/tree/)
-[![深度优先搜索](https://img.shields.io/badge/深度优先搜索-146-b80909.svg?style=flat)](https://leetcode-cn.com/tag/depth-first-search/)
-[![哈希表](https://img.shields.io/badge/哈希表-140-b80909.svg?style=flat)](https://leetcode-cn.com/tag/hash-table/)
+[![树](https://img.shields.io/badge/树-178-b80909.svg?style=flat)](https://leetcode-cn.com/tag/tree/)
+[![深度优先搜索](https://img.shields.io/badge/深度优先搜索-157-b80909.svg?style=flat)](https://leetcode-cn.com/tag/depth-first-search/)
+[![哈希表](https://img.shields.io/badge/哈希表-144-b80909.svg?style=flat)](https://leetcode-cn.com/tag/hash-table/)
+[![贪心算法](https://img.shields.io/badge/贪心算法-118-b80909.svg?style=flat)](https://leetcode-cn.com/tag/greedy/)
+[![二分查找](https://img.shields.io/badge/二分查找-104-b80909.svg?style=flat)](https://leetcode-cn.com/tag/binary-search/)
 
-[![二分查找](https://img.shields.io/badge/二分查找-99-e64546.svg?style=flat)](https://leetcode-cn.com/tag/binary-search/)
-[![贪心算法](https://img.shields.io/badge/贪心算法-96-e64546.svg?style=flat)](https://leetcode-cn.com/tag/greedy/)
-[![广度优先搜索](https://img.shields.io/badge/广度优先搜索-78-e64546.svg?style=flat)](https://leetcode-cn.com/tag/breadth-first-search/)
-[![双指针](https://img.shields.io/badge/双指针-71-e64546.svg?style=flat)](https://leetcode-cn.com/tag/two-pointers/)
-[![位运算](https://img.shields.io/badge/位运算-66-e64546.svg?style=flat)](https://leetcode-cn.com/tag/bit-manipulation/)
-[![栈](https://img.shields.io/badge/栈-66-e64546.svg?style=flat)](https://leetcode-cn.com/tag/stack/)
-[![排序](https://img.shields.io/badge/排序-65-e64546.svg?style=flat)](https://leetcode-cn.com/tag/sort/)
-[![回溯算法](https://img.shields.io/badge/回溯算法-63-e64546.svg?style=flat)](https://leetcode-cn.com/tag/backtracking/)
-[![设计](https://img.shields.io/badge/设计-63-e64546.svg?style=flat)](https://leetcode-cn.com/tag/design/)
-[![链表](https://img.shields.io/badge/链表-53-e64546.svg?style=flat)](https://leetcode-cn.com/tag/linked-list/)
+[![广度优先搜索](https://img.shields.io/badge/广度优先搜索-84-e64546.svg?style=flat)](https://leetcode-cn.com/tag/breadth-first-search/)
+[![双指针](https://img.shields.io/badge/双指针-77-e64546.svg?style=flat)](https://leetcode-cn.com/tag/two-pointers/)
+[![排序](https://img.shields.io/badge/排序-76-e64546.svg?style=flat)](https://leetcode-cn.com/tag/sort/)
+[![回溯算法](https://img.shields.io/badge/回溯算法-70-e64546.svg?style=flat)](https://leetcode-cn.com/tag/backtracking/)
+[![设计](https://img.shields.io/badge/设计-70-e64546.svg?style=flat)](https://leetcode-cn.com/tag/design/)
+[![栈](https://img.shields.io/badge/栈-70-e64546.svg?style=flat)](https://leetcode-cn.com/tag/stack/)
+[![位运算](https://img.shields.io/badge/位运算-67-e64546.svg?style=flat)](https://leetcode-cn.com/tag/bit-manipulation/)
+[![链表](https://img.shields.io/badge/链表-56-e64546.svg?style=flat)](https://leetcode-cn.com/tag/linked-list/)
 
-[![图](https://img.shields.io/badge/图-48-f57567.svg?style=flat)](https://leetcode-cn.com/tag/graph/)
-[![堆](https://img.shields.io/badge/堆-40-f57567.svg?style=flat)](https://leetcode-cn.com/tag/heap/)
-[![并查集](https://img.shields.io/badge/并查集-33-f57567.svg?style=flat)](https://leetcode-cn.com/tag/union-find/)
-[![SlidingWindow](https://img.shields.io/badge/SlidingWindow-29-f57567.svg?style=flat)](https://leetcode-cn.com/tag/sliding-window/)
-[![分治算法](https://img.shields.io/badge/分治算法-28-f57567.svg?style=flat)](https://leetcode-cn.com/tag/divide-and-conquer/)
-[![递归](https://img.shields.io/badge/递归-23-f57567.svg?style=flat)](https://leetcode-cn.com/tag/recursion/)
-[![字典树](https://img.shields.io/badge/字典树-18-f57567.svg?style=flat)](https://leetcode-cn.com/tag/trie/)
-[![线段树](https://img.shields.io/badge/线段树-14-f57567.svg?style=flat)](https://leetcode-cn.com/tag/segment-tree/)
-[![几何](https://img.shields.io/badge/几何-11-f57567.svg?style=flat)](https://leetcode-cn.com/tag/geometry/)
+[![图](https://img.shields.io/badge/图-49-f57567.svg?style=flat)](https://leetcode-cn.com/tag/graph/)
+[![堆](https://img.shields.io/badge/堆-42-f57567.svg?style=flat)](https://leetcode-cn.com/tag/heap/)
+[![并查集](https://img.shields.io/badge/并查集-36-f57567.svg?style=flat)](https://leetcode-cn.com/tag/union-find/)
+[![递归](https://img.shields.io/badge/递归-32-f57567.svg?style=flat)](https://leetcode-cn.com/tag/recursion/)
+[![SlidingWindow](https://img.shields.io/badge/SlidingWindow-30-f57567.svg?style=flat)](https://leetcode-cn.com/tag/sliding-window/)
+[![分治算法](https://img.shields.io/badge/分治算法-29-f57567.svg?style=flat)](https://leetcode-cn.com/tag/divide-and-conquer/)
+[![字典树](https://img.shields.io/badge/字典树-19-f57567.svg?style=flat)](https://leetcode-cn.com/tag/trie/)
+[![线段树](https://img.shields.io/badge/线段树-16-f57567.svg?style=flat)](https://leetcode-cn.com/tag/segment-tree/)
+[![OrderedMap](https://img.shields.io/badge/OrderedMap-14-f57567.svg?style=flat)](https://leetcode-cn.com/tag/ordered-map/)
+[![几何](https://img.shields.io/badge/几何-12-f57567.svg?style=flat)](https://leetcode-cn.com/tag/geometry/)
 [![队列](https://img.shields.io/badge/队列-11-f57567.svg?style=flat)](https://leetcode-cn.com/tag/queue/)
 
-[![OrderedMap](https://img.shields.io/badge/OrderedMap-10-ff9985.svg?style=flat)](https://leetcode-cn.com/tag/ordered-map/)
 [![极小化极大](https://img.shields.io/badge/极小化极大-8-ff9985.svg?style=flat)](https://leetcode-cn.com/tag/minimax/)
+[![树状数组](https://img.shields.io/badge/树状数组-7-ff9985.svg?style=flat)](https://leetcode-cn.com/tag/binary-indexed-tree/)
 [![脑筋急转弯](https://img.shields.io/badge/脑筋急转弯-7-ff9985.svg?style=flat)](https://leetcode-cn.com/tag/brainteaser/)
-[![树状数组](https://img.shields.io/badge/树状数组-6-ff9985.svg?style=flat)](https://leetcode-cn.com/tag/binary-indexed-tree/)
 [![LineSweep](https://img.shields.io/badge/LineSweep-6-ff9985.svg?style=flat)](https://leetcode-cn.com/tag/line-sweep/)
 [![Random](https://img.shields.io/badge/Random-6-ff9985.svg?style=flat)](https://leetcode-cn.com/tag/random/)
 [![拓扑排序](https://img.shields.io/badge/拓扑排序-6-ff9985.svg?style=flat)](https://leetcode-cn.com/tag/topological-sort/)
@@ -158,7 +158,6 @@ leetcli --help
 |[196](https://leetcode-cn.com/problems/delete-duplicate-emails/)|[Delete Duplicate Emails](./src/0196-delete-duplicate-emails/)|简单|
 |[197](https://leetcode-cn.com/problems/rising-temperature/)|[Rising Temperature](./src/0197-rising-temperature/)|简单|
 |[198](https://leetcode-cn.com/problems/house-robber/)|[House Robber](./src/0198-house-robber/)|简单|
-|[225](https://leetcode-cn.com/problems/implement-stack-using-queues/)|[Implement Stack using Queues](./src/0225-implement-stack-using-queues/)|简单|
 |[262](https://leetcode-cn.com/problems/trips-and-users/)|[Trips and Users](./src/0262-trips-and-users/)|困难|
 |[278](https://leetcode-cn.com/problems/first-bad-version/)|[First Bad Version](./src/0278-first-bad-version/)|简单|
 |[292](https://leetcode-cn.com/problems/nim-game/)|[Nim Game](./src/0292-nim-game/)|简单|
