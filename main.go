@@ -25,13 +25,15 @@ import (
 )
 
 var (
+	commandList      = []string{"help", "h"}                       // 命令列表
 	lcAllURL         = "https://leetcode-cn.com/api/problems/all/" // 问题列表地址
 	lcGraphqlURL     = "https://leetcode-cn.com/graphql"           // 问题数据地址
 	lcQuestionURL    = "https://leetcode-cn.com/problems/%s/"      // 问题页面地址
 	lcTagURL         = "https://leetcode-cn.com/tag/%s/"           // 标签页面地址
 	lcQuestionSetURL = "https://leetcode-cn.com/problemset/all/"   // 题库首页
-	lcDifficulty     = []string{"", "简单", "中等", "困难"}              // 难度类型
-	commandList      = []string{"help", "h"}                       // 命令列表
+	lcDifficulty     = []string{                                   // 难度类型
+		"", "简单", "中等", "困难",
+	}
 )
 
 /**
