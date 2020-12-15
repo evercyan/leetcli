@@ -25,11 +25,10 @@ import (
 )
 
 var (
-	commandList      = []string{"help", "h"}                       // 命令列表
 	lcAllURL         = "https://leetcode-cn.com/api/problems/all/" // 问题列表地址
+	lcTagURL         = "https://leetcode-cn.com/tag/%s/"           // 标签页面地址
 	lcGraphqlURL     = "https://leetcode-cn.com/graphql"           // 问题数据地址
 	lcQuestionURL    = "https://leetcode-cn.com/problems/%s/"      // 问题页面地址
-	lcTagURL         = "https://leetcode-cn.com/tag/%s/"           // 标签页面地址
 	lcQuestionSetURL = "https://leetcode-cn.com/problemset/all/"   // 题库首页
 	lcDifficulty     = []string{                                   // 难度类型
 		"", "简单", "中等", "困难",
@@ -228,7 +227,7 @@ type lcQuestionDetail struct {
 	CodeMap  map[string]map[string]string `json:"code_list"`
 }
 
-func (l *leetCode) getQuestionList() error {
+func (lc *leetCode) getQuestionList() error {
 	req := request.NewRequest(new(http.Client))
 	resp, err := req.Get(lcAllURL)
 	if err != nil {
@@ -255,14 +254,14 @@ func (l *leetCode) getQuestionList() error {
 			Link:       fmt.Sprintf(lcQuestionURL, qList2[i].Stat.QuestionTitleSlug),
 			Difficulty: lcDifficulty[qList2[i].Difficulty.Level],
 		}
-		l.QuestionList = append(l.QuestionList, questionInfo)
+		lc.QuestionList = append(lc.QuestionList, questionInfo)
 		questionMap[questionInfo.Slug] = questionInfo
 	}
-	l.QuestionMap = questionMap
+	lc.QuestionMap = questionMap
 	return nil
 }
 
-func (l *leetCode) getQuestionTagList() error {
+func (lc *leetCode) getQuestionTagList() error {
 	resp, err := http.Get(lcQuestionSetURL)
 	if err != nil {
 		return err
@@ -278,12 +277,12 @@ func (l *leetCode) getQuestionTagList() error {
 		item.Title = strings.TrimSpace(s.Find("span.text-gray").Text())
 		item.Link, _ = s.Attr("href")
 		item.Count = int(util.ToUint(strings.TrimSpace(s.Find("span.badge").Text())))
-		l.QuestionTagList = append(l.QuestionTagList, item)
+		lc.QuestionTagList = append(lc.QuestionTagList, item)
 	})
 	return nil
 }
 
-func (l *leetCode) getQuestionDetail(slug string) (*lcQuestionDetail, error) {
+func (lc *leetCode) getQuestionDetail(slug string) (*lcQuestionDetail, error) {
 	req := request.NewRequest(new(http.Client))
 	req.Headers = map[string]string{
 		"Content-Type": "application/json",
@@ -336,12 +335,12 @@ func (l *leetCode) getQuestionDetail(slug string) (*lcQuestionDetail, error) {
 	return questionDetail, nil
 }
 
-func (l *leetCode) Init() error {
-	err := l.getQuestionList()
+func (lc *leetCode) Init() error {
+	err := lc.getQuestionList()
 	if err != nil {
 		return err
 	}
-	err = l.getQuestionTagList()
+	err = lc.getQuestionTagList()
 	if err != nil {
 		return err
 	}
@@ -354,7 +353,7 @@ func (l *leetCode) Init() error {
 
 // 默认答题配置
 var (
-	LangConf = map[string]map[string]string{
+	langConf = map[string]map[string]string{
 		"golang": {
 			"file":        "solution.go",
 			"fileTpl":     "package solution\n\n%s",
@@ -362,9 +361,9 @@ var (
 			"testfileTpl": tplQuestionGoTestFile,
 		},
 	}
-	LangFile    = "solution.%s"
-	LangFileTpl = "%s"
-	LangSuffix  = map[string]string{
+	langFile    = "solution.%s"
+	langFileTpl = "%s"
+	langSuffix  = map[string]string{
 		"golang":     "go",
 		"php":        "php",
 		"c":          "c",
@@ -376,7 +375,7 @@ var (
 		"mysql":      "sql",
 		"bash":       "sh",
 	}
-	LangList = []string{
+	langList = []string{
 		"golang", "php", "c", "cpp", "java", "python", "python3", "javascript", "mysql", "bash",
 	}
 )
@@ -459,12 +458,11 @@ func (lf *leetCodeFile) GenerateQuestion(slug string, lang string, questionDetai
 
 	// 生成答题文件, 答题测试文件
 	file, fileTpl, testfile, testfileTpl := "", "", "", ""
-	if _, ok := LangConf[lang]; ok {
-		file, fileTpl = LangConf[lang]["file"], LangConf[lang]["fileTpl"]
-		testfile, testfileTpl = LangConf[lang]["testfile"], LangConf[lang]["testfileTpl"]
-	} else if _, ok := LangSuffix[lang]; ok {
-		file = fmt.Sprintf(LangFile, LangSuffix[lang])
-		fileTpl = LangFileTpl
+	if _, ok := langConf[lang]; ok {
+		file, fileTpl = langConf[lang]["file"], langConf[lang]["fileTpl"]
+		testfile, testfileTpl = langConf[lang]["testfile"], langConf[lang]["testfileTpl"]
+	} else if _, ok := langSuffix[lang]; ok {
+		file, fileTpl = fmt.Sprintf(langFile, langSuffix[lang]), langFileTpl
 	} else {
 		// 未配置编程语言的, 生成完 README.md 直接结束
 		return nil
@@ -566,6 +564,7 @@ func (lf *leetCodeFile) DrawQuestionList() string {
 
 var lc = new(leetCode)
 var lcFile = new(leetCodeFile)
+var commandList = []string{"help", "h"} // 命令列表
 
 func main() {
 	if err := lc.Init(); err != nil {
@@ -617,9 +616,9 @@ func main() {
 							show("默认编程语言:", lcFile.Lang, "未设置")
 							return nil
 						}
-						if !util.InArray(lang, LangList) {
+						if !util.InArray(lang, langList) {
 							fail("无效的编程语言:", lang)
-							show("支持的编程语言:", crypto.JsonEncode(LangList), "")
+							show("支持的编程语言:", crypto.JsonEncode(langList), "")
 							return nil
 						}
 						lcFile.Lang = lang
