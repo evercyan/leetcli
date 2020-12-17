@@ -23,7 +23,7 @@ leetcli --help
 ## Tag List
 
 [![数组](https://img.shields.io/badge/数组-325-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/array/)
-[![动态规划](https://img.shields.io/badge/动态规划-257-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/dynamic-programming/)
+[![动态规划](https://img.shields.io/badge/动态规划-258-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/dynamic-programming/)
 [![字符串](https://img.shields.io/badge/字符串-231-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/string/)
 [![数学](https://img.shields.io/badge/数学-212-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/math/)
 
@@ -45,7 +45,7 @@ leetcli --help
 [![图](https://img.shields.io/badge/图-49-f57567.svg?style=flat)](https://leetcode-cn.com/tag/graph/)
 [![堆](https://img.shields.io/badge/堆-42-f57567.svg?style=flat)](https://leetcode-cn.com/tag/heap/)
 [![并查集](https://img.shields.io/badge/并查集-36-f57567.svg?style=flat)](https://leetcode-cn.com/tag/union-find/)
-[![递归](https://img.shields.io/badge/递归-32-f57567.svg?style=flat)](https://leetcode-cn.com/tag/recursion/)
+[![递归](https://img.shields.io/badge/递归-34-f57567.svg?style=flat)](https://leetcode-cn.com/tag/recursion/)
 [![SlidingWindow](https://img.shields.io/badge/SlidingWindow-30-f57567.svg?style=flat)](https://leetcode-cn.com/tag/sliding-window/)
 [![分治算法](https://img.shields.io/badge/分治算法-29-f57567.svg?style=flat)](https://leetcode-cn.com/tag/divide-and-conquer/)
 [![字典树](https://img.shields.io/badge/字典树-19-f57567.svg?style=flat)](https://leetcode-cn.com/tag/trie/)
@@ -117,14 +117,19 @@ leetcli --help
 |[44](https://leetcode-cn.com/problems/wildcard-matching/)|[Wildcard Matching](./src/0044-wildcard-matching)|困难|
 |[46](https://leetcode-cn.com/problems/permutations/)|[Permutations](./src/0046-permutations)|中等|
 |[53](https://leetcode-cn.com/problems/maximum-subarray/)|[Maximum Subarray](./src/0053-maximum-subarray)|简单|
+|[55](https://leetcode-cn.com/problems/jump-game/)|[Jump Game](./src/0055-jump-game)|中等|
+|[56](https://leetcode-cn.com/problems/merge-intervals/)|[Merge Intervals](./src/0056-merge-intervals)|中等|
 |[57](https://leetcode-cn.com/problems/insert-interval/)|[Insert Interval](./src/0057-insert-interval)|困难|
 |[58](https://leetcode-cn.com/problems/length-of-last-word/)|[Length of Last Word](./src/0058-length-of-last-word)|简单|
+|[62](https://leetcode-cn.com/problems/unique-paths/)|[Unique Paths](./src/0062-unique-paths)|中等|
+|[64](https://leetcode-cn.com/problems/minimum-path-sum/)|[Minimum Path Sum](./src/0064-minimum-path-sum)|中等|
 |[66](https://leetcode-cn.com/problems/plus-one/)|[Plus One](./src/0066-plus-one)|简单|
 |[67](https://leetcode-cn.com/problems/add-binary/)|[Add Binary](./src/0067-add-binary)|简单|
 |[69](https://leetcode-cn.com/problems/sqrtx/)|[Sqrt(x)](./src/0069-sqrtx)|简单|
 |[70](https://leetcode-cn.com/problems/climbing-stairs/)|[Climbing Stairs](./src/0070-climbing-stairs)|简单|
 |[83](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/)|[Remove Duplicates from Sorted List](./src/0083-remove-duplicates-from-sorted-list)|简单|
 |[88](https://leetcode-cn.com/problems/merge-sorted-array/)|[Merge Sorted Array](./src/0088-merge-sorted-array)|简单|
+|[94](https://leetcode-cn.com/problems/binary-tree-inorder-traversal/)|[Binary Tree Inorder Traversal](./src/0094-binary-tree-inorder-traversal)|中等|
 |[100](https://leetcode-cn.com/problems/same-tree/)|[Same Tree](./src/0100-same-tree)|简单|
 |[101](https://leetcode-cn.com/problems/symmetric-tree/)|[Symmetric Tree](./src/0101-symmetric-tree)|简单|
 |[102](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/)|[Binary Tree Level Order Traversal](./src/0102-binary-tree-level-order-traversal)|中等|
@@ -143,6 +148,7 @@ leetcli --help
 |[141](https://leetcode-cn.com/problems/linked-list-cycle/)|[Linked List Cycle](./src/0141-linked-list-cycle)|简单|
 |[146](https://leetcode-cn.com/problems/lru-cache/)|[LRU Cache](./src/0146-lru-cache)|中等|
 |[155](https://leetcode-cn.com/problems/min-stack/)|[Min Stack](./src/0155-min-stack)|简单|
+|[169](https://leetcode-cn.com/problems/majority-element/)|[Majority Element](./src/0169-majority-element)|简单|
 |[175](https://leetcode-cn.com/problems/combine-two-tables/)|[Combine Two Tables](./src/0175-combine-two-tables)|简单|
 |[176](https://leetcode-cn.com/problems/second-highest-salary/)|[Second Highest Salary](./src/0176-second-highest-salary)|简单|
 |[177](https://leetcode-cn.com/problems/nth-highest-salary/)|[Nth Highest Salary](./src/0177-nth-highest-salary)|中等|
@@ -161,6 +167,7 @@ leetcli --help
 |[197](https://leetcode-cn.com/problems/rising-temperature/)|[Rising Temperature](./src/0197-rising-temperature)|简单|
 |[198](https://leetcode-cn.com/problems/house-robber/)|[House Robber](./src/0198-house-robber)|简单|
 |[206](https://leetcode-cn.com/problems/reverse-linked-list/)|[Reverse Linked List](./src/0206-reverse-linked-list)|简单|
+|[234](https://leetcode-cn.com/problems/palindrome-linked-list/)|[Palindrome Linked List](./src/0234-palindrome-linked-list)|简单|
 |[262](https://leetcode-cn.com/problems/trips-and-users/)|[Trips and Users](./src/0262-trips-and-users)|困难|
 |[278](https://leetcode-cn.com/problems/first-bad-version/)|[First Bad Version](./src/0278-first-bad-version)|简单|
 |[283](https://leetcode-cn.com/problems/move-zeroes/)|[Move Zeroes](./src/0283-move-zeroes)|简单|

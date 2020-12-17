@@ -5,16 +5,16 @@ func findIntegers(num int) int {
 	for i := 2; i < 32; i++ {
 		fib[i] = fib[i-1] + fib[i-2]
 	}
-	ans, k, per_bit := 0, 30, 0
+	ans, k, perBit := 0, 30, 0
 	for k >= 0 {
 		if (num & (1 << uint(k))) > 0 {
 			ans += fib[k]
-			if per_bit > 0 {
+			if perBit > 0 {
 				return ans
 			}
-			per_bit = 1
+			perBit = 1
 		} else {
-			per_bit = 0
+			perBit = 0
 		}
 		k--
 	}

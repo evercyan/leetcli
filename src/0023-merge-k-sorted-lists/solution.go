@@ -20,7 +20,7 @@ func mergeKLists(lists []*ListNode) *ListNode {
 	if llen == 2 {
 		return mergeTwoLists(lists[0], lists[1])
 	}
-	l, r := []*ListNode{}, []*ListNode{}
+	var l, r []*ListNode
 	for i := 0; i < llen; i++ {
 		if i <= llen/2 {
 			l = append(l, lists[i])

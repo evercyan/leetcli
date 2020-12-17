@@ -6,10 +6,9 @@ type ListNode struct {
 }
 
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
-	p1 := l1
-	p2 := l2
+	p1, p2 := l1, l2
 	var result *ListNode
-	var in int = 0
+	in := 0
 	for p1 != nil && p2 != nil {
 		p1.Val += p2.Val + in
 		in = 0

@@ -19,7 +19,7 @@ hfile="coverage.html"
 echo "" > $tfile
 echo "" > $hfile
 
-if [ "${tag}" != "leetcli" -a $(go list ./src/... | grep $tag | wc -l) == 1 ];
+if [ "${tag}" != "leetcli" -a $(go list ./src/... | grep "/${tag}-" | wc -l) == 1 ];
 then
     # 如果符合条件的只有一个测试用例, 测试之, 生成覆盖率可视 html
     f=$(go list ./src/... | grep $tag)

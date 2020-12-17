@@ -15,7 +15,7 @@ type ListNode struct {
 
 func nextLargerNodes(head *ListNode) []int {
 	// 先将链表转为数组
-	list, ret := []int{}, []int{}
+	var list, ret []int
 	for {
 		if head == nil {
 			break
