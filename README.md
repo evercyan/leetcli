@@ -24,7 +24,7 @@ leetcli --help
 
 [![数组](https://img.shields.io/badge/数组-325-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/array/)
 [![动态规划](https://img.shields.io/badge/动态规划-258-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/dynamic-programming/)
-[![字符串](https://img.shields.io/badge/字符串-231-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/string/)
+[![字符串](https://img.shields.io/badge/字符串-232-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/string/)
 [![数学](https://img.shields.io/badge/数学-212-8a0808.svg?style=flat)](https://leetcode-cn.com/tag/math/)
 
 [![树](https://img.shields.io/badge/树-178-b80909.svg?style=flat)](https://leetcode-cn.com/tag/tree/)
@@ -34,8 +34,8 @@ leetcli --help
 [![二分查找](https://img.shields.io/badge/二分查找-104-b80909.svg?style=flat)](https://leetcode-cn.com/tag/binary-search/)
 
 [![广度优先搜索](https://img.shields.io/badge/广度优先搜索-84-e64546.svg?style=flat)](https://leetcode-cn.com/tag/breadth-first-search/)
-[![双指针](https://img.shields.io/badge/双指针-77-e64546.svg?style=flat)](https://leetcode-cn.com/tag/two-pointers/)
-[![排序](https://img.shields.io/badge/排序-76-e64546.svg?style=flat)](https://leetcode-cn.com/tag/sort/)
+[![双指针](https://img.shields.io/badge/双指针-78-e64546.svg?style=flat)](https://leetcode-cn.com/tag/two-pointers/)
+[![排序](https://img.shields.io/badge/排序-77-e64546.svg?style=flat)](https://leetcode-cn.com/tag/sort/)
 [![回溯算法](https://img.shields.io/badge/回溯算法-70-e64546.svg?style=flat)](https://leetcode-cn.com/tag/backtracking/)
 [![设计](https://img.shields.io/badge/设计-70-e64546.svg?style=flat)](https://leetcode-cn.com/tag/design/)
 [![栈](https://img.shields.io/badge/栈-70-e64546.svg?style=flat)](https://leetcode-cn.com/tag/stack/)
@@ -44,7 +44,7 @@ leetcli --help
 
 [![图](https://img.shields.io/badge/图-49-f57567.svg?style=flat)](https://leetcode-cn.com/tag/graph/)
 [![堆](https://img.shields.io/badge/堆-42-f57567.svg?style=flat)](https://leetcode-cn.com/tag/heap/)
-[![并查集](https://img.shields.io/badge/并查集-36-f57567.svg?style=flat)](https://leetcode-cn.com/tag/union-find/)
+[![并查集](https://img.shields.io/badge/并查集-37-f57567.svg?style=flat)](https://leetcode-cn.com/tag/union-find/)
 [![递归](https://img.shields.io/badge/递归-34-f57567.svg?style=flat)](https://leetcode-cn.com/tag/recursion/)
 [![SlidingWindow](https://img.shields.io/badge/SlidingWindow-30-f57567.svg?style=flat)](https://leetcode-cn.com/tag/sliding-window/)
 [![分治算法](https://img.shields.io/badge/分治算法-29-f57567.svg?style=flat)](https://leetcode-cn.com/tag/divide-and-conquer/)
@@ -116,6 +116,7 @@ leetcli --help
 |[43](https://leetcode-cn.com/problems/multiply-strings/)|[Multiply Strings](./src/0043-multiply-strings)|中等|
 |[44](https://leetcode-cn.com/problems/wildcard-matching/)|[Wildcard Matching](./src/0044-wildcard-matching)|困难|
 |[46](https://leetcode-cn.com/problems/permutations/)|[Permutations](./src/0046-permutations)|中等|
+|[48](https://leetcode-cn.com/problems/rotate-image/)|[Rotate Image](./src/0048-rotate-image)|中等|
 |[53](https://leetcode-cn.com/problems/maximum-subarray/)|[Maximum Subarray](./src/0053-maximum-subarray)|简单|
 |[55](https://leetcode-cn.com/problems/jump-game/)|[Jump Game](./src/0055-jump-game)|中等|
 |[56](https://leetcode-cn.com/problems/merge-intervals/)|[Merge Intervals](./src/0056-merge-intervals)|中等|
@@ -127,9 +128,12 @@ leetcli --help
 |[67](https://leetcode-cn.com/problems/add-binary/)|[Add Binary](./src/0067-add-binary)|简单|
 |[69](https://leetcode-cn.com/problems/sqrtx/)|[Sqrt(x)](./src/0069-sqrtx)|简单|
 |[70](https://leetcode-cn.com/problems/climbing-stairs/)|[Climbing Stairs](./src/0070-climbing-stairs)|简单|
+|[75](https://leetcode-cn.com/problems/sort-colors/)|[Sort Colors](./src/0075-sort-colors)|中等|
+|[78](https://leetcode-cn.com/problems/subsets/)|[Subsets](./src/0078-subsets)|中等|
 |[83](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/)|[Remove Duplicates from Sorted List](./src/0083-remove-duplicates-from-sorted-list)|简单|
 |[88](https://leetcode-cn.com/problems/merge-sorted-array/)|[Merge Sorted Array](./src/0088-merge-sorted-array)|简单|
 |[94](https://leetcode-cn.com/problems/binary-tree-inorder-traversal/)|[Binary Tree Inorder Traversal](./src/0094-binary-tree-inorder-traversal)|中等|
+|[98](https://leetcode-cn.com/problems/validate-binary-search-tree/)|[Validate Binary Search Tree](./src/0098-validate-binary-search-tree)|中等|
 |[100](https://leetcode-cn.com/problems/same-tree/)|[Same Tree](./src/0100-same-tree)|简单|
 |[101](https://leetcode-cn.com/problems/symmetric-tree/)|[Symmetric Tree](./src/0101-symmetric-tree)|简单|
 |[102](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/)|[Binary Tree Level Order Traversal](./src/0102-binary-tree-level-order-traversal)|中等|
@@ -166,7 +170,10 @@ leetcli --help
 |[196](https://leetcode-cn.com/problems/delete-duplicate-emails/)|[Delete Duplicate Emails](./src/0196-delete-duplicate-emails)|简单|
 |[197](https://leetcode-cn.com/problems/rising-temperature/)|[Rising Temperature](./src/0197-rising-temperature)|简单|
 |[198](https://leetcode-cn.com/problems/house-robber/)|[House Robber](./src/0198-house-robber)|简单|
+|[200](https://leetcode-cn.com/problems/number-of-islands/)|[Number of Islands](./src/0200-number-of-islands)|中等|
 |[206](https://leetcode-cn.com/problems/reverse-linked-list/)|[Reverse Linked List](./src/0206-reverse-linked-list)|简单|
+|[215](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/)|[Kth Largest Element in an Array](./src/0215-kth-largest-element-in-an-array)|中等|
+|[226](https://leetcode-cn.com/problems/invert-binary-tree/)|[Invert Binary Tree](./src/0226-invert-binary-tree)|简单|
 |[234](https://leetcode-cn.com/problems/palindrome-linked-list/)|[Palindrome Linked List](./src/0234-palindrome-linked-list)|简单|
 |[262](https://leetcode-cn.com/problems/trips-and-users/)|[Trips and Users](./src/0262-trips-and-users)|困难|
 |[278](https://leetcode-cn.com/problems/first-bad-version/)|[First Bad Version](./src/0278-first-bad-version)|简单|
