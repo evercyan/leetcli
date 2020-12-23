@@ -10,6 +10,12 @@
 
 ---
 
+## Hi there
+
+这是我的答题纪录 [Record](./RECORD.md), 看看你的? 🤔🤔🤔
+
+---
+
 ## What's this?
 
 这是一个有点小帅的 `leetcode` 刷题工具

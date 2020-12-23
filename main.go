@@ -40,9 +40,7 @@ var (
  */
 
 // Repo Record 模板
-var tplRecord = `# Leetcode Record
-
----
+var tplRecord = `# Record
 
 ## Tag List
 

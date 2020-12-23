@@ -1,6 +1,4 @@
-# Leetcode Record
-
----
+# Record
 
 ## Tag List
 
