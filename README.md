@@ -12,70 +12,73 @@
 
 ## What's this?
 
-这是一个 leetcode 刷题工具, 普通的刷题过程, 一般是酱紫的:
+这是一个有点小帅的 `leetcode` 刷题工具
 
-- 1. 访问 leetcode, 选一道题准备攻克它
-- 2. 本地建一个答题的目录
+普通的刷题过程, 一般是酱紫的:
+
+- 1. 打开 leetcode 网站, 精挑细选一道难题准备攻克它
+- 2. 本地找个地方建一个答题目录
 - 3. 进到答题目录里, 新建答题文件和测试文件
-- 4. 切到浏览器, 复制答题对应语言的模板, 粘贴到答题文件中
-- 5. 一毛一样, 复制相关测试用例, 粘贴到测试文件里
-- 6. 开始攻克难关, 本地跑下单测, 然后提交到 leetcode
+- 4. 切到浏览器, 复制题止页面右侧对应语言的模板代码, 粘贴到答题文件中
+- 5. 再切到浏览器, 复制题目左侧题目描述中测试用例, 粘贴到测试文件里
+- 6. 开始攻克难关, 本地跑单测, 再提交到 leetcode, 祈祷一遍过
 
-从 2-5 这几步的准备工作冗余繁琐, 每一道题都需要重复往之, 十分郁闷
+第 1 步和第 6 步, 仍需你的努力, 但中间几步的冗余繁琐的准备工作, 此可取而代之
 
-他来了他来了, 他带着利器赶来了, 这个利器将缩短答题前置的流程, 可快速实现上述 2-5 步
-
-- 1. 访问 leetcode, 选一道题准备攻克它
-- 2. 复制题目标识, `question 标识` 直接生成答题目录, 答题文件, 测试文件
-- 3. ......
+- 1. 选题...
+- 2. 复制题目标识, 打开工具, `question 标识` 直接生成答题目录, 答题文件, 测试文件
+- 3. 解决...
 
 ---
 
 ## How to install?
 
-- 有 `golang` 相关经验的, 可直接 `go get -v github.com/evercyan/leetcli`
-- 亦可进入 https://github.com/evercyan/leetcli/releases/tag/v0.0.6 页面, 选择对应的平台软件包进行下载
+- `go get -v github.com/evercyan/leetcli`
+- 或者进到 https://github.com/evercyan/leetcli/releases/tag/v0.0.5 页面, 下载相应平台软件包
 
 ---
 
 ## How to use?
 
-终端 `leetcli --help` 或可 `leetcli` 进入交互模式
+如果是通过下载软件包方式安装, 建议可放至全局目录, 方便随时随地启动
 
-![leetcli-help](https://raw.githubusercontent.com/evercyan/cantor/master/resource/66/662dfac5a7e65a5d0ce48a5574ca71f6.png)
+- 终端 `leetcli --help` 查看帮助手册, 可单步式使用
+- 终端 `leetcli` 进入交互模式, 持续刷题少不了
 
-- `config` 答题配置
-- `record` 生成答题记录文件 Record.md
-- `question` 生成答题文件 [eg: question two-sum], two-sum 为题目链接中的标识
-- `list` 问题列表 [eg: list two-sum; 最多显示 20 条]
+![leetcli-help](https://raw.githubusercontent.com/evercyan/cantor/master/resource/fb/fb9d9228546d63375b4522cbd55806ea.png)
 
-### 配置
+- 问题标识
+
+如 `https://leetcode-cn.com/problems/two-sum/` 这道 leetcode 届的 `hello world` 题
+
+其问题标识为 `two-sum`, 生成答题文件可直接 `question two-sum`
 
 - 答题目录配置
 
-初次使用需要配置答题目录, 通过 `config path xxx` 设置, 方便存放答题文件, 最好是个 git 仓库
+初次使用需要配置答题目录, 通过 `config path xxx` 设置, 方便存放答题文件
 
 ![leetcli-help-config](https://raw.githubusercontent.com/evercyan/cantor/master/resource/aa/aafaa8f1330bb715116939be9e8ff834.png)
 
 - 默认编程语言配置
 
-一般题型是支持多种编程语言的, 如果你不想在生成答题文件时再选择一遍编辑语言, 可以使用 `config lang xxx` 设置默认编程语言
+如果你不想在生成某道答题文件时再选择一遍编辑语言, 可以使用 `config lang xxx` 设置默认编程语言
 
 ---
 
 ## How to test?
 
-目前只支持生成 `golang` 和 `javascript` 的测试文件, 其余待支持
+目前只支持生成 `golang` 和 `javascript` 的答题测试文件, 有需求可提 issue
 
-在生成答题文件时, 会在题目目录生成 `solution.xxx` 和 `solution_test.xxx`
+执行 `question two-sum` 时, 会在题目目录生成 `solution.xxx` 和 `solution_test.xxx`
 
-你需要做的是, 是在 `solution.go` 中完成解题, 在 `solution_test.xxx` 补全测试用例
+你需要做的是, 是在 `solution.xxx` 中完成解题, 在 `solution_test.xxx` 补全相关测试用例
 
 ### golang
 
 `go test -v ./src/1000023-the-masseuse-lcci`
 
-```
+```sh
+# 单测输出示例
 === RUN   TestSolution
 === RUN   TestSolution/Test
 === RUN   TestSolution/Test#01
@@ -94,22 +97,21 @@ ok  	github.com/evercyan/leetcli/src/1000023-the-masseuse-lcci	0.012s
 
 ### javascript
 
-`javascript` 需要安装 `jest`
+执行 `javascript` 测试文件需要本地安装 `npm` 包 `jest`
 
 ```sh
 # 安装 jest
 npm install -g jest
 
-# 进入项目目录
-cd xxx/leetcli
-
 # 初始化
 npm init
 
-# 测试
+# 启动单测
 jest
+```
 
-# 示例
+```
+# 单测输出示例
  PASS  src/0142-linked-list-cycle-ii/solution.test.js
   ✓ detectCycle (2 ms)
 

@@ -587,8 +587,8 @@ func main() {
 	}
 	app := cli.NewApp()
 	app.Name = "leetcli"
-	app.Usage = "leetcode 刷题小工具"
-	app.Version = "v0.0.6"
+	app.Usage = "leetcode 刷题工具"
+	app.Version = "v0.0.5"
 	app.Commands = []*cli.Command{
 		{
 			Name:    "config",
