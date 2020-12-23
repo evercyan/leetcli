@@ -6,15 +6,13 @@
 [![codecov](https://codecov.io/gh/evercyan/leetcli/branch/master/graph/badge.svg?token=RbJTUtAlvl)](https://codecov.io/gh/evercyan/leetcli)
 [![goreportcard](https://goreportcard.com/badge/github.com/evercyan/leetcli)](https://goreportcard.com/report/github.com/evercyan/leetcli)
 
-leetcode 刷题工具
-
 </div>
 
 ---
 
 ## What's this?
 
-刷题过程, 一般是酱紫的
+这是一个 leetcode 刷题工具, 普通的刷题过程, 一般是酱紫的:
 
 - 1. 访问 leetcode, 选一道题准备攻克它
 - 2. 本地建一个答题的目录
