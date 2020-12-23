@@ -39,26 +39,8 @@ var (
  * ---------------- 模板配置
  */
 
-// Repo README 模板
-var tplReadme = `<div align="center">
-
-![leetcli](https://raw.githubusercontent.com/evercyan/cantor/master/resource/69/69f055fa7ccfe73114bf6608a2789d8f.png)
-
-[![travis-ci](https://www.travis-ci.org/evercyan/leetcli.svg?branch=master)](https://www.travis-ci.org/evercyan/leetcli)
-[![codecov](https://codecov.io/gh/evercyan/leetcli/branch/master/graph/badge.svg?token=RbJTUtAlvl)](https://codecov.io/gh/evercyan/leetcli)
-[![goreportcard](https://goreportcard.com/badge/github.com/evercyan/leetcli)](https://goreportcard.com/report/github.com/evercyan/leetcli)
-
-leetcode 刷题小工具, 生成 README, 答题文件, 测试文件等
-</div>
-
----
-
-## Usage
-
-` + "```sh" + `
-go get -v github.com/evercyan/leetcli
-leetcli --help
-` + "```" + `
+// Repo Record 模板
+var tplRecord = `# Leetcode Record
 
 ---
 
@@ -115,6 +97,28 @@ func TestSolution(t *testing.T) {
 		})
 	}
 }`
+
+// 题目 js 测试模板
+var tplQuestionJsTestFile = `
+
+const detectCycle = require('./solution.js')
+
+let cases = [
+    {
+        "inputs": [
+            "input"
+        ],
+        "expects": [
+           	"output"
+        ],
+    }
+];
+
+cases.forEach(function(item, i) {
+    test('test-' + i, () => {
+        expect(FuncToReplace(item['inputs'][0])).toBe(item['expects'][0])
+    })
+});`
 
 /**
  * ---------------- 公共函数
@@ -360,6 +364,12 @@ var (
 			"testfile":    "solution_test.go",
 			"testfileTpl": tplQuestionGoTestFile,
 		},
+		"javascript": {
+			"file":        "solution.js",
+			"fileTpl":     "%s\n\nmodule.exports = FuncToReplace;",
+			"testfile":    "solution.test.js",
+			"testfileTpl": tplQuestionJsTestFile,
+		},
 	}
 	langFile    = "solution.%s"
 	langFileTpl = "%s"
@@ -494,14 +504,14 @@ func (lf *leetCodeFile) GenerateQuestion(slug string, lang string, questionDetai
 	return nil
 }
 
-func (lf *leetCodeFile) GenerateReadme() error {
+func (lf *leetCodeFile) GenerateRecord() error {
 	var b bytes.Buffer
-	tpl := template.Must(template.New("readme").Parse(tplReadme))
+	tpl := template.Must(template.New("record").Parse(tplRecord))
 	err := tpl.Execute(&b, lf)
 	if err != nil {
 		return err
 	}
-	return lfile.Write(lf.Path+"/README.md", string(b.Bytes()))
+	return lfile.Write(lf.Path+"/RECORD.md", string(b.Bytes()))
 }
 
 // [![数组](https://img.shields.io/badge/数组-99-red.svg)](https://shields.io/)
@@ -577,13 +587,13 @@ func main() {
 	}
 	app := cli.NewApp()
 	app.Name = "leetcli"
-	app.Usage = "leetcode 刷题小工具, 生成 README.md, 答题文件, 测试文件等"
-	app.Version = "v0.0.5"
+	app.Usage = "leetcode 刷题小工具"
+	app.Version = "v0.0.6"
 	app.Commands = []*cli.Command{
 		{
 			Name:    "config",
 			Aliases: []string{"c"},
-			Usage:   "配置",
+			Usage:   "答题配置",
 			Subcommands: []*cli.Command{
 				{
 					Name:  "path",
@@ -641,20 +651,19 @@ func main() {
 			},
 		},
 		{
-			Name:    "readme",
+			Name:    "record",
 			Aliases: []string{"r"},
-			Usage:   "生成 README.md",
+			Usage:   "生成答题记录文件 RECORD.md",
 			Action: func(c *cli.Context) error {
-				err := lcFile.GenerateReadme()
+				err := lcFile.GenerateRecord()
 				if err != nil {
 					fail(err.Error())
 					return nil
 				}
-				success("生成 README.md 成功")
+				success("生成答题记录文件 RECORD.md 成功")
 				return nil
 			},
 		},
-
 		{
 			Name:    "question",
 			Aliases: []string{"q"},
@@ -753,7 +762,7 @@ func main() {
 			Aliases: []string{"e"},
 			Usage:   "退出",
 			Action: func(c *cli.Context) error {
-				return cli.NewExitError("", 0)
+				return cli.Exit("", 0)
 			},
 		},
 	}

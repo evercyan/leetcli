@@ -1,0 +1,22 @@
+{
+  "name": "leetcli",
+  "version": "0.0.6",
+  "description": "leetcode 刷题工具",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evercyan/leetcli.git"
+  },
+  "keywords": [
+    "leetcode"
+  ],
+  "author": "Cyan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/evercyan/leetcli/issues"
+  },
+  "homepage": "https://github.com/evercyan/leetcli#readme"
+}
