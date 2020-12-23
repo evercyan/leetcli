@@ -99,7 +99,7 @@ func TestSolution(t *testing.T) {
 // 题目 js 测试模板
 var tplQuestionJsTestFile = `
 
-const detectCycle = require('./solution.js')
+const solution = require('./solution.js')
 
 let cases = [
     {
@@ -114,7 +114,9 @@ let cases = [
 
 cases.forEach(function(item, i) {
     test('test-' + i, () => {
-        expect(FuncToReplace(item['inputs'][0])).toBe(item['expects'][0])
+		let ret = solution(item['inputs'][0])
+		let expected = item['expects'][0]
+        expect(ret).toBe(expected)
     })
 });`
 
