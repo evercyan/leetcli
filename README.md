@@ -14,23 +14,29 @@ leetcode 刷题工具
 
 ## What's this?
 
-普通的刷题过程, 以 `golang` 为例, 一般是这样
+刷题过程, 一般是酱紫的
 
-- 1. 新建答题目录
-- 2. 新建答题文件和测试文件
-- 3. 从 leetcode 上复制答题模板进答题文件
-- 4. 从 leetcode 上复制测试用例进测试文件
-- 5. 开始解题, 执行单测
-- 6. 提交 leetcode
+- 1. 访问 leetcode, 选一道题准备攻克它
+- 2. 本地建一个答题的目录
+- 3. 进到答题目录里, 新建答题文件和测试文件
+- 4. 切到浏览器, 复制答题对应语言的模板, 粘贴到答题文件中
+- 5. 一毛一样, 复制相关测试用例, 粘贴到测试文件里
+- 6. 开始攻克难关, 本地跑下单测, 然后提交到 leetcode
 
-此工具主要缩短答题前置的流程, 可快速实现上述 1 2 3 4 步, 以便直接聚焦到第 5 步上
+从 2-5 这几步的准备工作冗余繁琐, 每一道题都需要重复往之, 十分郁闷
+
+他来了他来了, 他带着利器赶来了, 这个利器将缩短答题前置的流程, 可快速实现上述 2-5 步
+
+- 1. 访问 leetcode, 选一道题准备攻克它
+- 2. 复制题目标识, `question 标识` 直接生成答题目录, 答题文件, 测试文件
+- 3. ......
 
 ---
 
 ## How to install?
 
-- 有 `golang` 环境可直接 `go get -v github.com/evercyan/leetcli`
-- 进入 https://github.com/evercyan/leetcli/releases/tag/v0.0.6 选择对应平台下载
+- 有 `golang` 相关经验的, 可直接 `go get -v github.com/evercyan/leetcli`
+- 亦可进入 https://github.com/evercyan/leetcli/releases/tag/v0.0.6 页面, 选择对应的平台软件包进行下载
 
 ---
 
@@ -48,11 +54,14 @@ leetcode 刷题工具
 ### 配置
 
 - 答题目录配置
-初次使用需要配置答题目录, 通过 `config path xxx` 设置, 方便存放答题文件, 建议可以是个 git 仓库
+
+初次使用需要配置答题目录, 通过 `config path xxx` 设置, 方便存放答题文件, 最好是个 git 仓库
+
 ![leetcli-help-config](https://raw.githubusercontent.com/evercyan/cantor/master/resource/aa/aafaa8f1330bb715116939be9e8ff834.png)
 
 - 默认编程语言配置
-通常题目是支持多语言解题的, 如果你不想在生成答题文件时再选择一遍答题语言, 可以使用 `config lang xxx` 设置默认编程语言
+
+一般题型是支持多种编程语言的, 如果你不想在生成答题文件时再选择一遍编辑语言, 可以使用 `config lang xxx` 设置默认编程语言
 
 ---
 
