@@ -1,6 +1,6 @@
 # [278. First Bad Version](https://leetcode-cn.com/problems/first-bad-version/)
 
-`[简单]` [二分查找](https://leetcode-cn.com/tag/binary-search/) 
+`[简单]` [二分查找](https://leetcode-cn.com/tag/binary-search/)
 
 ---
 
@@ -22,3 +22,4 @@
 所以，4 是第一个错误的版本。 
 
 ```
+
