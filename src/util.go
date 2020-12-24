@@ -82,3 +82,16 @@ func abs(x, y int) int {
 	}
 	return y - x
 }
+
+// -------- transfer
+
+// s2i string 2 int
+func s2i(v string) int {
+	r, _ := strconv.Atoi(v)
+	return r
+}
+
+// i2s int 2 string
+func i2s(v int) string {
+	return fmt.Sprintf("%v", v)
+}

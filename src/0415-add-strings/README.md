@@ -1,6 +1,6 @@
 # [415. Add Strings](https://leetcode-cn.com/problems/add-strings/)
 
-`[简单]` [字符串](https://leetcode-cn.com/tag/string/) 
+`[简单]` [字符串](https://leetcode-cn.com/tag/string/)
 
 ---
 
@@ -19,3 +19,4 @@
 
 
 ```
+
