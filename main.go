@@ -99,7 +99,7 @@ func TestSolution(t *testing.T) {
 // 题目 js 测试模板
 var tplQuestionJsTestFile = `
 
-const detectCycle = require('./solution.js')
+const solution = require('./solution.js')
 
 let cases = [
     {
@@ -114,7 +114,9 @@ let cases = [
 
 cases.forEach(function(item, i) {
     test('test-' + i, () => {
-        expect(FuncToReplace(item['inputs'][0])).toBe(item['expects'][0])
+		let ret = solution(item['inputs'][0])
+		let expected = item['expects'][0]
+        expect(ret).toBe(expected)
     })
 });`
 
@@ -481,6 +483,13 @@ func (lf *leetCodeFile) GenerateQuestion(slug string, lang string, questionDetai
 	if lfile.IsExist(questionFile) {
 		show("答题文件已存在:", questionFile, "")
 	} else {
+		// javascript: 替换题目文件中 module.exports = FuncToReplace;
+		if lang == "javascript" {
+			matchs := regexp.MustCompile(`var ([^=]+) = function`).FindStringSubmatch(questionDetail.CodeMap[lang]["code"])
+			if len(matchs) >= 2 {
+				fileTpl = strings.Replace(fileTpl, "FuncToReplace", matchs[1], -1)
+			}
+		}
 		lfile.Write(questionFile, fmt.Sprintf(fileTpl, questionDetail.CodeMap[lang]["code"]))
 	}
 
@@ -490,10 +499,12 @@ func (lf *leetCodeFile) GenerateQuestion(slug string, lang string, questionDetai
 		if lfile.IsExist(questionTestFile) {
 			show("答题测试文件已存在:", questionTestFile, "")
 		} else {
-			// 替换测试文件中函数名称
-			matchs := regexp.MustCompile(`func ([^\(]+)\(`).FindStringSubmatch(questionDetail.CodeMap[lang]["code"])
-			if len(matchs) >= 2 {
-				testfileTpl = strings.Replace(testfileTpl, "FuncToReplace", matchs[1], -1)
+			// golang: 替换测试文件中函数名称
+			if lang == "golang" {
+				matchs := regexp.MustCompile(`func ([^\(]+)\(`).FindStringSubmatch(questionDetail.CodeMap[lang]["code"])
+				if len(matchs) >= 2 {
+					testfileTpl = strings.Replace(testfileTpl, "FuncToReplace", matchs[1], -1)
+				}
 			}
 			lfile.Write(questionTestFile, testfileTpl)
 		}

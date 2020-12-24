@@ -25,7 +25,7 @@ func inorderTraversal(root *TreeNode) []int {
 	return res
 }
 
-func isValidBST1(root *TreeNode) bool {
+func isValidBST(root *TreeNode) bool {
 	res := inorderTraversal(root)
 
 	for i := 0; i < len(res)-1; i++ {
