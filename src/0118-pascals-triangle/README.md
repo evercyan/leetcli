@@ -1,6 +1,6 @@
 # [118. Pascal's Triangle](https://leetcode-cn.com/problems/pascals-triangle/)
 
-`[简单]` [数组](https://leetcode-cn.com/tag/array/) 
+`[简单]` [数组](https://leetcode-cn.com/tag/array/)
 
 ---
 
@@ -28,3 +28,4 @@
 ]
 
 ```
+

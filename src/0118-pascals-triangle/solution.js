@@ -26,3 +26,5 @@ var generate = function(numRows) {
     }
     return result;
 }
+
+module.exports = generate;
