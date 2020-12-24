@@ -1,6 +1,6 @@
 # [383. Ransom Note](https://leetcode-cn.com/problems/ransom-note/)
 
-`[简单]` [字符串](https://leetcode-cn.com/tag/string/) 
+`[简单]` [字符串](https://leetcode-cn.com/tag/string/)
 
 ---
 
@@ -21,3 +21,4 @@ canConstruct("aa", "aab") -> true
 
 
 ```
+
