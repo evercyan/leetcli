@@ -113,17 +113,17 @@ npm install -g jest
 npm init
 
 # 启动单测
-jest
+jest two-sum
 ```
 
 ```
 # 单测输出示例
- PASS  src/0142-linked-list-cycle-ii/solution.test.js
-  ✓ detectCycle (2 ms)
+ PASS  src/0001-two-sum/solution.test.js
+  ✓ test-0 (2 ms)
 
 Test Suites: 1 passed, 1 total
 Tests:       1 passed, 1 total
 Snapshots:   0 total
-Time:        1.172 s
-Ran all test suites.
+Time:        0.937 s, estimated 1 s
+Ran all test suites matching /two-sum/i.
 ```
