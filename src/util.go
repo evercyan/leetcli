@@ -88,7 +88,7 @@ func abs(x, y int) int {
 	return y - x
 }
 
-// -------- transfer
+// -------- transform
 
 // s2i string 2 int
 func s2i(v string) int {
@@ -99,4 +99,16 @@ func s2i(v string) int {
 // i2s int 2 string
 func i2s(v int) string {
 	return fmt.Sprintf("%v", v)
+}
+
+// -------- slice
+
+// search ...
+func search(nums []int, n int) int {
+	for key, num := range nums {
+		if num == n {
+			return key
+		}
+	}
+	return -1
 }
