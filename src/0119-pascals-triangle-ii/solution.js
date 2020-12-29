@@ -26,3 +26,5 @@ var getRow = function (rowIndex) {
     // 如果循环结果, 没有下一行, lastRow 就是最后一行
     return lastRow;
 };
+
+module.exports = getRow;

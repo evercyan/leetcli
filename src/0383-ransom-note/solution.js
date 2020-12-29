@@ -13,3 +13,5 @@ var canConstruct = function(ransomNote, magazine) {
     }
     return true;
 };
+
+module.exports = canConstruct;

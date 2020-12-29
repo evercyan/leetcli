@@ -1,6 +1,6 @@
 # [119. Pascal's Triangle II](https://leetcode-cn.com/problems/pascals-triangle-ii/)
 
-`[简单]` [数组](https://leetcode-cn.com/tag/array/) 
+`[简单]` [数组](https://leetcode-cn.com/tag/array/)
 
 ---
 
@@ -26,3 +26,4 @@
 你可以优化你的算法到 O(k) 空间复杂度吗？
 
 ```
+

@@ -1,6 +1,6 @@
 # [387. First Unique Character in a String](https://leetcode-cn.com/problems/first-unique-character-in-a-string/)
 
-`[简单]` [哈希表](https://leetcode-cn.com/tag/hash-table/)  [字符串](https://leetcode-cn.com/tag/string/) 
+`[简单]` [哈希表](https://leetcode-cn.com/tag/hash-table/) [字符串](https://leetcode-cn.com/tag/string/)
 
 ---
 
@@ -23,3 +23,4 @@ s = "loveleetcode"
 提示：你可以假定该字符串只包含小写字母。
 
 ```
+
